@@ -28,8 +28,9 @@
 <meta property="og:description" content="CS231n笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/sjwlpic1.png">
+<meta property="og:image" content="http://example.com/images/sjwlpic2.png">
 <meta property="article:published_time" content="2021-07-13T01:26:56.000Z">
-<meta property="article:modified_time" content="2021-07-13T08:14:54.824Z">
+<meta property="article:modified_time" content="2021-07-13T08:35:51.593Z">
 <meta property="article:author" content="EsteeX">
 <meta property="article:tag" content="卷积神经网络">
 <meta name="twitter:card" content="summary">
@@ -123,12 +124,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -188,7 +189,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-13 09:26:56 / 修改时间：16:14:54" itemprop="dateCreated datePublished" datetime="2021-07-13T09:26:56+08:00">2021-07-13</time>
+              <time title="创建时间：2021-07-13 09:26:56 / 修改时间：16:35:51" itemprop="dateCreated datePublished" datetime="2021-07-13T09:26:56+08:00">2021-07-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,11 +222,9 @@
 <p>距离的计算方式</p>
 <p>L1</p>
 <script type="math/tex; mode=display">
-d1(I1,I2) = \sum_{p}|I_{1}^p-I_{2}^p|</script><hr>
-<p>L2</p>
+d1(I1,I2) = \sum_{p}|I_{1}^p-I_{2}^p|</script><p>L2</p>
 <script type="math/tex; mode=display">
-d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><hr>
-<p><img src="/images/sjwlpic1.png" alt="Lena"></p>
+d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><p><img src="/images/sjwlpic1.png" alt="Lena"></p>
 <h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><p>Xtr 储存50000张图像的信息</p>
 <p>Ytr 储存50000张图像的分类</p>
 <p>Xte 测试图像信息</p>
@@ -239,6 +238,12 @@ d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nn = NearestNeighbor() <span class="comment"># create a Nearest Neighbor classifier class</span></span><br><span class="line">nn.train(Xtr_rows, Ytr) <span class="comment"># train the classifier on the training images and labels</span></span><br><span class="line">Yte_predict = nn.predict(Xte_rows) <span class="comment"># predict labels on the test images</span></span><br><span class="line"><span class="comment"># and now print the classification accuracy, which is the average number</span></span><br><span class="line"><span class="comment"># of examples that are correctly predicted (i.e. label matches)</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;accuracy: %f&#x27;</span> % ( np.mean(Yte_predict == Yte) )</span><br></pre></td></tr></table></figure>
 <p>实现训练分配器</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NearestNeighbor</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">self, X, y</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; X is N x D where each row is an example. Y is 1-dimension of size N &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># the nearest neighbor classifier simply remembers all the training data</span></span><br><span class="line">    self.Xtr = X</span><br><span class="line">    self.ytr = y</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">predict</span>(<span class="params">self, X</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; X is N x D where each row is an example we wish to predict label for &quot;&quot;&quot;</span></span><br><span class="line">    num_test = X.shape[<span class="number">0</span>]  //矩阵行数</span><br><span class="line">    <span class="comment"># lets make sure that the output type matches the input type</span></span><br><span class="line">    Ypred = np.zeros(num_test, dtype = self.ytr.dtype)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># loop over all test rows</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_test):</span><br><span class="line">      <span class="comment"># find the nearest training image to the i&#x27;th test image</span></span><br><span class="line">      <span class="comment"># using the L1 distance (sum of absolute value differences)</span></span><br><span class="line">      distances = np.<span class="built_in">sum</span>(np.<span class="built_in">abs</span>(self.Xtr - X[i,:]), axis = <span class="number">1</span>)</span><br><span class="line">      min_index = np.argmin(distances) <span class="comment"># get the index with smallest distance</span></span><br><span class="line">      Ypred[i] = self.ytr[min_index] <span class="comment"># predict the label of the nearest example</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Ypred</span><br></pre></td></tr></table></figure>
+<h4 id="K-最邻近分类器"><a href="#K-最邻近分类器" class="headerlink" title="K-最邻近分类器"></a>K-最邻近分类器</h4><p>只使用最近图像标签 X</p>
+<p>而是找最近的k个图像，再在测试图像上vote</p>
+<p>k 大 -&gt; 平滑 耐异常 测试数据更好泛化</p>
+<p><img src="/images/sjwlpic2.png" alt="Lena"></p>
+<h4 id="K的选择"><a href="#K的选择" class="headerlink" title="K的选择"></a>K的选择</h4><p>Validation sets for Hyperameter tuning</p>
+<p>超参数——距离方程的选择</p>
 
     </div>
 
@@ -256,10 +261,7 @@ d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><hr>
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/07/13/krrrr-s-blog/" rel="prev" title="krrrr's blog">
-      <i class="fa fa-chevron-left"></i> krrrr's blog
-    </a></div>
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
     <a href="/2021/07/13/hexo%E6%97%A5%E5%BF%97/" rel="next" title="hexo日志">
       hexo日志 <i class="fa fa-chevron-right"></i>
@@ -322,7 +324,7 @@ d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><hr>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">图像分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">数据驱动方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">最邻近分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">具体实现</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">图像分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">数据驱动方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">最邻近分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">K-最邻近分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">K的选择</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -345,13 +347,13 @@ d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><hr>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
