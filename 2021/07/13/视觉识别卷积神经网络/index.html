@@ -29,12 +29,34 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/sjwlpic1.png">
 <meta property="og:image" content="http://example.com/images/sjwlpic2.png">
-<meta property="og:image" content="http://example.com/images/sjwlpic3.png">
-<meta property="og:image" content="http://example.com/images/sjwlpic4.png">
+<meta property="og:image" content="http://example.com/images/sjwlpic3.jpg">
+<meta property="og:image" content="http://example.com/images/sjwlpic4.jpg">
+<meta property="og:image" content="http://example.com/images/sjwl15.png">
 <meta property="og:image" content="http://example.com/images/sjwlpic5.png">
 <meta property="og:image" content="http://example.com/images/sjwlpic6.png">
+<meta property="og:image" content="http://example.com/images/sjwl7.png">
+<meta property="og:image" content="http://example.com/images/sjwl9.png">
+<meta property="og:image" content="http://example.com/images/sjwl8.png">
+<meta property="og:image" content="http://example.com/images/sjwl10.png">
+<meta property="og:image" content="http://example.com/images/sjwl11.png">
+<meta property="og:image" content="http://example.com/images/sjwl12.png">
+<meta property="og:image" content="http://example.com/images/sjwl13.png">
+<meta property="og:image" content="http://example.com/images/sjwl14.png">
+<meta property="og:image" content="http://example.com/images/sjwl16.png">
+<meta property="og:image" content="http://example.com/images/sjwl17.png">
+<meta property="og:image" content="http://example.com/images/sjwl27.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl18.png">
+<meta property="og:image" content="http://example.com/images/sjwl20.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl19.png">
+<meta property="og:image" content="http://example.com/images/sjwl21.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl22.png">
+<meta property="og:image" content="http://example.com/images/sjwl22.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl23.jpg">
+<meta property="og:image" content="http://example.com/images/sjwl24.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl26.jpeg">
+<meta property="og:image" content="http://example.com/images/sjwl25.jpeg">
 <meta property="article:published_time" content="2021-07-13T01:26:56.000Z">
-<meta property="article:modified_time" content="2021-07-13T16:03:15.800Z">
+<meta property="article:modified_time" content="2021-07-23T01:01:36.787Z">
 <meta property="article:author" content="EsteeX">
 <meta property="article:tag" content="卷积神经网络">
 <meta name="twitter:card" content="summary">
@@ -128,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">4</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -138,7 +160,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
 
   </li>
   </ul>
@@ -199,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-14 00:03:15" itemprop="dateModified" datetime="2021-07-14T00:03:15+08:00">2021-07-14</time>
+                <time title="修改时间：2021-07-23 09:01:36" itemprop="dateModified" datetime="2021-07-23T09:01:36+08:00">2021-07-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,13 +283,14 @@ d2(I1,I2)=\sqrt{\sum_{p}(I_1^2-I_2^2))}</script><p><img src="/images/sjwlpic1.pn
 <p>验证集用来调整超参数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># assume we have Xtr_rows, Ytr, Xte_rows, Yte as before</span></span><br><span class="line"><span class="comment"># recall Xtr_rows is 50,000 x 3072 matrix</span></span><br><span class="line">Xval_rows = Xtr_rows[:<span class="number">1000</span>, :] <span class="comment"># take first 1000 for validation</span></span><br><span class="line">Yval = Ytr[:<span class="number">1000</span>]</span><br><span class="line">Xtr_rows = Xtr_rows[<span class="number">1000</span>:, :] <span class="comment"># keep last 49,000 for train</span></span><br><span class="line">Ytr = Ytr[<span class="number">1000</span>:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># find hyperparameters that work best on the validation set</span></span><br><span class="line">validation_accuracies = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">100</span>]:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># use a particular value of k and evaluation on validation data</span></span><br><span class="line">  nn = NearestNeighbor()</span><br><span class="line">  nn.train(Xtr_rows, Ytr)</span><br><span class="line">  <span class="comment"># here we assume a modified NearestNeighbor class that can take a k as input</span></span><br><span class="line">  Yval_predict = nn.predict(Xval_rows, k = k)</span><br><span class="line">  acc = np.mean(Yval_predict == Yval)</span><br><span class="line">  <span class="built_in">print</span> <span class="string">&#x27;accuracy: %f&#x27;</span> % (acc,)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># keep track of what works on the validation set</span></span><br><span class="line">  validation_accuracies.append((k, acc))</span><br></pre></td></tr></table></figure>
 <h5 id="交叉验证（贵）（验证集中实例数量少的情况使用）"><a href="#交叉验证（贵）（验证集中实例数量少的情况使用）" class="headerlink" title="交叉验证（贵）（验证集中实例数量少的情况使用）"></a>交叉验证（贵）（验证集中实例数量少的情况使用）</h5><p>将训练数据分为五等折，其中4个做为训练集，1个做为验证集， 则每个k可以获得5个精度，获得平均性能。</p>
-<p><img src="/images/sjwlpic3.png" alt="Lena"></p>
+<p><img src="/images/sjwlpic3.jpg" alt="Lena"></p>
 <h3 id="最邻近分类器优缺点"><a href="#最邻近分类器优缺点" class="headerlink" title="最邻近分类器优缺点"></a>最邻近分类器优缺点</h3><p>pro：简单   不需要时间培训（是在测试时支付计算成本） 空间复杂度大（要储存所有训练数据）</p>
 <p>con：在测试时耗时长   像素距离和语义相似性不对应（</p>
-<p><img src="/images/sjwlpic4.png" alt="Lena"></p>
+<p><img src="/images/sjwlpic4.jpg" alt="Lena"></p>
 <h2 id="线性分类"><a href="#线性分类" class="headerlink" title="线性分类"></a>线性分类</h2><p><strong>score function</strong></p>
 <p><strong>loss function</strong></p>
 <p>调整score func的参数，最小化loss func</p>
+<p><img src="/images/sjwl15.png" alt="Lena"></p>
 <h3 id="1-定义score-func"><a href="#1-定义score-func" class="headerlink" title="1. 定义score func"></a>1. 定义score func</h3><script type="math/tex; mode=display">
 f:R^{原始图像}->R^{class-score}</script><script type="math/tex; mode=display">
 f(x_i,W,b)=Wxi+b</script><p>xi——一个图像 展开为[D*1]向量。 输入</p>
@@ -281,13 +304,146 @@ f(x_i,W,b)=Wxi+b</script><p>xi——一个图像 展开为[D*1]向量。 输入<
 <h3 id="2-获得线性分类器"><a href="#2-获得线性分类器" class="headerlink" title="2. 获得线性分类器"></a>2. 获得线性分类器</h3><p><img src="/images/sjwlpic5.png" alt="Lena"></p>
 <p>图像——&gt;高维点（CIFAR-10中的每个点都是32x32x3 像素的 3072 维空间中的一个点）</p>
 <p>数据集——&gt;一组点</p>
-<p>tempate    每一行W可以看作是一个模版</p>
+<p>template    每一行W可以看作是一个模版</p>
 <p>cons：不同颜色的汽车 X （神经元可以解决）</p>
 <h4 id="简化-bias-trick"><a href="#简化-bias-trick" class="headerlink" title="简化 bias trick"></a>简化 bias trick</h4><p>将W，b合并为一个矩阵</p>
 <p>x~i~ 扩展一维，并全部补1，得到：[3073 x 1] </p>
 <p>W扩展一列， 对应偏移量b：[10 x 3073]</p>
 <script type="math/tex; mode=display">
 f(x_i,W)=Wxi</script><p><img src="/images/sjwlpic6.png" alt="Lena"></p>
+<h4 id="图像数据预处理"><a href="#图像数据预处理" class="headerlink" title="图像数据预处理"></a>图像数据预处理</h4><p>normalize归一化输入特征</p>
+<p>1.减去均值 使数据居中   [-127 … 127] </p>
+<p>2.缩放输入特征  [-1, 1]</p>
+<h3 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3. 损失函数"></a>3. 损失函数</h3><p>衡量对结果的不满意程度，选择参数W</p>
+<p>定义方法1:</p>
+<h4 id="多类支持向量机"><a href="#多类支持向量机" class="headerlink" title="多类支持向量机"></a>多类支持向量机</h4><p><strong>Multiclass Support Vector Machine</strong> （SVM）</p>
+<p>关键：要使选择项的分数 与 其他错误项 的差 大于 delta ， 否则增加loss</p>
+<p><img src="/images/sjwl7.png" alt="Lena"></p>
+<p>ep</p>
+<p>s=[13,−7,11]</p>
+<p>∆. = 10</p>
+<script type="math/tex; mode=display">
+L_i = max(0,-7-13+10) + max(0,11-13+10)</script><p><strong>正则化</strong></p>
+<p><strong>Regularization</strong></p>
+<p>防止当损失为0时，所有参数取倍数效果相同</p>
+<p><img src="/images/sjwl9.png" alt="Lena"></p>
+<p><img src="/images/sjwl8.png" alt="Lena"></p>
+<p><strong>设置∆</strong></p>
+<p>可以直接设置为1</p>
+<h4 id="Softmax分类器"><a href="#Softmax分类器" class="headerlink" title="Softmax分类器"></a>Softmax分类器</h4><p>损失函数：交叉熵损失</p>
+<p><img src="/images/sjwl10.png" alt="Lena"></p>
+<p>输出分类的概率</p>
+<p>交叉熵损失内涵：</p>
+<p><img src="/images/sjwl11.png" alt="Lena"></p>
+<p>指数——放大分数差异</p>
+<h4 id="SVM-vs-Softmax"><a href="#SVM-vs-Softmax" class="headerlink" title="SVM vs. Softmax"></a>SVM vs. Softmax</h4><p><img src="/images/sjwl12.png" alt="Lena"></p>
+<p>Softmax 分类器永远不会对它产生的分数感到完全满意：正确的类总是有更高的概率，而错误的类总是较低的概率</p>
+<p>一旦边际得到满足，SVM 就会感到高兴，并且不会对超出此限制(∆)的确切分数进行微观管理。</p>
+<h3 id="4-优化损失函数"><a href="#4-优化损失函数" class="headerlink" title="4.优化损失函数"></a>4.优化损失函数</h3><h4 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h4><p>尝试许多不同的随机权重并跟踪最有效的方法</p>
+<p><strong>迭代求精</strong></p>
+<h4 id="随机本地搜索"><a href="#随机本地搜索" class="headerlink" title="随机本地搜索"></a>随机本地搜索</h4><p>产生随机扰动</p>
+<h4 id="遵循梯度"><a href="#遵循梯度" class="headerlink" title="遵循梯度"></a>遵循梯度</h4><p>计算<em>最好的</em>方向</p>
+<p>计算梯度方法</p>
+<hr>
+<h5 id="数值梯度"><a href="#数值梯度" class="headerlink" title="数值梯度"></a>数值梯度</h5><p><strong>有限差分数值</strong> 计算梯度</p>
+<p>近似的</p>
+<p>选择步长</p>
+<p>对每个参数进行微小改变，最后选择单个参数进行更新</p>
+<hr>
+<h5 id="微积分分析梯度"><a href="#微积分分析梯度" class="headerlink" title="微积分分析梯度"></a>微积分分析梯度</h5><p>相当于对于每个参数求导</p>
+<p><img src="/images/sjwl13.png" alt="Lena"></p>
+<p><img src="/images/sjwl14.png" alt="Lena"></p>
+<p>容易出错，实践中使用数值梯度检查——梯度检查</p>
+<h5 id="小批量梯度下降"><a href="#小批量梯度下降" class="headerlink" title="小批量梯度下降"></a><strong>小批量梯度下降</strong></h5><p>不用在整个训练集上计算损失函数，而是挑选一些示例</p>
+<h5 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h5><p><img src="/images/sjwl16.png" alt="Lena"></p>
+<p><img src="/images/sjwl17.png" alt="Lena"></p>
+<p>左向右计算局部值</p>
+<p>右向左计算导数</p>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p><img src="/images/sjwl27.jpeg" alt="Lena"></p>
+<h3 id="隐藏层层数即大小"><a href="#隐藏层层数即大小" class="headerlink" title="隐藏层层数即大小"></a>隐藏层层数即大小</h3><p>层数过多 会过度拟合</p>
+<p>但是不能因此使用小型网络</p>
+<p>一般——改变正则化强度，辍学、输入噪声</p>
+<p>较小的网络更难用梯度下降等局部方法训练</p>
+<p>更大的神经网络包含明显更多的局部最小值，但这些最小值在实际损失方面要好得多</p>
+<p>小型网络——在某些情况下，您很幸运并收敛到一个好地方，但在某些情况下，您会陷入其中一个糟糕的最小值</p>
+<p>大型网络——最终实现的损失的方差会小得多，（所有的解决方案都一样好），并且更少依赖随机初始化的运气</p>
+<h3 id="设置数据和模型"><a href="#设置数据和模型" class="headerlink" title="设置数据和模型"></a>设置数据和模型</h3><h4 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h4><ol>
+<li><p>均值减法</p>
+</li>
+<li><p>归一化</p>
+<p>不同的输入特征具有不同的尺度（或单位），那么应用这种预处理才有意义。在图像的情况下，像素的相对比例已经大致相等（范围从 0 到 255），因此执行这个额外的预处理步骤并不是绝对必要的。</p>
+</li>
+</ol>
+<p><img src="/images/sjwl18.png" alt="Lena"></p>
+<ol>
+<li><p><strong>PCA</strong> 主成分分析 </p>
+<p><img src="/images/sjwl20.jpeg" alt="Lena"></p>
+<p>PCA不能确保可以提高最终的分类效果</p>
+<p>降低维数，能最大限度的保持原有信息，选择样本点投影具有最大方差的方向（ 在信号处理中认为信号具有较大的方差，噪声有较小的方差，信噪比就是信号与噪声的方差比，越大越好。）</p>
+<p><img src="/images/sjwl19.png" alt="Lena"></p>
+</li>
+<li><p><strong>Whitening</strong></p>
+<p>原始图像相邻像素值具有高度相关性，所以图像数据信息冗余</p>
+<p>白化作用：</p>
+<p>1，减少特征之间的相关性；2，特征具有相同的方差（协方差阵为1）；</p>
+<p>步骤：</p>
+<p>1.PCA预处理；</p>
+<p>2.白化</p>
+<p>对上面的pca的新坐标X’,每一维的特征做一个标准差归一化处理。</p>
+</li>
+</ol>
+<p><img src="/images/sjwl21.jpeg" alt="Lena"></p>
+<h4 id="参数初始化"><a href="#参数初始化" class="headerlink" title="参数初始化"></a>参数初始化</h4><p>通过适当的数据归一化，可以合理地假设大约一半的权重为正，其中一半为负。</p>
+<p>全零初始化 错误——如果神经元的权重初始化为相同，则它们之间没有不对称的来源。</p>
+<p>希望权重非常接近于零——初始化为小数——<em>对称破坏</em></p>
+<p>W = 0.01* np.random.randn(D,H)</p>
+<p>解决未校准方差问题</p>
+<p><strong>用 1/sqrt(n) 校准方差</strong></p>
+<p>将每个神经元输出的方差归一化为 1</p>
+<p><code>w = np.random.randn(n) / sqrt(n)</code>，其中<code>n</code>是其输入的数量</p>
+<p><strong>稀疏初始化</strong></p>
+<p>将所有权重矩阵设置为零，但要打破对称性，每个神经元都随机连接（权重从上面的小高斯采样）到其下方的固定数量的神经元。</p>
+<p><strong>初始化偏差</strong></p>
+<p>使用 0 偏差初始化，对所有偏差使用小的常数值，例如 0.01</p>
+<hr>
+<p>建议是使用 ReLU 单元并使用<code>w = np.random.randn(n) * sqrt(2.0/n)</code></p>
+<h4 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h4><p>防止过拟合</p>
+<ul>
+<li><p><strong>L2 正则化</strong></p>
+</li>
+<li><p><strong>L1 正则化</strong></p>
+</li>
+<li><p><strong>最大范数约束maxnorm</strong></p>
+</li>
+<li><p><strong>Dropout</strong></p>
+<p>以一定概率保持神经元活跃，否则设置为0</p>
+</li>
+</ul>
+<p><img src="/images/sjwl22.png" alt="Lena"></p>
+<h4 id="-1"><a href="#-1" class="headerlink" title=" "></a> </h4><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><p>拉直会丢失空间信息</p>
+<p>卷积 池化 卷积 池化 全连接 输出</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p><strong>将原图中符合卷积特征的特征提取出来</strong></p>
+<p><img src="/images/sjwl22.jpeg" alt="Lena"></p>
+<p>红色——卷积核的权重分配（不变） 权值共享</p>
+<p>黄色——感收仪</p>
+<p>生成特征图 feature map</p>
+<p>多卷积核——生成多个feature map</p>
+<p>多个卷积核生成多个feature map——摞在一起——卷积层</p>
+<p>中间的数字使用多次，边缘使用少——边缘补零——pedding</p>
+<p>多通道——仍然1个feature map</p>
+<p>输入有多少维度，卷积核就应该有多少个维度</p>
+<p>输入是三通道的矩阵——三通道卷积核</p>
+<p><img src="/images/sjwl23.jpg" alt="Lena"></p>
+<p>三个卷积结果相加</p>
+<p><img src="/images/sjwl24.jpeg" alt="Lena"></p>
+<h2 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h2><p>feature map过多，每个map选择代表</p>
+<p>每个框选最大值/平均值</p>
+<p>与卷积的区别：没有权重（即卷积核）</p>
+<p><img src="/images/sjwl26.jpeg" alt="Lena"></p>
+<p>作用：可以使得图片具有平移不变性、减少参数、防止过拟合</p>
+<p><img src="/images/sjwl25.jpeg" alt="Lena"></p>
+<h2 id="全连接"><a href="#全连接" class="headerlink" title="全连接"></a>全连接</h2><p>feature map拉成长向量 进行全连接</p>
+<p>模型汇总</p>
 
     </div>
 
@@ -368,7 +524,7 @@ f(x_i,W)=Wxi</script><p><img src="/images/sjwlpic6.png" alt="Lena"></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">图像分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#points%EF%BC%9A%E8%B7%9D%E7%A6%BB-%E8%B6%85%E5%8F%82%E6%95%B0-%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="nav-number">1.1.</span> <span class="nav-text">points：距离 超参数 交叉验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">数据驱动方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">最邻近分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">K-最邻近分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.3.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E5%8F%82%E8%B0%83%E4%BC%98%E6%8A%80%E6%9C%AF%EF%BC%88K%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%89"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">超参调优技术（K的选择）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E9%AA%8C%E8%AF%81%E6%8B%86%E5%88%86%EF%BC%88more%EF%BC%89"><span class="nav-number">1.2.1.4.1.</span> <span class="nav-text">单一验证拆分（more）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%EF%BC%88%E8%B4%B5%EF%BC%89%EF%BC%88%E9%AA%8C%E8%AF%81%E9%9B%86%E4%B8%AD%E5%AE%9E%E4%BE%8B%E6%95%B0%E9%87%8F%E5%B0%91%E7%9A%84%E6%83%85%E5%86%B5%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.2.1.4.2.</span> <span class="nav-text">交叉验证（贵）（验证集中实例数量少的情况使用）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">最邻近分类器优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">线性分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89score-func"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 定义score func</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8E%B7%E5%BE%97%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 获得线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8C%96-bias-trick"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">简化 bias trick</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">图像分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#points%EF%BC%9A%E8%B7%9D%E7%A6%BB-%E8%B6%85%E5%8F%82%E6%95%B0-%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="nav-number">1.1.</span> <span class="nav-text">points：距离 超参数 交叉验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">数据驱动方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">最邻近分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">K-最邻近分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.1.3.</span> <span class="nav-text"> </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E5%8F%82%E8%B0%83%E4%BC%98%E6%8A%80%E6%9C%AF%EF%BC%88K%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%89"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">超参调优技术（K的选择）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E4%B8%80%E9%AA%8C%E8%AF%81%E6%8B%86%E5%88%86%EF%BC%88more%EF%BC%89"><span class="nav-number">1.2.1.4.1.</span> <span class="nav-text">单一验证拆分（more）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%EF%BC%88%E8%B4%B5%EF%BC%89%EF%BC%88%E9%AA%8C%E8%AF%81%E9%9B%86%E4%B8%AD%E5%AE%9E%E4%BE%8B%E6%95%B0%E9%87%8F%E5%B0%91%E7%9A%84%E6%83%85%E5%86%B5%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="nav-number">1.2.1.4.2.</span> <span class="nav-text">交叉验证（贵）（验证集中实例数量少的情况使用）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%82%BB%E8%BF%91%E5%88%86%E7%B1%BB%E5%99%A8%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">最邻近分类器优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">线性分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89score-func"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 定义score func</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8E%B7%E5%BE%97%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 获得线性分类器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8C%96-bias-trick"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">简化 bias trick</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">图像数据预处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%B1%BB%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">多类支持向量机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Softmax%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">Softmax分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVM-vs-Softmax"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">SVM vs. Softmax</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%BC%98%E5%8C%96%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.优化损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%90%9C%E7%B4%A2"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">随机搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">随机本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%B5%E5%BE%AA%E6%A2%AF%E5%BA%A6"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">遵循梯度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E6%A2%AF%E5%BA%A6"><span class="nav-number">1.3.4.3.1.</span> <span class="nav-text">数值梯度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%AE%E7%A7%AF%E5%88%86%E5%88%86%E6%9E%90%E6%A2%AF%E5%BA%A6"><span class="nav-number">1.3.4.3.2.</span> <span class="nav-text">微积分分析梯度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="nav-number">1.3.4.3.3.</span> <span class="nav-text">小批量梯度下降</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-number">1.3.4.3.4.</span> <span class="nav-text">反向传播</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.4.</span> <span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E5%B1%82%E5%B1%82%E6%95%B0%E5%8D%B3%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">隐藏层层数即大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">设置数据和模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">参数初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">1.4.2.4.</span> <span class="nav-text"> </span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.3.</span> <span class="nav-text">损失函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">2.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF"><span class="nav-number">2.1.</span> <span class="nav-text">卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">池化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.3.</span> <span class="nav-text">全连接</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -384,7 +540,7 @@ f(x_i,W)=Wxi</script><p><img src="/images/sjwlpic6.png" alt="Lena"></p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -397,7 +553,7 @@ f(x_i,W)=Wxi</script><p><img src="/images/sjwlpic6.png" alt="Lena"></p>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

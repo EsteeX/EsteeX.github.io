@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="patt计算机系统概论笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统概论笔记">
+<meta property="og:url" content="http://example.com/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="krrrr&#39;s blogs">
+<meta property="og:description" content="patt计算机系统概论笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/xtgl11.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl12.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl13.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl15.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl14.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl15.jpg">
+<meta property="og:image" content="http://example.com/images/xtgl17.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl18.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl19.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl20.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl21.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl22.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl24.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl25.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl26.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl27.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl28.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl29.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl30.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl31.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl32.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl33.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl34.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl35.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl37.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl1.jpg">
+<meta property="og:image" content="http://example.com/images/xtgl2.jpg">
+<meta property="og:image" content="http://example.com/images/xtgl3.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl4.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl5.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl6.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl7.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl8.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl9.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl10.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl38.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl39.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl40.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl41.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl42.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl43.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl44.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl45.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl46.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl47.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl48.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl49.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl50.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl51.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl52.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl53.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl54.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl55.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl56.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl57.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl58.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl59.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl60.jpeg">
+<meta property="og:image" content="http://example.com/images/xtgl61.jpeg">
+<meta property="article:published_time" content="2021-07-14T15:40:58.000Z">
+<meta property="article:modified_time" content="2021-07-24T06:28:52.098Z">
+<meta property="article:author" content="EsteeX">
+<meta property="article:tag" content="计算机系统概论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/xtgl11.jpeg">
+
+<link rel="canonical" href="http://example.com/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机系统概论笔记 | krrrr's blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">krrrr's blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我是小鱼游游游</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机系统概论笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-14 23:40:58" itemprop="dateCreated datePublished" datetime="2021-07-14T23:40:58+08:00">2021-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-24 14:28:52" itemprop="dateModified" datetime="2021-07-24T14:28:52+08:00">2021-07-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">patt计算机系统概论笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[TOC]</p>
+<h1 id="Chapter1-概论"><a href="#Chapter1-概论" class="headerlink" title="Chapter1 概论"></a>Chapter1 概论</h1><h2 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h2><p>将事物本质表现出来，将细节隐藏</p>
+<p>假设每个门店路都是现成的、可靠的，当出现问题时才去研究内部结构</p>
+<p><strong>抽象-&gt;具体</strong></p>
+<p>分解抽象（即解析）</p>
+<h2 id="硬件与软件"><a href="#硬件与软件" class="headerlink" title="硬件与软件"></a>硬件与软件</h2><p>两者都要懂</p>
+<h2 id="计算机系统简述"><a href="#计算机系统简述" class="headerlink" title="计算机系统简述"></a>计算机系统简述</h2><p>（CPU）Central Processing Unit</p>
+<p>1.控制i信息处理过程 </p>
+<p>2.执行信息处理过程 </p>
+<p>计算机系统：</p>
+<p>键盘，鼠标，磁盘，内存，CD-ROM，CPU，打印机，显示器……</p>
+<h2 id="两个思想"><a href="#两个思想" class="headerlink" title="两个思想"></a>两个思想</h2><p>1.所有计算机，只要给予足够的时间和内存，所能完成的计算任务是相同的</p>
+<p>2.人类语言，转换成影响电子运转的电压</p>
+<h2 id="如何工作"><a href="#如何工作" class="headerlink" title="如何工作"></a>如何工作</h2><p>计算机：通用计算设备（universal computational device</p>
+<p>告诉计算机“方法”和任务，当有新的计算方法出现时，只用增加新的指令/程序</p>
+<p>任何事情都是可计算的</p>
+<p>图灵机 图灵给出数学表述，但未建造一台真正的机器</p>
+<p><strong>黑箱模型</strong></p>
+<p>Turing’s thesis</p>
+<p>图灵论题 任何计算都可以通过某种图灵机来完成（未被严格证明）</p>
+<p>计算机或图灵机能够计算任何可计算的任务，因为它们是可编程的</p>
+<h2 id="计算机层次"><a href="#计算机层次" class="headerlink" title="计算机层次"></a>计算机层次</h2><p><img src="/images/xtgl11.jpeg" alt="Lena"></p>
+<h1 id="Chapter2-bit-数据类型-及其运算"><a href="#Chapter2-bit-数据类型-及其运算" class="headerlink" title="Chapter2 bit 数据类型 及其运算"></a>Chapter2 bit 数据类型 及其运算</h1><h2 id="整数数据类型"><a href="#整数数据类型" class="headerlink" title="整数数据类型"></a>整数数据类型</h2><p><strong>无符号整数</strong></p>
+<p>内存单元地址</p>
+<p>任务的执行次数</p>
+<p>k个bit：2^k个整数  0~2^k - 1</p>
+<p><strong>有符号整数</strong></p>
+<p>适合硬件操作的编码方案——补码</p>
+<p>k个bit：-2^(k-1) ~ 2^(k-1)-1.  Ep.-16(10000)~15(01111)</p>
+<p>除-16外，其他负数是由对应正数取反加一获得；-16是由-15（10001）继续减一推得</p>
+<h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><p><strong>加法和减法</strong></p>
+<p><strong>符号扩展</strong></p>
+<p>对于补码 在正数前补零 与 在负数前面补一 都不改变值</p>
+<p>应用于两个不同长度二进制数的加法</p>
+<p><strong>溢出</strong></p>
+<p>无符号数——最高位进位</p>
+<p>有符号数——正负数相加不会溢出；正+正=负数/负+负=正数——溢出</p>
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><p>与或非 异或</p>
+<h2 id="其他类型"><a href="#其他类型" class="headerlink" title="其他类型"></a>其他类型</h2><h3 id="位矢量"><a href="#位矢量" class="headerlink" title="位矢量"></a>位矢量</h3><p>bit vector</p>
+<p>不是数字，每一位只是代表单元忙/空闲</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>符号位+范围(指数exponent)+精度(尾数fraction)</p>
+<p>float格式：1+8+23</p>
+<p>IEEE标准：float格式</p>
+<p><img src="/images/xtgl12.jpeg" alt="Lena"></p>
+<p>指数（无符号整数）转成10进制的值 -127（01111111） 得到 真正指数的十进制值</p>
+<p>指数00000000和11111111表示什么？</p>
+<p>指数值全为0时——表示指数值为-126（不是127），且小数点左边补<strong>0</strong>（其他情况补1）</p>
+<p>11111111？</p>
+<h3 id="ASCII码"><a href="#ASCII码" class="headerlink" title="ASCII码"></a>ASCII码</h3><p>用于在计算机处理单元和输入/输出设备之间传递“字符”</p>
+<h1 id="Chapter3-数字逻辑"><a href="#Chapter3-数字逻辑" class="headerlink" title="Chapter3 数字逻辑"></a>Chapter3 数字逻辑</h1><h2 id="MOS晶体管"><a href="#MOS晶体管" class="headerlink" title="MOS晶体管"></a>MOS晶体管</h2><p>MOS 金属氧化物半导体</p>
+<p>工作稳定</p>
+<p><strong>n型</strong></p>
+<p><img src="/images/xtgl13.jpeg" alt="Lena"></p>
+<p><strong>p型</strong></p>
+<p><img src="/images/xtgl15.jpeg" alt="Lena"></p>
+<p>与n完全相反</p>
+<p>低压 通</p>
+<p>高压 断</p>
+<p>同时包括n-MOS 和 p-MOS —— CMOS电路 互补金属氧化物半导体</p>
+<h2 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h2><p>逻辑完备性 logical completeness</p>
+<p>and or not</p>
+<h3 id="非门"><a href="#非门" class="headerlink" title="非门"></a>非门</h3><p>反向器</p>
+<p><img src="/images/xtgl14.jpeg" alt="Lena"></p>
+<h3 id="或非门"><a href="#或非门" class="headerlink" title="或非门"></a>或非门</h3><p><img src="/images/xtgl15.jpg" alt="Lena"></p>
+<h3 id="或门"><a href="#或门" class="headerlink" title="或门"></a>或门</h3><p><img src="/images/xtgl17.jpeg" alt="Lena"></p>
+<h3 id="与门"><a href="#与门" class="headerlink" title="与门"></a>与门</h3><p><img src="/images/xtgl18.jpeg" alt="Lena"></p>
+<h3 id="与非门"><a href="#与非门" class="headerlink" title="与非门"></a>与非门</h3><p>上图 c输出</p>
+<h2 id="组合电路"><a href="#组合电路" class="headerlink" title="组合电路"></a>组合电路</h2><p>逻辑结构：1.可以存储信息 </p>
+<p>2.不能存储信息（决策单元decision element/组合逻辑结构）——输出状态完全取决于<strong>当前</strong>逻辑结构的输入</p>
+<h3 id="译码器"><a href="#译码器" class="headerlink" title="译码器"></a>译码器</h3><p>decoder</p>
+<p>n-&gt;2^n</p>
+<p>用于解释二进制数（ep 解释操作码）</p>
+<h3 id="多路复用器"><a href="#多路复用器" class="headerlink" title="多路复用器"></a>多路复用器</h3><p>multiplexer</p>
+<p>从多个输入中选择一个做为输出</p>
+<p><img src="/images/xtgl19.jpeg" alt="Lena"></p>
+<p><img src="/images/xtgl20.jpeg" alt="Lena"></p>
+<h3 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h3><p><img src="/images/xtgl21.jpeg" alt="Lena"></p>
+<p><img src="/images/xtgl22.jpeg" alt="Lena"></p>
+<h3 id="可编程逻辑阵列"><a href="#可编程逻辑阵列" class="headerlink" title="可编程逻辑阵列"></a>可编程逻辑阵列</h3><p>PLA</p>
+<p>可以实现任何逻辑函数</p>
+<p>n个输入</p>
+<p>2^n个与门</p>
+<p>m个输出</p>
+<p>m个或门</p>
+<p><img src="/images/xtgl24.jpeg" alt="Lena"></p>
+<h2 id="存储单元"><a href="#存储单元" class="headerlink" title="存储单元"></a>存储单元</h2><h3 id="R-S锁存器"><a href="#R-S锁存器" class="headerlink" title="R-S锁存器"></a>R-S锁存器</h3><p>R-S latch</p>
+<p><img src="/images/xtgl25.jpeg" alt="Lena"></p>
+<h3 id="门控D锁存器"><a href="#门控D锁存器" class="headerlink" title="门控D锁存器"></a>门控D锁存器</h3><p><img src="/images/xtgl26.jpeg" alt="Lena"></p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>register</p>
+<p>多个bit的存储</p>
+<p><img src="/images/xtgl27.jpeg" alt="Lena"></p>
+<p><strong>WE</strong>为1时，D[3:0]被存入寄存器 (控制读写)</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>地址 address 数据放置的位置</p>
+<p>寻址能力 addressability 每个位置中放置bit的个数（即一个字包含的bit个数）</p>
+<h3 id="寻址空间-amp-寻址能力"><a href="#寻址空间-amp-寻址能力" class="headerlink" title="寻址空间&amp;寻址能力"></a>寻址空间&amp;寻址能力</h3><p>address space</p>
+<p>可独立识别的位置总数</p>
+<p>16MB内存</p>
+<p>寻址空间：16M</p>
+<p>寻址能力：1Byte</p>
+<p><strong>ep</strong></p>
+<p>2^2*3内存</p>
+<p>2^2：地址空间</p>
+<p>3：寻址能力为3-bit宽度</p>
+<p>输入的地址 ：2位-&gt;译码器翻译-&gt;4根“字线word line”输出</p>
+<p>每个字线包含3个bit（一个字）</p>
+<p>字线与同一字分别and</p>
+<p>每一个字与其他字线上的相同bit or</p>
+<p>A[1:0] 地址</p>
+<p>WE 1写0读</p>
+<p>Di[2:0] 输入的数据</p>
+<p>D[2:0] 输出的数据</p>
+<p><img src="/images/xtgl28.jpeg" alt="Lena"></p>
+<h2 id="时序电路"><a href="#时序电路" class="headerlink" title="时序电路"></a>时序电路</h2><p>3.3组合逻辑电路 无法存储历史</p>
+<p>3.4 3.5锁存器 无法处理数据</p>
+<p>时序逻辑电路 既可处理又可存储</p>
+<p>sequential logic circuit</p>
+<p><img src="/images/xtgl29.jpeg" alt="Lena"></p>
+<p>输出由 当前输入 和 存储单元信息共同决定</p>
+<p>用于实现有限状态机</p>
+<h2 id="有限状态机"><a href="#有限状态机" class="headerlink" title="有限状态机"></a>有限状态机</h2><p>5个部分：</p>
+<p>1.状态（有限数目）</p>
+<p>2.外部输入（有限）</p>
+<p>3.对外输出（有限）</p>
+<p>4.任意状态间迁移（显示注明）</p>
+<p>5.对外输出操作（显式注明）</p>
+<p><strong>状态图</strong></p>
+<p><img src="/images/xtgl30.jpeg" alt="Lena"></p>
+<p><strong>时钟</strong></p>
+<p>状态转移的触发机制</p>
+<p><img src="/images/xtgl31.jpeg" alt="Lena"></p>
+<p>有限状态机的状态转移发生在每个时钟周期的起始时刻</p>
+<p><strong>存储单元</strong></p>
+<p>目的：组合逻辑电路的输出 在下一时钟周期才被写入存储单元</p>
+<p>主从锁存器</p>
+<p>Master-slave flip-flop</p>
+<p><img src="/images/xtgl32.jpeg" alt="Lena"></p>
+<h2 id="LC-3计算机的数据通路"><a href="#LC-3计算机的数据通路" class="headerlink" title="LC-3计算机的数据通路"></a>LC-3计算机的数据通路</h2><p>即内部结构 data path </p>
+<p><img src="/images/xtgl33.jpeg" alt="Lena"></p>
+<h1 id="Chapter4-冯诺依曼模型"><a href="#Chapter4-冯诺依曼模型" class="headerlink" title="Chapter4 冯诺依曼模型"></a>Chapter4 冯诺依曼模型</h1><p><img src="/images/xtgl34.jpeg" alt="Lena"></p>
+<h2 id="内存-1"><a href="#内存-1" class="headerlink" title="内存"></a>内存</h2><p><strong>读操作</strong></p>
+<ol>
+<li>将被访问的内存单元的<strong>地址</strong>放入CPU的<strong>内存地址寄存器</strong>（Memory Address Register MAR)中</li>
+<li>发送读信号通知内存</li>
+<li>内存将该单元中存放的<strong>数据</strong>传送至<strong>内存数据寄存器中</strong>(Memory Data Register MDR)</li>
+</ol>
+<p><strong>写操作</strong></p>
+<ol>
+<li>地址-&gt;MAR</li>
+<li>数据-&gt;MDR</li>
+<li>向内存发送写信号</li>
+<li>MDR中的内容写入MAR指向的内存单元</li>
+</ol>
+<h2 id="处理单元"><a href="#处理单元" class="headerlink" title="处理单元"></a>处理单元</h2><p>信息被处理的地方·</p>
+<p>ALU(算术逻辑运算单元)：最简单的功能单元 冯诺伊曼模型中唯一的功能单元 ADD SUB AND OR NOT</p>
+<p>字长：ALU所能处理的量化大小</p>
+<p>LC-3的ALU能处理的量化大小为16bit 所以LC-3为1个16位的机器</p>
+<ul>
+<li>会为ALU在其附近配置少量存储器 用来存放中间计算结果 （访问内存消耗时间）——每个寄存器的宽度与ALU处理数据的宽度一致</li>
+</ul>
+<h2 id="输入输出单元"><a href="#输入输出单元" class="headerlink" title="输入输出单元"></a>输入输出单元</h2><p>外围设备 peripheral</p>
+<p>可有可无</p>
+<p>LC-3:输入：键盘 输出：显示器</p>
+<p>输入：鼠标，数字扫描仪，软盘。。。</p>
+<p>输出：打印机，LED显示器，磁盘。。。</p>
+<h2 id="控制单元"><a href="#控制单元" class="headerlink" title="控制单元"></a>控制单元</h2><p>控制程序执行过程的每一步 以及 每条指令执行的每一步</p>
+<h3 id="IR指令寄存器-instruction-register"><a href="#IR指令寄存器-instruction-register" class="headerlink" title="IR指令寄存器(instruction register)"></a>IR指令寄存器(instruction register)</h3><p>保存正在被执行的指令</p>
+<h3 id="PC寄存器"><a href="#PC寄存器" class="headerlink" title="PC寄存器"></a>PC寄存器</h3><p>（又名程序计数器Program Counter PC)/指令指针Instruction pointer IP）(Program Counter PC)：指示下一条待处理的指令</p>
+<h1 id="Chapter5-LC-3结构"><a href="#Chapter5-LC-3结构" class="headerlink" title="Chapter5 LC-3结构"></a>Chapter5 LC-3结构</h1><p>指令周期：取指令，译码，地址计算，取操作数，执行，存放结果</p>
+<p><img src="/images/xtgl35.jpeg" alt="Lena"></p>
+<p>有限状态机的所有对外输出都是控制信号</p>
+<h2 id="指令处理"><a href="#指令处理" class="headerlink" title="指令处理"></a>指令处理</h2><p>指令——计算机执行的最小单位，分为操作码和操作数两部分</p>
+<p>LC-3的指令长度：16 bit [15:12]:操作码 bit[11:0]操作数</p>
+<p>指令周期instruction cycle：指令在控制单元的控制下 一步步完成 </p>
+<p>节拍phase：其中的每一步</p>
+<p>大部分指令包括<strong>6个节拍</strong>：</p>
+<ol>
+<li><p>FETCH 取指令 </p>
+<ol>
+<li>将PC寄存器的内容装入（load）MAR寄存器   1个机器周期（即时钟周期）</li>
+<li>该地址存储单元的内容（下一条指令）装入MDR  &gt;=1个机器周期</li>
+<li>MDR中内容被装入IR寄存器    1个机器周期</li>
+<li>PC增量（修改PC寄存器去的内容为下一条指令的地址）</li>
+</ol>
+<p>一个机器周期 约等于 0.3ns</p>
+</li>
+<li><p>DECODE 译码 </p>
+<ol>
+<li><p>分析、检查<strong>指令类型</strong>，并确定微结构的操作细节</p>
+<p>LC-3采用“4-16”译码器识别16种不同指令</p>
+</li>
+</ol>
+</li>
+<li><p>EVALUATE ADDRESS 地址计算 </p>
+<ol>
+<li>ep LDR 计算寄存器和立即数之和</li>
+</ol>
+</li>
+<li><p>FETCH OPERAND 取操作数 </p>
+<p>ep LDR </p>
+<ol>
+<li>将地址值装入MAR寄存器</li>
+<li>从MDR寄存器获取读自内存的源操作数</li>
+</ol>
+</li>
+<li><p>EXECUTE 执行 </p>
+<p>执行操作</p>
+</li>
+<li><p>STORE RESULT 存放结果</p>
+<p>将执行结果写入目的寄存器</p>
+</li>
+</ol>
+<h3 id="顺序执行"><a href="#顺序执行" class="headerlink" title="顺序执行"></a>顺序执行</h3><p>前后指令在储存空间上存储是顺序的</p>
+<h3 id="改变执行顺序"><a href="#改变执行顺序" class="headerlink" title="改变执行顺序"></a>改变执行顺序</h3><p>三种指令：运算指令（operate instruction） 数据搬移指令（data movement instruction）  控制指令（control instruction）</p>
+<p>控制指令L改变程序的执行顺序</p>
+<p>在取指令节拍 与 PC+1后 下一条取指令节拍开始之前 修改程序计数器PC的值</p>
+<p>指令节拍的子步骤受控于 控制单元中的有限状态机</p>
+<p><img src="/images/xtgl37.jpeg" alt="Lena"></p>
+<h2 id="停机操作"><a href="#停机操作" class="headerlink" title="停机操作"></a>停机操作</h2><p>使用时钟来终止指令的执行</p>
+<p>时钟电路：</p>
+<p><strong>时钟信号发生器</strong>（clock generator）——主要部件：晶体振荡器 产生振荡电压</p>
+<p><strong>RUN开关</strong> 1 则时钟电路的输出和时钟信号发生器的输出一致（透明输出） 0 时钟信号发生器到时钟电路的通路被切断，时钟电路的输出为0</p>
+<p>HALT指令 清零RUN锁存器</p>
+<h2 id="ISA概述"><a href="#ISA概述" class="headerlink" title="ISA概述"></a>ISA概述</h2><p>指令集架构</p>
+<ul>
+<li><p>内存组织方式</p>
+<p>可寻址空间 2^16（65536）</p>
+<p>寻址的基本单位：16bits （1 word）</p>
+<p>从内存中获取数据 <strong>速度很慢</strong></p>
+</li>
+<li><p>寄存器组</p>
+<p>临时存储空间 访问速度是一个周期</p>
+<p>每个寄存器称为 通用寄存器 General Purpose Register GPR</p>
+<ul>
+<li><p>记忆特性 </p>
+<p>存储大小为1个字</p>
+</li>
+<li><p>独立寻址</p>
+<p>每个寄存器有独立的唯一标识</p>
+<p>LC-3中：8个GPR R0-R7</p>
+</li>
+</ul>
+</li>
+<li><p>指令集（操作码，数据类型，寻址模式）</p>
+<p>一条指令</p>
+<ul>
+<li><p>操作码——做什么</p>
+</li>
+<li><p>操作数——对谁操作</p>
+</li>
+</ul>
+<ol>
+<li><p><strong>寻址模式</strong></p>
+<p>决定操作数存放的位置</p>
+<p>位置：内存/寄存器/指令本身</p>
+<p>指令本身的操作数——字面值/立即数</p>
+<p><strong>内存</strong></p>
+<p><strong>立即数</strong></p>
+<p><strong>内存寻址</strong></p>
+<ul>
+<li>相对寻址/间接寻址/基址偏移</li>
+</ul>
+</li>
+<li><p><strong>操作码</strong></p>
+<p>15种</p>
+<p>bit[15:12]</p>
+<p>1101未定义</p>
+<p><strong>分类</strong></p>
+<ul>
+<li><p>运算</p>
+</li>
+<li><p>数据搬移</p>
+<p>内存 寄存器 输入输出设备</p>
+</li>
+<li><p>控制</p>
+<p>改变指令执行顺序</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/xtgl1.jpg" alt="Lena"></p>
+<ol>
+<li><p><strong>数据类型</strong></p>
+<p>唯一支持：补码整数</p>
+</li>
+<li><p>条件码</p>
+<p>if else</p>
+<p>3个<strong>位</strong>寄存器 NZP —— 8个通用寄存器被修改时，根据正/负/零来修改NZP的值</p>
+<p>再通过控制指令更改执行顺序</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><p>处理数据</p>
+<p>运算操作 逻辑操作</p>
+<p>LC-3只支持：ADD,AND,NOT</p>
+<h3 id="not"><a href="#not" class="headerlink" title="not"></a>not</h3><p>1001</p>
+<p>唯一单操作数unary</p>
+<p>源、目的操作数都是 寄存器寻址模式</p>
+<p><img src="/images/xtgl2.jpg" alt="Lena"></p>
+<p>将R5中内容按位取反 存入R3</p>
+<h3 id="ADD-AND"><a href="#ADD-AND" class="headerlink" title="ADD AND"></a>ADD AND</h3><p>0001 0101</p>
+<p>双操作数 2个16位源操作数</p>
+<p>源操作数之一、目的操作数：寄存器寻址</p>
+<p>第二个源操作数：立即数/寄存器 （bit[5]指明是哪一种 0——寄存器bit[4:3]为0  1——立即数bit[4:0]（要做5-&gt;16位扩展））</p>
+<p><img src="/images/xtgl3.jpeg" alt="Lena"></p>
+<h2 id="数据搬移"><a href="#数据搬移" class="headerlink" title="数据搬移"></a>数据搬移</h2><p>内存-&gt;寄存器。  装载（load）</p>
+<p>寄存器-&gt;内存。  存储（store）</p>
+<p>数据源不变 目的操作数改变</p>
+<p>LD,LDR,LDI,LEA,ST,STR,STI</p>
+<p>两个操作数（源、目的）一个是寄存器（bit[11:9])，另一个是内存/输入输出设备</p>
+<p><img src="/images/xtgl4.jpeg" alt="Lena"></p>
+<h3 id="寄存器-1"><a href="#寄存器-1" class="headerlink" title="寄存器"></a>寄存器</h3><p>DR/SR（表示目的寄存器/源寄存器） 由 是load还是save决定  不用显式地写出来</p>
+<h3 id="地址生成位"><a href="#地址生成位" class="headerlink" title="地址生成位"></a>地址生成位</h3><p>bit[8:0]</p>
+<p>计算第二个操作数的16位地址</p>
+<p>方式由指令类型决定</p>
+<h4 id="PC相对寻址"><a href="#PC相对寻址" class="headerlink" title="PC相对寻址"></a>PC相对寻址</h4><p>LD 0010</p>
+<p>ST 0011</p>
+<p>bit[8:0]表示相对于当前PC（指令所在地址<strong>之后</strong>的指令地址 即+1）的偏移值（有符号）（做16位扩展——补1/0，再与pc值相加）</p>
+<p>范围：增量后pc+256~-255</p>
+<p><img src="/images/xtgl5.jpeg" alt="Lena"></p>
+<h4 id="间接寻址"><a href="#间接寻址" class="headerlink" title="间接寻址"></a>间接寻址</h4><p>LDI 1010</p>
+<p>STI 1011</p>
+<p>范围：任意地方</p>
+<p><img src="/images/xtgl6.jpeg" alt="Lena"></p>
+<h4 id="基址偏移寻址"><a href="#基址偏移寻址" class="headerlink" title="基址偏移寻址"></a>基址偏移寻址</h4><p>LDR 0110</p>
+<p>STR 0111</p>
+<p>范围：任意</p>
+<p><img src="/images/xtgl7.jpeg" alt="Lena"></p>
+<p><img src="/images/xtgl8.jpeg" alt="Lena"></p>
+<h4 id="立即数寻址"><a href="#立即数寻址" class="headerlink" title="立即数寻址"></a>立即数寻址</h4><p>LEA 1110</p>
+<p>load effective address</p>
+<p>不需要任何内存访问</p>
+<p>将PC<strong>增量</strong>加上bit[8:0]的符号扩展相加，装入bit[11:9]</p>
+<p>用途：对寄存器初始化，装入地址值</p>
+<p><img src="/images/xtgl9.jpeg" alt="Lena"></p>
+<h2 id="控制指令"><a href="#控制指令" class="headerlink" title="控制指令"></a>控制指令</h2><h3 id="条件跳转"><a href="#条件跳转" class="headerlink" title="条件跳转"></a>条件跳转</h3><p>0000</p>
+<p><img src="/images/xtgl10.jpeg" alt="Lena"></p>
+<p>bit[11:9] 控制是否检查该位对应的条件码（若111，则说明三个条件码都要检查，即pc必更新），检查对应的条件码，若存在1，则执行PC的更新</p>
+<h2 id="无条件跳转"><a href="#无条件跳转" class="headerlink" title="无条件跳转"></a>无条件跳转</h2><p>条件跳转 bit[11:9]全为1的情况</p>
+<p>子程序（函数）调用</p>
+<p>TRAP</p>
+<p>中断返回</p>
+<h1 id="Chapter6-编程"><a href="#Chapter6-编程" class="headerlink" title="Chapter6 编程"></a>Chapter6 编程</h1><h2 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h2><h3 id="系统分解"><a href="#系统分解" class="headerlink" title="系统分解"></a>系统分解</h3><p>结构化编程 structured programming——使多个程序员共同承担一个复杂问题的求解</p>
+<p><img src="/images/xtgl38.jpeg" alt="Lena"></p>
+<h3 id="三种结构"><a href="#三种结构" class="headerlink" title="三种结构"></a>三种结构</h3><p>共同特征：单入口、单出口</p>
+<p><strong>顺序结构</strong></p>
+<p>sequential construct</p>
+<p>两个字任务的执行关系是顺序的</p>
+<p><strong>条件结构</strong></p>
+<p>conditional construct</p>
+<p>两个子任务有且仅有一个被执行，且取决于条件的状态</p>
+<p><strong>循环结构</strong></p>
+<p>一个子任务被重复执行多遍</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>1.对内存单元和寄存器赋值</p>
+<p>2.执行程序的指令序列</p>
+<p>3.在任意时刻终止执行</p>
+<p>在任意执行步骤 查看内存和寄存器的内容</p>
+<h1 id="Chapter7-汇编语言"><a href="#Chapter7-汇编语言" class="headerlink" title="Chapter7 汇编语言"></a>Chapter7 汇编语言</h1><p>assembly language</p>
+<ul>
+<li><p>自然语言 </p>
+<p>英语</p>
+</li>
+<li><p>机器语言 </p>
+<ul>
+<li><p>高级——ISA无关</p>
+<p>C，C++</p>
+</li>
+<li><p>低级——ISA相关</p>
+<p>汇编语言——每条汇编指令对应了ISA中的一个指令</p>
+<p>​    目的：让编程过程更加友好——操作码-助记符（mnemonic）内存地址-符号名（symbolic name）</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/xtgl39.jpeg" alt="Lena"></p>
+<p>伪操作——帮助翻译过程，不会真正被翻译为LC-3机器指令</p>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><p>LABEL （可选） OPCODE OPERANDS  ；COMMENTS（可选）</p>
+<h3 id="操作码和操作数"><a href="#操作码和操作数" class="headerlink" title="操作码和操作数"></a>操作码和操作数</h3><p>操作数数目 取决于 操作码</p>
+<p>操作数来源：</p>
+<p>寄存器——R0</p>
+<p>内存——符号名 NUMBER/SIX。。。</p>
+<p>立即数——显式 #0</p>
+<h3 id="标号"><a href="#标号" class="headerlink" title="标号"></a>标号</h3><p>指向<strong>内存单元</strong>的符号名</p>
+<p>LC-3中可包含1～20个字符（大小写字母/数字）首字符必须是字母</p>
+<p>访问内存单元的两种情况：</p>
+<ol>
+<li>访问数据</li>
+<li>获取指令</li>
+</ol>
+<h2 id="伪操作"><a href="#伪操作" class="headerlink" title="伪操作"></a>伪操作</h2><p>·汇编指令 assembler directive</p>
+<p>开头的“.“表示是一个伪操作</p>
+<p>LC-3 5种伪操作</p>
+<ol>
+<li><p>.ORIG</p>
+<p>告诉编译器将LC-3程序放在内存的什么位置</p>
+<p>.ORIG x3050</p>
+</li>
+<li><p>.FILL</p>
+<p>填充 数据 到下一个地址</p>
+<p>.FILL x0006</p>
+</li>
+<li><p>.BLKW</p>
+<p>开始在程序空间中占用一连串的地址空间（“ a block of word“） 占用数目由操作数决定 </p>
+<p>.BLKW 1</p>
+</li>
+<li><p>.STRINGZ</p>
+<p>连续占用并初始化n+1个内存单元</p>
+<p>前n个字的内容——对应字符的ASCII码的零扩展</p>
+<p>n+1个字——0 当作哨兵</p>
+<p>.HELLO .STRINGZ “Hello, World!”</p>
+</li>
+<li><p>.END</p>
+<p>表示程序结束了，之后的字符都将被汇编器丢弃，但并不会停止程序的执行</p>
+</li>
+</ol>
+<h2 id="汇编过程"><a href="#汇编过程" class="headerlink" title="汇编过程"></a>汇编过程</h2><p>assemble solution.asm outfile</p>
+<p>outfile是一个LC-3 ISA格式的机器语言程序文件</p>
+<h3 id="两遍扫描"><a href="#两遍扫描" class="headerlink" title="两遍扫描"></a>两遍扫描</h3><p>第一遍：符号表的构造 （将符号名与地址 映射）</p>
+<p>第二遍：将汇编指令翻译成机器指令</p>
+<h1 id="Chapter8-输入-输出"><a href="#Chapter8-输入-输出" class="headerlink" title="Chapter8 输入/输出"></a>Chapter8 输入/输出</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="设备存储器"><a href="#设备存储器" class="headerlink" title="设备存储器"></a>设备存储器</h3><p>device register</p>
+<p>存储 设备和计算机之间传输的数据，当前设备的状态信息（是否空闲，最近处理的I/O任务）等等</p>
+<h3 id="I-O指令"><a href="#I-O指令" class="headerlink" title="I/O指令"></a>I/O指令</h3><p>访问设备寄存器时，指明目标寄存器</p>
+<p>两种实现方法：</p>
+<ol>
+<li>专用I/O指令</li>
+<li>内存映射I/O指令</li>
+</ol>
+<p>与内存访问相同的指令 操作 I/O</p>
+<p>ISA内存地址空间中，有一段地址用于设备寄存器的标识映射——内存映射</p>
+<p>LC-3 0x0000-0xFDFF内存 0xFE00-0xFFFF外部设备</p>
+<h3 id="异步I-O-同步I-O"><a href="#异步I-O-同步I-O" class="headerlink" title="异步I/O 同步I/O"></a>异步I/O 同步I/O</h3><p>外设和处理器 异步 </p>
+<p>协议/握手机制 控制发送和接收</p>
+<p>每键入一个字符，Ready位置1，每次处理器读取后，置0</p>
+<h3 id="交互方式"><a href="#交互方式" class="headerlink" title="交互方式"></a>交互方式</h3><p>处理器、打字员之间交互 两种方式：</p>
+<p>中断驱动（interrupt-driven） ——键盘数据准备好后，通知处理器</p>
+<p>轮询(polling)——处理器不断读取、测试状态寄存器内容</p>
+<h2 id="轮询"><a href="#轮询" class="headerlink" title="轮询"></a>轮询</h2><p>两个条件：1.数据寄存器 2.同步机制</p>
+<p>键盘数据寄存器KBDR 0xFE00</p>
+<p>键盘状态寄存器KBSR 0xFE02</p>
+<p>(输出同理</p>
+<p>输出数据寄存器 DDR</p>
+<p>状态寄存器 DSR</p>
+<p>处理器快速，显示器慢速</p>
+<p>DSR[15]=0时 显示器还未完成显示工作 “忙”</p>
+<p>=1时，已完成显示工作，处理器可以输出下一个字符)</p>
+<p><img src="/images/xtgl40.jpeg" alt="Lena"></p>
+<p>KBSR——同步处理器（快速） 键盘（慢速）</p>
+<p><img src="/images/xtgl41.jpeg" alt="Lena"></p>
+<p>KBSR[15]=0时才可继续键盘输入</p>
+<p>=1时处理器才会读取KBDR内容</p>
+<h3 id="将键盘寄存器中的ASCII值读入R0"><a href="#将键盘寄存器中的ASCII值读入R0" class="headerlink" title="将键盘寄存器中的ASCII值读入R0"></a>将键盘寄存器中的ASCII值读入R0</h3><p><img src="/images/xtgl42.jpeg" alt="Lena"></p>
+<h3 id="将R0中的字符显示到显示器上"><a href="#将R0中的字符显示到显示器上" class="headerlink" title="将R0中的字符显示到显示器上"></a>将R0中的字符显示到显示器上</h3><p><img src="/images/xtgl43.jpeg" alt="Lena"></p>
+<h3 id="键盘回显"><a href="#键盘回显" class="headerlink" title="键盘回显"></a>键盘回显</h3><p><img src="/images/xtgl44.jpeg" alt="Lena"></p>
+<h2 id="中断驱动I-O"><a href="#中断驱动I-O" class="headerlink" title="中断驱动I/O"></a>中断驱动I/O</h2><p>I/O设备可以实现：1. 强行终止当前程序的运行 2. 使得处理器执行I/O设备请求 3. 恢复被中断程序的执行</p>
+<h3 id="中断信号的产生"><a href="#中断信号的产生" class="headerlink" title="中断信号的产生"></a>中断信号的产生</h3><ol>
+<li><p>中断使能机制——产生中断信号，中止当前执行程序</p>
+<p>三个条件</p>
+<ol>
+<li>I/O设备自身需要服务</li>
+<li>设备有请求服务权限</li>
+<li>设备的中断请求优先级高于当前处理器所运行程序的优先级</li>
+</ol>
+</li>
+<li><p>传输机制——处理该中断信号</p>
+</li>
+</ol>
+<h1 id="Chapter9-Trap程序和子程序"><a href="#Chapter9-Trap程序和子程序" class="headerlink" title="Chapter9 Trap程序和子程序"></a>Chapter9 Trap程序和子程序</h1><p>服务调用 service call/系统调用 system call</p>
+<p><img src="/images/xtgl45.jpeg" alt="Lena"></p>
+<h2 id="TRAP机制"><a href="#TRAP机制" class="headerlink" title="TRAP机制"></a>TRAP机制</h2><ul>
+<li>服务程序 service routine 集合：操作系统 提供，用户身份 执行。起始于固定的内存地址。LC-3最多可以支持256个服务程序</li>
+<li>起始地址表：包含256个服务程序的起始地址 该表位于x0000-x00FF 名字：“系统控制块”/“陷入矢量表”</li>
+<li>TRAP指令：操作系统执行服务程序后，将控制权返回给用户</li>
+<li>链接 linkage：操作系统提供的机制 通过链接返回到用户程序</li>
+</ul>
+<h2 id="TRAP指令"><a href="#TRAP指令" class="headerlink" title="TRAP指令"></a>TRAP指令</h2><ul>
+<li>将PC值修改为服务程序的起始地址</li>
+<li>返回调用TRAP指令的程序</li>
+</ul>
+<p><img src="/images/xtgl46.jpeg" alt="Lena"></p>
+<p>执行过程（以x23为例）</p>
+<ol>
+<li>8bit陷入矢量零扩展为16bit（x0023） 装入MAR</li>
+<li>根据陷入矢量表，找到对应服务程序的起始地址（x04A0），并将该地址读入MDR</li>
+<li>将当前PC值读入寄存器R7，以实现链接机制</li>
+<li>将MDR内容装入PC</li>
+</ol>
+<h2 id="子程序"><a href="#子程序" class="headerlink" title="子程序"></a>子程序</h2><p>先保存返回调用程序的链接地址，再将程序跳转至代码段</p>
+<p>PC——代码段的起始地址</p>
+<p>R7——调用者的链接地址</p>
+<p>代码段的最后一条语句：JMP R7</p>
+<h3 id="JSR-R-指令"><a href="#JSR-R-指令" class="headerlink" title="JSR(R)指令"></a>JSR(R)指令</h3><p>两种寻址模式：PC相对寻址、基地址寻址</p>
+<p>操作码都是0100</p>
+<p>助记符不同 JSR JSRR</p>
+<p>完成两件事：将返回地址(跳转前的PC增量) 存入R7，计算子程序起始地址并装入PC</p>
+<p><img src="/images/xtgl47.jpeg" alt="Lena"></p>
+<p><strong>JSR</strong></p>
+<p>假设JSR指令所在地址为x4200</p>
+<p><img src="/images/xtgl48.jpeg" alt="Lena"></p>
+<p><strong>JSRR</strong></p>
+<p>假设JSRR指令所在地址为x420A R5=x3002</p>
+<p><img src="/images/xtgl49.jpeg" alt="Lena"></p>
+<h1 id="Chapter10-栈"><a href="#Chapter10-栈" class="headerlink" title="Chapter10 栈"></a>Chapter10 栈</h1><p>三种用途：</p>
+<ul>
+<li>中断驱动I/O</li>
+<li>替代寄存器，实现计算中间结果的临时存储</li>
+<li>二进制补码与ASCII码 转换</li>
+</ul>
+<h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p>后入先出 LIFO last in first out</p>
+<p>push pop</p>
+<h3 id="内存中的实现"><a href="#内存中的实现" class="headerlink" title="内存中的实现"></a><strong>内存中的实现</strong></h3><p>一连串内存空间+一个寄存器 (存栈指针 stack pointer)</p>
+<p>数据不移动，移动的是栈指针</p>
+<p><img src="/images/xtgl50.jpeg" alt="Lena"></p>
+<p>弹出后，内容仍然留存在内存中，只是无法再被访问</p>
+<p>stack protocol<strong>栈协议</strong> pop push</p>
+<h4 id="压入"><a href="#压入" class="headerlink" title="压入"></a>压入</h4><ol>
+<li>栈指针递减</li>
+<li>数值存入地址位置</li>
+</ol>
+<p>将R0的内容 压入栈</p>
+<p>ADD R6, R6, #-1</p>
+<p>STR R0, R6, #0</p>
+<h4 id="弹出"><a href="#弹出" class="headerlink" title="弹出"></a>弹出</h4><ol>
+<li>读取</li>
+<li>递增栈指针</li>
+</ol>
+<p>LDR R0, R6, #0</p>
+<p>ADD R6, R6, #1</p>
+<h4 id="下溢出"><a href="#下溢出" class="headerlink" title="下溢出"></a>下溢出</h4><p>underflow</p>
+<p>弹出元素个数大于栈内存在元素</p>
+<p>判断下溢出</p>
+<p><img src="/images/xtgl51.jpeg" alt="Lena"></p>
+<p><img src="/images/xtgl52.jpeg" alt="Lena"></p>
+<p>要在JSR指令执行之前 保存R5内容</p>
+<p>Ret 前的那条指令可以影响条件码 所以可以进行条件位Z的测试，判断pop程序是否执行成功</p>
+<h4 id="上溢出"><a href="#上溢出" class="headerlink" title="上溢出"></a>上溢出</h4><p>overflow</p>
+<p>栈空间全部占用，再往栈中压入元素</p>
+<p><img src="/images/xtgl53.jpeg" alt="Lena"></p>
+<h2 id="中断驱动I-O-1"><a href="#中断驱动I-O-1" class="headerlink" title="中断驱动I/O"></a>中断驱动I/O</h2><p>轮训方式下，处理器将话费太多执行周期在LDI和BR上，知道Ready 位被置位。</p>
+<p>中断驱动I/O：处理器可以省出时间用于其他工作，直到I/O设备通知它“已准备好”</p>
+<p>两个部分：</p>
+<ol>
+<li>中断使能机制：I/O设备在贮备好后，向处理器发出中断的能力。（发出INT信号）（第8章介绍）</li>
+<li>I/O数据传输的管理能力（本节重点）——三个阶段<ol>
+<li>中断服务程序的启动</li>
+<li>中断服务程序的执行</li>
+<li>中断程序的返回</li>
+</ol>
+</li>
+</ol>
+<h3 id="启动和执行和返回"><a href="#启动和执行和返回" class="headerlink" title="启动和执行和返回"></a>启动和执行和返回</h3><p>处理器准备工作：</p>
+<ol>
+<li>保存当前执行程序的状态</li>
+<li>装载中断服务的工作状态，开始中断请求的服务</li>
+</ol>
+<h4 id="程序状态"><a href="#程序状态" class="headerlink" title="程序状态"></a>程序状态</h4><p>state of a program</p>
+<p>内容：</p>
+<ul>
+<li>程序内存空间</li>
+<li>通用寄存器内容——一般认为没必要保存，可以假定中断服务程序在动用它们之前，会自觉保存它们的内容，并在返回被中断程序之前恢复原值</li>
+<li>PC寄存器<ul>
+<li>下一条待执行指令所在的内存地址</li>
+</ul>
+</li>
+<li>PSR寄存器<ul>
+<li>处理器状态寄存器</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/xtgl54.jpeg" alt="Lena"></p>
+<p>LC-3将这些要保存的信息保存在 <strong>“超级用户栈”</strong>中，该栈空间仅提供特权模式下的程序使用，与用户栈空间隔离。</p>
+<p>都通过R6（栈指针）访问栈空间。超级用户模式——R6指向超级用户栈空间  用户模式——R6指向用户栈空间</p>
+<p>内部寄存器Saved.SSP和Saved.USP 用于保存两个栈指针的内容</p>
+<p><strong>特权模式 用户态-&gt;超级用户态</strong></p>
+<p><img src="/images/xtgl55.jpeg" alt="Lena"></p>
+<h4 id="矢量中断"><a href="#矢量中断" class="headerlink" title="矢量中断"></a>矢量中断</h4><p>vectored interrupt</p>
+<p>装入中断服务程序的<strong>PC</strong>和<strong>PSR</strong>到超级用户栈</p>
+<p>I/O发出中断：</p>
+<p>向处理器传递8-bit矢量值、中断请求信号、设备优先级（多个设备同时请求中断，优先级最高的请求被选中，传给处理器，被选中的叫做 <strong>INTV</strong> 中断矢量）</p>
+<p>处理器接受后，INTV 8bit-&gt;16bit表项地址 ：x0100~x01FF  每个表项的内容：一个中断服务程序的起始地址。 处理器将表项的<strong>内容</strong>装入PC</p>
+<p><img src="/images/xtgl56.jpeg" alt="Lena"></p>
+<p>PSR：[2:0] 初始化为0  [15] 0(特权)   [10:8] 优先级别</p>
+<h4 id="中断服务执行"><a href="#中断服务执行" class="headerlink" title="中断服务执行"></a>中断服务执行</h4><p>键盘按下 -&gt; 中断处理器 -&gt; 中断矢量指示的处理程序（句柄 handler）被激活 -&gt; 执行处理程序（键盘数据寄存器的内容拷贝到内存</p>
+<h4 id="中断返回"><a href="#中断返回" class="headerlink" title="中断返回"></a>中断返回</h4><p>中断服务程序最后 是 中断返回指令RTI</p>
+<p>RTI（1000）：将PSR和PC的内容弹出超级用户栈，再填入处理器 。条件码恢复为中断前状态，PSR[15] [10:8]，PC也都被恢复</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><strong>嵌套中断</strong></p>
+<p><img src="/images/xtgl57.jpeg" alt="Lena"></p>
+<p>PC和SSP的变化</p>
+<p><img src="/images/xtgl58.jpeg" alt="Lena"></p>
+<h2 id="基于栈的算数运算"><a href="#基于栈的算数运算" class="headerlink" title="基于栈的算数运算"></a>基于栈的算数运算</h2><h3 id="LC-3-三地址机"><a href="#LC-3-三地址机" class="headerlink" title="LC-3 三地址机"></a>LC-3 三地址机</h3><p>ADD R0,R1,R2</p>
+<p>三个操作数都是显示表示为通用寄存器</p>
+<h3 id="栈式机-stack-machine-零地址机器-zero-address-machine"><a href="#栈式机-stack-machine-零地址机器-zero-address-machine" class="headerlink" title="栈式机 stack machine / 零地址机器 zero-address machine"></a>栈式机 stack machine / 零地址机器 zero-address machine</h3><p>ADD</p>
+<p>默认将栈顶部的两个元素当作源操作数，pop出来，送给ALU，之后将相加结果压入栈顶</p>
+<p>（弹出、加法、压入都不属于指令集结构，而是控制信号，属于“微结构”）</p>
+<p><img src="/images/xtgl59.jpeg" alt="Lena"></p>
+<p>加法</p>
+<p><img src="/images/xtgl60.jpeg" alt="Lena"></p>
+<p><img src="/images/xtgl61.jpeg" alt="Lena"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" rel="tag"># 计算机系统概论</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/13/pycharm-web%E4%BD%BF%E7%94%A8/" rel="prev" title="pycharm web使用">
+      <i class="fa fa-chevron-left"></i> pycharm web使用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter1-%E6%A6%82%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">Chapter1 概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E4%B8%8E%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">硬件与软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%AE%80%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">计算机系统简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E6%80%9D%E6%83%B3"><span class="nav-number">1.4.</span> <span class="nav-text">两个思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">如何工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B1%82%E6%AC%A1"><span class="nav-number">1.6.</span> <span class="nav-text">计算机层次</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter2-bit-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%8A%E5%85%B6%E8%BF%90%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">Chapter2 bit 数据类型 及其运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">整数数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.1.</span> <span class="nav-text">算术运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">2.1.2.</span> <span class="nav-text">逻辑运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">其他类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E7%9F%A2%E9%87%8F"><span class="nav-number">2.2.1.</span> <span class="nav-text">位矢量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASCII%E7%A0%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">ASCII码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter3-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91"><span class="nav-number">3.</span> <span class="nav-text">Chapter3 数字逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MOS%E6%99%B6%E4%BD%93%E7%AE%A1"><span class="nav-number">3.1.</span> <span class="nav-text">MOS晶体管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E9%97%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">非门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%96%E9%9D%9E%E9%97%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">或非门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%96%E9%97%A8"><span class="nav-number">3.2.3.</span> <span class="nav-text">或门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E9%97%A8"><span class="nav-number">3.2.4.</span> <span class="nav-text">与门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E9%9D%9E%E9%97%A8"><span class="nav-number">3.2.5.</span> <span class="nav-text">与非门</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E7%94%B5%E8%B7%AF"><span class="nav-number">3.3.</span> <span class="nav-text">组合电路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%91%E7%A0%81%E5%99%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">译码器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%99%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">多路复用器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8"><span class="nav-number">3.3.3.</span> <span class="nav-text">全加器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E9%98%B5%E5%88%97"><span class="nav-number">3.3.4.</span> <span class="nav-text">可编程逻辑阵列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83"><span class="nav-number">3.4.</span> <span class="nav-text">存储单元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#R-S%E9%94%81%E5%AD%98%E5%99%A8"><span class="nav-number">3.4.1.</span> <span class="nav-text">R-S锁存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E6%8E%A7D%E9%94%81%E5%AD%98%E5%99%A8"><span class="nav-number">3.4.2.</span> <span class="nav-text">门控D锁存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">3.4.3.</span> <span class="nav-text">寄存器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98"><span class="nav-number">3.5.</span> <span class="nav-text">内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E7%A9%BA%E9%97%B4-amp-%E5%AF%BB%E5%9D%80%E8%83%BD%E5%8A%9B"><span class="nav-number">3.5.1.</span> <span class="nav-text">寻址空间&amp;寻址能力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E7%94%B5%E8%B7%AF"><span class="nav-number">3.6.</span> <span class="nav-text">时序电路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="nav-number">3.7.</span> <span class="nav-text">有限状态机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LC-3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF"><span class="nav-number">3.8.</span> <span class="nav-text">LC-3计算机的数据通路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter4-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">Chapter4 冯诺依曼模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98-1"><span class="nav-number">4.1.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E5%8D%95%E5%85%83"><span class="nav-number">4.2.</span> <span class="nav-text">处理单元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8D%95%E5%85%83"><span class="nav-number">4.3.</span> <span class="nav-text">输入输出单元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83"><span class="nav-number">4.4.</span> <span class="nav-text">控制单元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IR%E6%8C%87%E4%BB%A4%E5%AF%84%E5%AD%98%E5%99%A8-instruction-register"><span class="nav-number">4.4.1.</span> <span class="nav-text">IR指令寄存器(instruction register)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">4.4.2.</span> <span class="nav-text">PC寄存器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter5-LC-3%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">Chapter5 LC-3结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%84%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">指令处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C"><span class="nav-number">5.1.1.</span> <span class="nav-text">顺序执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B9%E5%8F%98%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">5.1.2.</span> <span class="nav-text">改变执行顺序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9C%E6%9C%BA%E6%93%8D%E4%BD%9C"><span class="nav-number">5.2.</span> <span class="nav-text">停机操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ISA%E6%A6%82%E8%BF%B0"><span class="nav-number">5.3.</span> <span class="nav-text">ISA概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">5.4.</span> <span class="nav-text">操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#not"><span class="nav-number">5.4.1.</span> <span class="nav-text">not</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-AND"><span class="nav-number">5.4.2.</span> <span class="nav-text">ADD AND</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%90%AC%E7%A7%BB"><span class="nav-number">5.5.</span> <span class="nav-text">数据搬移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8-1"><span class="nav-number">5.5.1.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E7%94%9F%E6%88%90%E4%BD%8D"><span class="nav-number">5.5.2.</span> <span class="nav-text">地址生成位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PC%E7%9B%B8%E5%AF%B9%E5%AF%BB%E5%9D%80"><span class="nav-number">5.5.2.1.</span> <span class="nav-text">PC相对寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="nav-number">5.5.2.2.</span> <span class="nav-text">间接寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%9D%80%E5%81%8F%E7%A7%BB%E5%AF%BB%E5%9D%80"><span class="nav-number">5.5.2.3.</span> <span class="nav-text">基址偏移寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0%E5%AF%BB%E5%9D%80"><span class="nav-number">5.5.2.4.</span> <span class="nav-text">立即数寻址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%8C%87%E4%BB%A4"><span class="nav-number">5.6.</span> <span class="nav-text">控制指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC"><span class="nav-number">5.6.1.</span> <span class="nav-text">条件跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC"><span class="nav-number">5.7.</span> <span class="nav-text">无条件跳转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter6-%E7%BC%96%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">Chapter6 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3"><span class="nav-number">6.1.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E8%A7%A3"><span class="nav-number">6.1.1.</span> <span class="nav-text">系统分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E7%BB%93%E6%9E%84"><span class="nav-number">6.1.2.</span> <span class="nav-text">三种结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">6.2.</span> <span class="nav-text">调试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter7-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="nav-number">7.</span> <span class="nav-text">Chapter7 汇编语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">7.1.</span> <span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%A0%81%E5%92%8C%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="nav-number">7.1.1.</span> <span class="nav-text">操作码和操作数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%8F%B7"><span class="nav-number">7.1.2.</span> <span class="nav-text">标号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E6%93%8D%E4%BD%9C"><span class="nav-number">7.2.</span> <span class="nav-text">伪操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E8%BF%87%E7%A8%8B"><span class="nav-number">7.3.</span> <span class="nav-text">汇编过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E9%81%8D%E6%89%AB%E6%8F%8F"><span class="nav-number">7.3.1.</span> <span class="nav-text">两遍扫描</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter8-%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA"><span class="nav-number">8.</span> <span class="nav-text">Chapter8 输入&#x2F;输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">8.1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-number">8.1.1.</span> <span class="nav-text">设备存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O%E6%8C%87%E4%BB%A4"><span class="nav-number">8.1.2.</span> <span class="nav-text">I&#x2F;O指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5I-O-%E5%90%8C%E6%AD%A5I-O"><span class="nav-number">8.1.3.</span> <span class="nav-text">异步I&#x2F;O 同步I&#x2F;O</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E6%96%B9%E5%BC%8F"><span class="nav-number">8.1.4.</span> <span class="nav-text">交互方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AE%E8%AF%A2"><span class="nav-number">8.2.</span> <span class="nav-text">轮询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E9%94%AE%E7%9B%98%E5%AF%84%E5%AD%98%E5%99%A8%E4%B8%AD%E7%9A%84ASCII%E5%80%BC%E8%AF%BB%E5%85%A5R0"><span class="nav-number">8.2.1.</span> <span class="nav-text">将键盘寄存器中的ASCII值读入R0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86R0%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E5%88%B0%E6%98%BE%E7%A4%BA%E5%99%A8%E4%B8%8A"><span class="nav-number">8.2.2.</span> <span class="nav-text">将R0中的字符显示到显示器上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%AE%E7%9B%98%E5%9B%9E%E6%98%BE"><span class="nav-number">8.2.3.</span> <span class="nav-text">键盘回显</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E9%A9%B1%E5%8A%A8I-O"><span class="nav-number">8.3.</span> <span class="nav-text">中断驱动I&#x2F;O</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="nav-number">8.3.1.</span> <span class="nav-text">中断信号的产生</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter9-Trap%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">9.</span> <span class="nav-text">Chapter9 Trap程序和子程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TRAP%E6%9C%BA%E5%88%B6"><span class="nav-number">9.1.</span> <span class="nav-text">TRAP机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TRAP%E6%8C%87%E4%BB%A4"><span class="nav-number">9.2.</span> <span class="nav-text">TRAP指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">9.3.</span> <span class="nav-text">子程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSR-R-%E6%8C%87%E4%BB%A4"><span class="nav-number">9.3.1.</span> <span class="nav-text">JSR(R)指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter10-%E6%A0%88"><span class="nav-number">10.</span> <span class="nav-text">Chapter10 栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">10.1.</span> <span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">10.1.1.</span> <span class="nav-text">内存中的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%8B%E5%85%A5"><span class="nav-number">10.1.1.1.</span> <span class="nav-text">压入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B9%E5%87%BA"><span class="nav-number">10.1.1.2.</span> <span class="nav-text">弹出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E6%BA%A2%E5%87%BA"><span class="nav-number">10.1.1.3.</span> <span class="nav-text">下溢出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E6%BA%A2%E5%87%BA"><span class="nav-number">10.1.1.4.</span> <span class="nav-text">上溢出</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E9%A9%B1%E5%8A%A8I-O-1"><span class="nav-number">10.2.</span> <span class="nav-text">中断驱动I&#x2F;O</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%92%8C%E6%89%A7%E8%A1%8C%E5%92%8C%E8%BF%94%E5%9B%9E"><span class="nav-number">10.2.1.</span> <span class="nav-text">启动和执行和返回</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%8A%B6%E6%80%81"><span class="nav-number">10.2.1.1.</span> <span class="nav-text">程序状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A2%E9%87%8F%E4%B8%AD%E6%96%AD"><span class="nav-number">10.2.1.2.</span> <span class="nav-text">矢量中断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="nav-number">10.2.1.3.</span> <span class="nav-text">中断服务执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%BF%94%E5%9B%9E"><span class="nav-number">10.2.1.4.</span> <span class="nav-text">中断返回</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">10.2.2.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A0%88%E7%9A%84%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97"><span class="nav-number">10.3.</span> <span class="nav-text">基于栈的算数运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LC-3-%E4%B8%89%E5%9C%B0%E5%9D%80%E6%9C%BA"><span class="nav-number">10.3.1.</span> <span class="nav-text">LC-3 三地址机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E5%BC%8F%E6%9C%BA-stack-machine-%E9%9B%B6%E5%9C%B0%E5%9D%80%E6%9C%BA%E5%99%A8-zero-address-machine"><span class="nav-number">10.3.2.</span> <span class="nav-text">栈式机 stack machine &#x2F; 零地址机器 zero-address machine</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EsteeX"
+      src="/images/mypic.JPG">
+  <p class="site-author-name" itemprop="name">EsteeX</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EsteeX</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
