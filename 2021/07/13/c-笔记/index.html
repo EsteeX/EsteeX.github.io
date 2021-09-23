@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
 
   </li>
   </ul>
@@ -264,7 +264,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;<span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b=<span class="number">0</span>)</span></span>&#123;	;&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可编译通过，但是b并没有被默认为0，调用函数f时必须输入两个参数</span><br></pre></td></tr></table></figure>
 <h1 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h1><p>const是编译的时候检查的</p>
-<h2 id="constant与指针"><a href="#constant与指针" class="headerlink" title="constant与指针"></a>constant与指针</h2><p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210410184140990.png" alt="image-20210410184140990" style="zoom:30%;" /></p>
+<h2 id="constant与指针"><a href="#constant与指针" class="headerlink" title="constant与指针"></a>constant与指针</h2><p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210410184140990.png" alt="image-20210410184140990" style="zoom:30%;"></p>
 <p>ip只能指向可被修改的值</p>
 <p>不能通过cip去修改指向的值</p>
 <h3 id="字符串指针"><a href="#字符串指针" class="headerlink" title="字符串指针"></a>字符串指针</h3><p>通过字符串指针 不能修改字符串</p>
@@ -407,7 +407,7 @@
 <ol>
 <li>Upcast，</li>
 </ol>
-<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428143157780.png" alt="image-20210428143157780" style="zoom:33%;" /></p>
+<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428143157780.png" alt="image-20210428143157780" style="zoom:33%;"></p>
 <p>第一个是slice， 第二、三个是upcast（向上造型）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span>&#123;</span><span class="keyword">private</span>:	<span class="keyword">int</span> a=<span class="number">0</span>;<span class="keyword">public</span>:	<span class="keyword">int</span> b=<span class="number">1</span>;	<span class="function"><span class="keyword">void</span> <span class="title">prt</span><span class="params">()</span></span>&#123;		cout &lt;&lt; <span class="string">&quot;base prt&quot;</span> &lt;&lt; endl;		cout &lt;&lt; <span class="string">&quot;a=&quot;</span> &lt;&lt; a &lt;&lt; endl;		cout &lt;&lt;<span class="string">&quot;b=&quot;</span>&lt;&lt; b &lt;&lt; endl;		&#125;	<span class="built_in">Base</span>()	&#123;		cout &lt;&lt; <span class="string">&quot;Base(k)&quot;</span> &lt;&lt; endl;	&#125;&#125;;<span class="class"><span class="keyword">class</span> <span class="title">derive</span>:</span> <span class="keyword">public</span> Base&#123;<span class="keyword">private</span>:	<span class="keyword">int</span> a=<span class="number">2</span>;<span class="keyword">public</span>:	<span class="function"><span class="keyword">void</span> <span class="title">prt</span><span class="params">()</span></span>&#123;		cout &lt;&lt; <span class="string">&quot;derive prt&quot;</span> &lt;&lt; endl;		cout &lt;&lt; b &lt;&lt; endl;			cout &lt;&lt; a &lt;&lt; endl;		&#125;	<span class="built_in">derive</span>()&#123;		b = <span class="number">2</span>;		a=<span class="number">8</span>;		cout &lt;&lt; <span class="string">&quot;derive()&quot;</span> &lt;&lt; endl;	&#125;&#125;;<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;	derive d;  <span class="comment">//derive::a=8 derive::base::b=2	Base *b;  //base::a=0 base::b=1	b=&amp;d;   //同名被hidden，其他被修改	b-&gt;prt();  cout &lt;&lt; sizeof(b) &lt;&lt; endl;  cout &lt;&lt; sizeof(d) &lt;&lt; endl;&#125;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Base(k)derive()base prt //还是base的prta=0b=2128</span><br></pre></td></tr></table></figure>
@@ -427,10 +427,10 @@
 </li>
 <li><p>vptr 指向vtable 只有在类构造时才会唯一一次被赋值</p>
 <p>vtable中是该类的所有virtual函数指针</p>
-<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428163034118.png" alt="image-20210428163034118" style="zoom:33%;" /></p>
+<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428163034118.png" alt="image-20210428163034118" style="zoom:33%;"></p>
 </li>
 <li><p>virtual析构函数</p>
-<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428164619346.png" alt="image-20210428164619346" style="zoom:50%;" /></p>
+<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210428164619346.png" alt="image-20210428164619346" style="zoom:50%;"></p>
 </li>
 <li><p>纯虚函数 只要有纯虚函数的类，就是纯虚类——不能有对象</p>
 </li>
@@ -459,9 +459,9 @@
 <h2 id="5-拷贝构造的优化"><a href="#5-拷贝构造的优化" class="headerlink" title="5.拷贝构造的优化"></a>5.拷贝构造的优化</h2><p>使拷贝构造尽量少（但是不同编译器不一样）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">person <span class="title">copy_fun</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;	<span class="function">person <span class="title">local</span><span class="params">(s)</span></span>;	local.<span class="built_in">print</span>();	<span class="keyword">return</span> local;&#125;<span class="function">person <span class="title">noncopy_fun</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;	<span class="keyword">return</span> <span class="built_in">person</span>(s);&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><h2 id="1-哪些可以被重载"><a href="#1-哪些可以被重载" class="headerlink" title="1.哪些可以被重载"></a>1.哪些可以被重载</h2><p>可被重载：</p>
-<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210514114519231.png" alt="image-20210514114519231" style="zoom:50%;" /></p>
+<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210514114519231.png" alt="image-20210514114519231" style="zoom:50%;"></p>
 <p>不可被重载：</p>
-<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210514114504495.png" alt="image-20210514114504495" style="zoom:50%;" /></p>
+<p><img src="/Users/krrrr/Library/Application Support/typora-user-images/image-20210514114504495.png" alt="image-20210514114504495" style="zoom:50%;"></p>
 <p>只有已有的运算符可以被重载</p>
 <p>运算符必须在自己设计的类或者枚举上做重载</p>
 <p>操作数的个数以及运算符优先级 不能改</p>
@@ -511,7 +511,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> T <span class="title">operatorX</span><span class="params">(<span class="keyword">const</span> T &amp;l, <span class="keyword">const</span> T &amp;r)</span></span>;</span><br></pre></td></tr></table></figure>
 <p><strong>!&amp;&amp; || &lt; &lt;= &gt; &gt;= ==</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">operatorX</span><span class="params">(<span class="keyword">const</span> T &amp;l, <span class="keyword">const</span> T &amp;r)</span></span>;</span><br></pre></td></tr></table></figure>
-<font color=red>参数都是const 引用</font>
+<font color="red">参数都是const 引用</font>
 
 <p>== 原型，直接写</p>
 <p>&lt;  原型</p>
@@ -554,7 +554,7 @@
 <li>可以没有显式的调用声明，隐式地使用</li>
 <li>没有返回值类型（因为操作符名就是返回值类型）</li>
 </ul>
-<font color=red>两种只能存在一个！！！否则编译器会不知道用哪个</font>
+<font color="red">两种只能存在一个！！！否则编译器会不知道用哪个</font>
 
 <p>解决方法：将相应构造函数设置为explicit（只能做构造，不能做转换）</p>
 <p>函数重载overload：f(c) f(T) 有c(T)的转换 那么f(C)调用哪个？ 直接C</p>
@@ -696,7 +696,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -709,7 +709,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
