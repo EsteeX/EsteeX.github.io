@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="基础12345y &#x3D; 9.97int x &#x3D; (int)y;--&gt;x &#x3D; 9int x &#x3D; (int)Math.round(y);--&gt;x &#x3D; 10  java需要给强制的类型转换（否则会报错） 浮点数运算不精准 1.0-0.9 不会得到0.1. 所以不要用来做条件判断 boolean类型true&#x2F;false 不能用来和0&#x2F;1做比较 switch 可以int char string b">
+  <meta name="description" content="Java课程笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA笔记">
 <meta property="og:url" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="krrrr&#39;s blogs">
-<meta property="og:description" content="基础12345y &#x3D; 9.97int x &#x3D; (int)y;--&gt;x &#x3D; 9int x &#x3D; (int)Math.round(y);--&gt;x &#x3D; 10  java需要给强制的类型转换（否则会报错） 浮点数运算不精准 1.0-0.9 不会得到0.1. 所以不要用来做条件判断 boolean类型true&#x2F;false 不能用来和0&#x2F;1做比较 switch 可以int char string b">
+<meta property="og:description" content="Java课程笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163749894.png">
 <meta property="og:image" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163732442.png">
@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922171933613.png">
 <meta property="og:image" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922172844815.png">
 <meta property="article:published_time" content="2021-09-22T07:57:00.000Z">
-<meta property="article:modified_time" content="2021-09-22T09:28:59.933Z">
+<meta property="article:modified_time" content="2022-04-10T08:05:17.052Z">
 <meta property="article:author" content="EsteeX">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163749894.png">
@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
 
   </li>
   </ul>
@@ -202,12 +202,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-22 15:57:00 / 修改时间：17:28:59" itemprop="dateCreated datePublished" datetime="2021-09-22T15:57:00+08:00">2021-09-22</time>
+              <time title="创建时间：2021-09-22 15:57:00" itemprop="dateCreated datePublished" datetime="2021-09-22T15:57:00+08:00">2021-09-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-10 16:05:17" itemprop="dateModified" datetime="2022-04-10T16:05:17+08:00">2022-04-10</time>
+              </span>
 
           
+            <div class="post-description">Java课程笔记</div>
 
         </div>
       </header>
@@ -268,6 +275,16 @@
 <h3 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(format, items);</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922171933613.png" alt="image-20210922171933613" style="zoom:33%;"></p>
 <p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922172844815.png" alt="image-20210922172844815" style="zoom:50%;"></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h3><p>第一次new创建一个类的对象，或访问静态变量/方法是，java将类加载进内存，为这个类分配一块空间，直到程序结束</p>
+<h3 id="对象的生命周期"><a href="#对象的生命周期" class="headerlink" title="对象的生命周期"></a>对象的生命周期</h3><p>new一个对象时，被分配一块空间</p>
+<p>Java对象是按照值传递的（不是饮用传递）</p>
+<h3 id="不可修改的类"><a href="#不可修改的类" class="headerlink" title="不可修改的类"></a>不可修改的类</h3><p>1、不可变类<br>（1）不可变类是指这个类的实例一旦创建完成后，就不能改变其成员变量值，也就是不能改变对象的状态。<br>（2）Java 中八个基本类型的包装类和 String 类都属于不可变类，而其他的大多数类都属于可变类。<br>（3）不可变对象是线程安全的。<br>2、如何设计不可变类？<br>（1）<strong>类</strong>声明为<strong>final</strong>，不可以被继承。<br>（2）所有<strong>成员变量</strong>定义为私有和final（<strong>private final</strong>）。<br>（3）不提供改变成员变量的方法。</p>
+<p>（4）通过构造器初始化成员，若构造器传入引用数据类型需要进行<strong>深拷贝</strong>。-&gt;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ImmutableDemo</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>[] myArray;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ImmutableDemo</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.myArray = array; <span class="comment">// wrong  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误——array和myArray存储在同一段空间，改变arrat，myArray也会被修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MyImmutableDemo</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span>[] myArray;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyImmutableDemo</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.myArray = array.clone(); <span class="comment">// right </span></span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正确</p>
+<p>3、String对象的不可变性的优点<br>（1）线程安全。<br>（2）字符串常量池的需要。<br>只有当字符串是不可变的，字符串池才有可能实现。字符串常量池可以将一些字符常量放在常量池中重复使用，避免每次都重新创建相同的对象、节省存储空间。<br>（3）字符串很适合作为Map中的key。</p>
 
     </div>
 
@@ -286,7 +303,10 @@
     <a href="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" rel="prev" title="计网笔记">
       <i class="fa fa-chevron-left"></i> 计网笔记
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="next" title="计算机图形学笔记">
+      计算机图形学笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -345,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">1.1.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Character"><span class="nav-number">1.2.</span> <span class="nav-text">Character</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.3.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符串和数字之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA"><span class="nav-number">1.3.2.</span> <span class="nav-text">格式输出</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Math"><span class="nav-number">1.1.</span> <span class="nav-text">Math</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Character"><span class="nav-number">1.2.</span> <span class="nav-text">Character</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.3.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.1.</span> <span class="nav-text">字符串和数字之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA"><span class="nav-number">1.3.2.</span> <span class="nav-text">格式输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.4.1.</span> <span class="nav-text">类的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">对象的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%E7%9A%84%E7%B1%BB"><span class="nav-number">1.4.3.</span> <span class="nav-text">不可修改的类</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -361,7 +381,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -374,7 +394,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -401,7 +421,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

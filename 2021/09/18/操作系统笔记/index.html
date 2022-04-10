@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="操作系统课程笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统笔记">
+<meta property="og:url" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="krrrr&#39;s blogs">
+<meta property="og:description" content="操作系统课程笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210918134318634.png">
+<meta property="og:image" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210923144358664.png">
+<meta property="og:image" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210927142755393.png">
+<meta property="og:image" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210927144717129.png">
+<meta property="article:published_time" content="2021-09-18T02:02:11.000Z">
+<meta property="article:modified_time" content="2021-09-29T03:33:24.380Z">
+<meta property="article:author" content="EsteeX">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210918134318634.png">
+
+<link rel="canonical" href="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统笔记 | krrrr's blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">krrrr's blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我是小鱼游游游</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-18 10:02:11" itemprop="dateCreated datePublished" datetime="2021-09-18T10:02:11+08:00">2021-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-29 11:33:24" itemprop="dateModified" datetime="2021-09-29T11:33:24+08:00">2021-09-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">操作系统课程笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><h2 id="实验2"><a href="#实验2" class="headerlink" title="实验2"></a>实验2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make -C linux O=$TOP/build/linux CROSS_COMPILE=riscv64-unknown-linux-gnu- ARCH=riscv CONFIG_DEBUG_INFO=y defconfig all -j$(nproc)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h1><h2 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h2><p>计算机系统：硬件（cpu，内存、输入输出设备）、操作系统（相当于政府，提供环境）、应用程序（字处理程序、编译器）、用户</p>
+<p>操作系统——资源分配器 resource allocator 控制程序 control program</p>
+<p>计算机上的程序：1. <strong>内核</strong>（操作系统，一直运行） 2. <strong>系统程序</strong>（系统运行有关，不是内核的一部分） 3. <strong>应用程序</strong></p>
+<p>移动的操作系统 包括 内核 和 中间件</p>
+<h3 id="引导程序"><a href="#引导程序" class="headerlink" title="引导程序"></a>引导程序</h3><p>开机时：引导程序——位于计算机固件，如只读内存（ROM），电可擦可编程只读内存（EEPROM）</p>
+<p>初始化各个组件（CPU寄存器、设备控制器、内存内容），加载操作系统（<strong>定位</strong>操作系统内核，<strong>加载</strong>到内存），开始<strong>执行</strong>系统。</p>
+<p><strong>系统程序</strong>也 被加入内存，成为系统进程（system process），生命周期 同内核。</p>
+<p>对于UNIX 首个系统进程：init，启动许多其他系统的后台程序</p>
+<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p><strong>事件发生，中断cpu进程</strong></p>
+<p>硬件 随时 通过 系统总线 发送信号 到cpu，触发中断。</p>
+<p>软件 通过系统调用（system call），触发中断。</p>
+<p>cpu被中断</p>
+<p>有不同的中断机制，但是都有<strong>共同点</strong>：</p>
+<ol>
+<li>中断将<strong>控制</strong>转移到合适的<strong>中断服务程序</strong>。</li>
+</ol>
+<p>调用一个 通用程序，检查中断信息。，该程序再调用特定的中断处理程序。</p>
+<ol>
+<li><p>中断处理应该快捷</p>
+<p>通过中断处理程序的指针 提高速度。通过指针表间接调用中断处理程序。地址组成的数组：中断向量 intertupt vector</p>
+<p>将返回地址保存在系统堆栈上</p>
+</li>
+</ol>
+<h3 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h3><p>cpu只能从内存中加载指令，因此执行程序必须位于内存。</p>
+<p>内存通常为动态随机访问内存（DRAM）</p>
+<p>还有ROM，不可修改， 只能将静态程序（如引导程序放入其中）</p>
+<p>EEPROM可以修改，但不能经常修改。保存大多数静态程序（手机工厂安装的软件）</p>
+<p><strong>程序和数据 不能 永远驻留在内存中</strong></p>
+<ul>
+<li>内存太少，不能永久保存所需要的程序和数据</li>
+<li>内存是易失性（volatile）存储设备，掉电时会失去所有内容</li>
+</ul>
+<p><strong>外存</strong></p>
+<p>secondary storage</p>
+<p>扩充内存</p>
+<p>永久存储大量数据</p>
+<p>Ep： 磁盘、硬盘</p>
+<p><img src="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210918134318634.png" alt="image-20210918134318634" style="zoom:33%;"></p>
+<h3 id="I-O结构"><a href="#I-O结构" class="headerlink" title="I/O结构"></a>I/O结构</h3><p>设备驱动程序 device driver</p>
+<p>开始I/O时，设备驱动程序加载 设备控制器 的 适当寄存器， 设备控制器读取寄存器的内容，决定采取什么操作（ep，从键盘读入一个字符</p>
+<h2 id="计算机系统体系结构"><a href="#计算机系统体系结构" class="headerlink" title="计算机系统体系结构"></a>计算机系统体系结构</h2><h3 id="单处理器系统"><a href="#单处理器系统" class="headerlink" title="单处理器系统"></a>单处理器系统</h3><p>一个通用cpu。（虽然有的环境下有其他专用处理器，但是只有一个通用cpu，所以也只能算单处理器系统）</p>
+<h3 id="多处理器系统"><a href="#多处理器系统" class="headerlink" title="多处理器系统"></a>多处理器系统</h3><p>Multiprocessing system也称并行系统</p>
+<p>多个cpu共享计算机总线、时钟、内存、外设</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><ul>
+<li><p>增加吞吐量</p>
+<p>N个处理器的加速小于N。因为合作会有额外开销</p>
+</li>
+<li><p>规模经济</p>
+<p>N处理器系统的价格&lt;N*单处理器系统</p>
+<p>因为可以共享计算机总线、时钟、内存、外设</p>
+</li>
+<li><p>增加可靠性</p>
+<p>单个处理器失灵不会使整个系统停止，只是会使他变慢</p>
+<p><strong>适度退化</strong> graceful degradation</p>
+<p>根据剩余有效硬件的级别按比例继续提供服务的能力</p>
+<p><strong>容错</strong> fault tolerant</p>
+<p>超过适度退化。需要一定的机制来对故障进行检查</p>
+</li>
+</ul>
+<h4 id="两种类型："><a href="#两种类型：" class="headerlink" title="两种类型："></a>两种类型：</h4><p><strong>非对称处理</strong> asymmetric multiprocessing</p>
+<p>主处理器调用从处理器 安排工作</p>
+<p><strong>对称处理</strong> symmetric multiprocessing （SMP）</p>
+<p>每个处理器都参与完成操作系统的所有任务。</p>
+<p>有自己的寄存器集，缓存，但共享物理内存 ep AIX</p>
+<p>优点：多进程可以同时进行，且并不会明显地影响性能。</p>
+<p><img src="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210923144358664.png" alt="image-20210923144358664" style="zoom:33%;"></p>
+<h4 id="UMA-amp-NUMA"><a href="#UMA-amp-NUMA" class="headerlink" title="UMA &amp; NUMA"></a>UMA &amp; NUMA</h4><p>均匀内存访问（UMA）—-多处理—&gt;非均匀内存访问</p>
+<p>操作系统通过资源管理可以改善NUMA问题</p>
+<h4 id="多核-amp-单核"><a href="#多核-amp-单核" class="headerlink" title="多核 &amp; 单核"></a>多核 &amp; 单核</h4><p>计算核 computing core</p>
+<p>多核 multicore</p>
+<p>集成多个计算核到单个芯片</p>
+<p>多核系统为多处理系统，但多处理系统不一定是多核的</p>
+<h2 id="操作系统的结构"><a href="#操作系统的结构" class="headerlink" title="操作系统的结构"></a>操作系统的结构</h2><p>具有多道程序能力</p>
+<p>多道程序设计 multiprogramming</p>
+<p><strong>作业池</strong> job pool：</p>
+<p>操作系统在内存中保存多个任务，主存不够用，所以这些作业首先保存在磁盘的作业池上</p>
+<p>内存的作业集 属于 作业池的作业集</p>
+<p>作业调度 job scheduling</p>
+<p>只要有一个任务可以执行，CPU就不会空闲</p>
+<p><strong>分时系统</strong></p>
+<p>time sharing</p>
+<p>还是通过切换作业来执行多个作业，但是切换频率很高，用户可以在程序运行时与其交互。</p>
+<h2 id="操作系统的执行"><a href="#操作系统的执行" class="headerlink" title="操作系统的执行"></a><strong>操作系统的执行</strong></h2><p>中断驱动 interrupt driven</p>
+<p>操作系统 等待时间发生</p>
+<p>事件：中断/陷阱trap（或异常 exception）</p>
+<p>陷阱：软件生成中的中断（出错 如除数为0/无效存储访问 / 用户程序的特定请求）</p>
+<p>操作系统 必须保证 错误程序不会造成其他程序的错误执行</p>
+<p>-&gt;双重模式 多重模式 </p>
+<p>需要硬件支持</p>
+<p>区分操作系统代码和用户系统代码的执行</p>
+<p>至少两种单独运行模式 用户模式 内核模式kernel mode</p>
+<p>通过一个模式位 mode bit 表示当前模式 0——内核 1——用户</p>
+<p><strong>特权指令</strong> privileged instruction 硬件只有在内核模式下才允许执行特权指令</p>
+<p>切换到用户模式的指令 属于 特权指令</p>
+<p>模式可以超过两个：多个模式位</p>
+<p><strong>支持虚拟化</strong>（virtualization） 多了一种模式——表示虚拟机管理器（Virtual Machine Manager VMM)是否正在控制系统 特权多于用户模式，少于内核模式 可以改变CPU状态</p>
+<p>除了模式 ， 还可以 </p>
+<p>设置四种特权级别 privilege level</p>
+<p><strong>系统调用</strong>：陷入中断向量的某个指定位置</p>
+<p>方式：一般由通用trap指令完成 MIPS系统由专用syscall指令来完成系统调用</p>
+<p><strong>定时器</strong></p>
+<p>区分定时器和时钟（定时器用来设置产生中断，时钟用来实现定时器）</p>
+<p>计数器不仅用于计数时钟，也可以计数定时器</p>
+<p>目的：控制CPU，防止用户程序陷入死循环</p>
+<p>可以设置为在指定周期后中断计算机</p>
+<p>指定周期：固定/可变 （可变定时器 variable timer——通过一个固定速率的时钟和计数器来实现。操作系统控制计数器，时钟存在精度。时钟每走一个步长，计数器-1，值为0时产生中断。</p>
+<p>防止用户程序运行过长方法：设置程序运行7分钟：设置定时器每秒产生一次中断，计数器设为420，每产生一次中断计数器减1.当计数器值为负时，操作系统终止程序执行。</p>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>被CPU执行的程序——进程</p>
+<p>进程可以通过系统调用 创建子进程 以并发执行。</p>
+<p>程序本身不是进程，是个被动实体（passive entity）</p>
+<p>进程是主动实体（active entuty）</p>
+<p><strong>单线进程</strong></p>
+<p>有一个程序计数器（program counter），指定下一个所要执行的指令。</p>
+<p>在任何时候，每个进程最多只能执行一条指令</p>
+<p>多线程进程 有多个pc</p>
+<p>进程分为 操作系统进程和用户进程。 所有这些进程都会并发执行（ep 值单CPU上采用多路复用）</p>
+<p><img src="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210927142755393.png" alt="image-20210927142755393" style="zoom:33%;"></p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p>为CPU和I/O设备共享</p>
+<p>CPU唯一能直接寻址访问的存储器。（所以指令必须在内存中）</p>
+<p>CPU若要处理磁盘数据，需要 CPU产生I/O调用将数据传到内存。</p>
+<p>操作系统负责：</p>
+<ul>
+<li>记录内存哪部分在使用&amp;被谁使用</li>
+<li>决定哪些进程 回调入/调出内存</li>
+<li>分配、释放内存空间</li>
+</ul>
+<h2 id="存储管理"><a href="#存储管理" class="headerlink" title="存储管理"></a>存储管理</h2><p>对存储设备物理属性进行抽象 定义逻辑存储单元——文件</p>
+<p>操作系统通过 存储设备 来访问文件</p>
+<h3 id="文件管理系统"><a href="#文件管理系统" class="headerlink" title="文件管理系统"></a>文件管理系统</h3><p>操作系统的组件之一</p>
+<p>文件内容是程序和数据。</p>
+<p>文件可组织成目录</p>
+<p>操作系统负责：</p>
+<ul>
+<li>创建和删除文件</li>
+<li>创建和删除目录</li>
+<li>提供文件和目录 的操作原语</li>
+<li>映射文件到外存</li>
+<li>备份文件到稳定的存储介质</li>
+</ul>
+<h3 id="大容量存储器管理"><a href="#大容量存储器管理" class="headerlink" title="大容量存储器管理"></a>大容量存储器管理</h3><p>硬盘（外存），程序执行师才被调入内存</p>
+<p>硬盘作为处理的起源和终点</p>
+<p>操作系统负责：</p>
+<ul>
+<li>空闲空间管理</li>
+<li>存储空间分配</li>
+<li>硬盘调度</li>
+</ul>
+<p>三级存储 tertiary storage</p>
+<p>比外存速度更慢，价格更低</p>
+<h3 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h3><p>caching</p>
+<p>原理：信息通常保存在一个存储系统（如内存），使用时，它会被临时复制到<strong>更快</strong>存储系统，即高速缓存</p>
+<p><img src="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/image-20210927144717129.png" alt="image-20210927144717129"></p>
+<p>内存可以看为外存的高速缓存</p>
+<p>高速缓存一致性 cache coherence（硬件问题）——对于多处理器环境，每个CPU 有自己的内部寄存器 和 本地高速缓存。数据的拷贝可能出现在多个缓存上。需要确保 一个高速缓存的A值更新，应马上反应到所有其他A所在的高速缓存。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/24/slam%E7%8E%AF%E5%A2%83/" rel="prev" title="slam环境">
+      <i class="fa fa-chevron-left"></i> slam环境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/" rel="next" title="计网笔记">
+      计网笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C2"><span class="nav-number">1.1.</span> <span class="nav-text">实验2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1"><span class="nav-number">2.</span> <span class="nav-text">Chapter 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">2.1.</span> <span class="nav-text">操作系统的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">引导程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD"><span class="nav-number">2.1.2.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.3.</span> <span class="nav-text">存储结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.4.</span> <span class="nav-text">I&#x2F;O结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">计算机系统体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">单处理器系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%A4%84%E7%90%86%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.2.2.</span> <span class="nav-text">多处理器系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">优点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">两种类型：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UMA-amp-NUMA"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">UMA &amp; NUMA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%A0%B8-amp-%E5%8D%95%E6%A0%B8"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">多核 &amp; 单核</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">操作系统的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">2.4.</span> <span class="nav-text">操作系统的执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-number">2.5.</span> <span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">2.6.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">存储管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.7.1.</span> <span class="nav-text">文件管理系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%AE%B9%E9%87%8F%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">2.7.2.</span> <span class="nav-text">大容量存储器管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98"><span class="nav-number">2.7.3.</span> <span class="nav-text">高速缓存</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EsteeX"
+      src="/images/mypic.JPG">
+  <p class="site-author-name" itemprop="name">EsteeX</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EsteeX</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

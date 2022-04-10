@@ -116,7 +116,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -126,7 +126,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,1060 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">图形学基础知识</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-30 09:28:52" itemprop="dateCreated datePublished" datetime="2022-03-30T09:28:52+08:00">2022-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-31 10:20:00" itemprop="dateModified" datetime="2022-03-31T10:20:00+08:00">2022-03-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>矩阵：线性变换</p>
+<p>对于矩阵A 若A<strong>x</strong>=λ<strong>x</strong> 则<strong>x</strong>为特征向量，λ为特征值</p>
+<p><strong>余子式 &amp; 代数余子式</strong></p>
+<p>把一个n阶行列式中的元素a~ij~所在的第i行和第j列划去后，留下来的n-1阶行列式 M~ij~ 叫做元素aij的<strong>余子式</strong>。记<strong>A</strong>~ij~=(-1)^i+j^<strong>M</strong>~ij~，叫做元素a~ij~的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/代数余子式/6266940"><strong>代数余子式</strong></a></p>
+<p><strong>顺序主子式</strong></p>
+<p>方阵的第k阶行列式是由该方阵的前k行和k列元素组成。对于n阶方阵A，其共有n阶顺序主子式。</p>
+<p><strong>行列式</strong></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8182ba4de953584aa4e1924ebd4b8a3b.svg" alt="img"></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330194723686.png" alt="image-20220330194723686" style="zoom: 25%;"></p>
+<p>设A为一n×n<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/三角形矩阵/18882193">三角形矩阵</a>。则A的行列式等于A的对角元素的乘积。</p>
+<p>(i) 若A有一行或一列包含的元素全为零，则det(A)=0。</p>
+<p>(ii) 若A有两行或两列相等，则det(A)=0。</p>
+<p><strong>矩阵的秩</strong></p>
+<p>一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/矩阵">矩阵</a><em>A</em>的<strong>列秩</strong>是<em>A</em>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/线性独立/3209637">线性独立</a>的<strong>纵列/横行</strong>的极大数，通常表示为r(<em>A</em>)</p>
+<p><strong>求解特征值&amp;特征向量：</strong></p>
+<p>1 -&gt; 求解（λE-A）X=0</p>
+<p>X为未知向量，A已知，λ也不确定</p>
+<p>2 -&gt; 要求X有非零解，有非零解的充分必要条件是</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/pic/矩阵特征值/8309765/0/29381f30e924b89921a6c51a65061d950a7bf67e?fr=lemma&amp;ct=single"><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/format,f_auto.jpeg" alt="img"></a></p>
+<p>此为特征多项式，λ为未知量，特征根</p>
+<p>有n个复根λ1,λ2,…,λn，为A的n个特征根。</p>
+<p>3 -&gt; 当特征根λi(I=1,2,…,n)求出后，(λiE-A)X=0是齐次方程，λi均会使|λiE-A|=0，(λiE-A)X=0必存在非零解，且有无穷个解向量，(λiE-A)X=0的基础解系以及基础解系的线性组合都是A的特征向量</p>
+<p>特征值 eigenvalues：伸缩</p>
+<p>特征向量 eigenvector：方向</p>
+<p>正定矩阵</p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20171101211053797.gif" alt="img"></p>
+<p>对于n阶实对称矩阵A，下列条件是等价的：</p>
+<p>（1）A是正定矩阵；</p>
+<p>（2）A的一切<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/顺序主子式/3167642">顺序主子式</a>均为正；</p>
+<p>（3）A的一切主子式均为正；</p>
+<p>（4）A的特征值均为正；</p>
+<p>（5）存在实可逆矩阵C，使A=C′C；</p>
+<p>（6）存在秩为n的m×n实矩阵B，使A=B′B；</p>
+<p>（7）存在主对角线元素全为正的实三角矩阵R，使A=R′R [3] 。</p>
+<p><strong>矩阵对角化</strong></p>
+<p><strong>LU分解</strong></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330200605521.png" alt="image-20220330200605521" style="zoom:33%;"></p>
+<p>如果方阵A可以分解成单位下三角矩阵L与非奇艺（满秩）上三角矩阵U的乘积，则式A=LU称为A的LU分解或三角分解。</p>
+<ul>
+<li><p>什么样的矩阵才有LU分解？</p>
+<p>当A的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/顺序主子式">顺序主子式</a>都不为0时，矩阵A可以分解为A=LU</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">论文笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-14 14:29:42" itemprop="dateCreated datePublished" datetime="2022-02-14T14:29:42+08:00">2022-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-08 14:32:05" itemprop="dateModified" datetime="2022-04-08T14:32:05+08:00">2022-04-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>subject to 在某个条件下</p>
+<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103824454.png" alt="image-20220401103824454" style="zoom: 25%;"></p>
+<ul>
+<li><strong>机器学习</strong></li>
+</ul>
+<p>按照反馈信息的不同，机器学习经典划分为三大类<br>•监督学习：处理包含有模型正确输出值的数据，即有标记数据。例如图像识别数据中，每一张图像都有相应分类标记。<br>•强化学习：处理的数据仅包含有<strong>模型打分值</strong>，而不知道模型到底应该输出什么，因此只能靠算法去不断的探索，寻找打分值最高的模型输出。例如围棋游戏，缺乏每一步走棋的最佳指导，只能通过最终的输赢作为打分，自主探索寻找最佳模型。<br>•无监督学习：数据中完全没有关于模型输出好坏的客观评估。这时通常会人为的设置某种学习目标，以开展学习，例如把256维人脸照片压缩到4维，此时并没有任何关于这4维应该如何的信息，一种做法是使得这4维能够还原出256维的人脸，这就是一种人为设定的目标。这种还原自身信息的做法也叫自监督学习，虽然名称中有“监督”，其实是一类借用监督技术的无监督学习。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103645568.png" alt="image-20220401103645568" style="zoom: 25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103616933.png" alt="image-20220401103616933"></p>
+<ul>
+<li><strong>表示学习</strong></li>
+</ul>
+<p>模型自动从数据中抽取特征或者表示</p>
+<p>原始数据 -编码器函数-&gt; 不同表示 -解码器函数-&gt; 原来形式</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401121642701.png" alt="image-20220401121642701" style="zoom: 33%;"></p>
+<ul>
+<li><strong>深度学习</strong></li>
+</ul>
+<p>运用了神经网络的机器学习。（为了区分原来简单的机器学习模型）</p>
+<p>用简单的概念构建复杂的概念（像素-&gt;角和轮廓-&gt;人脸)</p>
+<p>典型例子：MLP 多层感知机/前馈深度网络  为输入提供新的表示</p>
+<p><strong>神经元+激活函数</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153433405.png" alt="image-20220401153433405" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153052314.png" alt="image-20220401153052314" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401152707966.png" alt="image-20220401152707966" style="zoom:33%;"></p>
+<p><strong>激活函数</strong></p>
+<ul>
+<li><p>符号函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161333810.png" alt="image-20220401161333810"></p>
+</li>
+<li><p>sigmoid函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161807551.png" alt="image-20220401161807551" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161619376.png" alt="image-20220401161619376" style="zoom:50%;"></p>
+</li>
+<li><p>双曲正切函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161946343.png" alt="image-20220401161946343" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401162001891.png" alt="image-20220401162001891" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170639257.png" alt="image-20220401170639257" style="zoom:50%;"></p>
+</li>
+<li><p>线性整流函数 ReLU</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170714864.png" alt="image-20220401170714864" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170730393.png" alt="image-20220401170730393" style="zoom:50%;"></p>
+</li>
+<li><p>Softmax</p>
+<p>o~k~性质：0-1之间，和为1</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401171842094.png" alt="image-20220401171842094" style="zoom:33%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401172944398.png" alt="image-20220401172944398" style="zoom:50%;"></p>
+</li>
+</ul>
+<p><strong>全连接网络</strong></p>
+<p>符号说明</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402190812727.png" alt="image-20220402190812727" style="zoom:50%;"></p>
+<p>n全连接网络，前馈网络，多层感知机，全连接层，稠密层</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401173511475.png" alt="image-20220401173511475"></p>
+<p>神经网络训练方法——损失函数最小化问题</p>
+<ul>
+<li><p>梯度下降</p>
+<p>针对E(w) 直接对于每个w进行提督下降</p>
+</li>
+<li><p>反向传播 <strong>BP:Back</strong> <strong>Propagation</strong></p>
+<p>从后往前更新w</p>
+</li>
+</ul>
+<p>交叉熵损失函数</p>
+<ul>
+<li>误差平方和损失函数</li>
+</ul>
+<p>用于输出是具体数值的问题</p>
+<ul>
+<li>交叉熵损失函数</li>
+</ul>
+<p>用于分类问题</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191103654.png" alt="image-20220402191103654" style="zoom:50%;"></p>
+<p>d对应第几个样本  k对应一个样本里第几个输出</p>
+<p>对于分类问题，只有一个t</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402193821945.png" alt="image-20220402193821945" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191028780.png" alt="image-20220402191028780" style="zoom:50%;"></p>
+<h2 id="AI安全问题分类"><a href="#AI安全问题分类" class="headerlink" title="AI安全问题分类"></a>AI安全问题分类</h2><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401122550531.png" alt="image-20220401122550531" style="zoom:30%;"></p>
+<h3 id="对抗样本"><a href="#对抗样本" class="headerlink" title="对抗样本"></a><strong>对抗样本</strong></h3><p>输入向量x 产生细微干扰 得到另一个特征向量x’ 使得x’在人眼看来的分类与机器的分类不同。</p>
+<ul>
+<li>无目标攻击——将样本预测错误 最大化预测的错误率</li>
+<li>有目标攻击——将某一类别错误分类成指定类别</li>
+</ul>
+<p>目标函数</p>
+<ul>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132658814.png" alt="image-20220403132658814" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132725507.png" alt="image-20220403132725507" style="zoom:50%;"></p>
+<p>最小化扰动，使某一错误分类的预测大于正确分类/指定错误分类大于所有其他类别</p>
+</li>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132927310.png" alt="image-20220403132927310" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132938090.png" alt="image-20220403132938090" style="zoom:50%;"></p>
+<p>需要代价函数的值小于ε，并在该条件下使 正确类别的得分最小/目标分类的得分最大</p>
+</li>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403160724606.png" alt="image-20220403160724606" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403161432808.png" alt="image-20220403161432808" style="zoom:50%;"></p>
+<p>最小化扰动和 正确分类得分和其他最大得分的差（若小于0则取0）最小值/目标错误分类得分和其他最大得分的差 的最大值 的加权和</p>
+</li>
+</ul>
+<h4 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h4><p>鲁棒性定义：对于给定的分类器k ̂在全体数据分布上的最小对抗扰动r的期望即为分类器k ̂的鲁棒性</p>
+<p>比较性能：扰动大小（越小越难防守） &amp; 运行时间</p>
+<ul>
+<li><p>快速梯度符号法 FGSM</p>
+<p>“Fast Gradient-Sign Method”</p>
+<p>无目标</p>
+<p>扰动（代价函数）在ε内，使正确标签与模型预测结果的损失（损失函数）最大 <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113416256.png" alt="image-20220404113416256" style="zoom:50%;">。</p>
+<p>特点：将损失函数线性近似</p>
+<p>目标函数<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113452501.png" alt="image-20220404113452501" style="zoom:50%;"></p>
+<p>g代表预测分值的函数</p>
+<p>在x每个分量上独立添加最大化扰动，得到<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113633335.png" alt="image-20220404113633335" style="zoom:50%;"></p>
+</li>
+<li><p>投影梯度下降法 PGD</p>
+<p>Project Gradient Descent</p>
+<p>无目标</p>
+<p>FGSM是仅仅做一次迭代，而PGD是做多次迭代，每次走一小步，每次迭代都会将扰动调整到规定范围内 </p>
+<p>目标函数 <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113939131.png" alt="image-20220404113939131" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114102011.png" alt="image-20220404114102011"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114652771.png" alt="image-20220404114652771"></p>
+</li>
+<li><p>DeepFool</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404115922742.png" alt="image-20220404115922742"></p>
+</li>
+<li><p>基于雅可比矩阵的显著图攻击 JSMA</p>
+<p>Jacobian-based Saliency Map Attacks</p>
+<p>有目标</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405122208674.png" alt="image-20220405122208674" style="zoom:50%;"></p>
+<p>找到最小扰动，使样本输出标签变为攻击者指定的标签</p>
+<p>需要寻找正向扰动</p>
+<p>对抗性显著图（Adversarial Saliency Maps）：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405125304577.png" alt="image-20220405125304577" style="zoom:50%;"></p>
+<p>当目标类别的前向导数小于0 / 其他类别前向导数总和大于0 时 ，显著图赋值为0，否则将<strong>对应类别的前向导数的值</strong>与<strong>其他类别的前向导数总和的绝对值</strong>的<strong>乘积</strong>作为这一项的值</p>
+</li>
+<li><p>单像素攻击 (One Pixel Attack)</p>
+<p>使用差分进化的方法来修改单个像素点并以此来改变分类器的输出</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135734533.png" alt="image-20220405135734533" style="zoom:50%;"></p>
+<p>有目标攻击</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135929130.png" alt="image-20220405135929130"></p>
+<ul>
+<li><p>差分进化（DIfferential Evolution）</p>
+<p>在每次迭代中，根据当前解(父亲解)生成另一组候选解(孩子解)</p>
+<p>然后将孩子解与他们相应的父亲解进行比较，如果孩子解比他们的父亲解更适合，他们就会被保留下来，否则他们被淘汰</p>
+</li>
+<li><p>DE在One Pixel Attack中的使用</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405142225053.png" alt="image-20220405142225053"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><p>检测目的为 判断样本是对抗样本还是正常样本。检测的是 <strong>对抗样本</strong>与<strong>原始样本</strong>的特征或数字特征之间的区别</p>
+<p>通过<strong>神经网络中间状态的输出</strong>作为检测器的输入，从而检测出对抗样本</p>
+<h5 id="基于特征学习的对抗样本检测"><a href="#基于特征学习的对抗样本检测" class="headerlink" title="基于特征学习的对抗样本检测"></a>基于特征学习的对抗样本检测</h5><p>利用对抗样本与原始样本的<strong>不同特征</strong>来进行对抗样本检测</p>
+<p>在高维的数据下往往难以得到较好的特征学习结果来检测对抗样本，可以通过降维将高维的复杂数据转化为低维数据，降低特征学习的难度——特征压缩</p>
+<ul>
+<li><p>色深压缩</p>
+<p>色深为像素点可以取值颜色的大小，一般用位表示色深大小，色深为i位表示像素点取值的颜色有2i种</p>
+<p>ep：CIFAR-10和ImageNet为24位的彩色图，即每个像素含有R，G，B三个通道的图片，每个通道的值取值在0~28-1，故一个像素点所有的颜色取值范围在2^24^-1</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405170732010.png" alt="image-20220405170732010"></p>
+</li>
+<li><p>空间平滑</p>
+<p>减少图像噪声</p>
+<ul>
+<li><p>局部平滑</p>
+<p>利用邻近像素对每个像素进行平滑</p>
+<p>中值平滑</p>
+<p>•取一个方形窗口对于整张图片上下移动，每次移动时，取出小窗内所有像素点的中位数，使用这个中位数代替中间像素点的值</p>
+</li>
+<li><p>非局部平滑</p>
+<p>在图像的大面积区域内发现多个相似的像素块，并用这些相似像素块的平均值代替中心像素块</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222155651.png" alt="image-20220405222155651"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222204408.png" alt="image-20220405222204408"></p>
+<p>在一定范围内，压缩的程度越大，对抗样本的检测成功率越高</p>
+<h5 id="基于分布统计的对抗样本检测"><a href="#基于分布统计的对抗样本检测" class="headerlink" title="基于分布统计的对抗样本检测"></a>基于分布统计的对抗样本检测</h5><p>利用对抗样本与原始样本的不同数字特征（即样本通过网络后得到的概率分布的形状）通过检测输入是否符合正常样本的分布，从而判断输入是否具有对抗性</p>
+<p>正常样本的softmax输出向量会比对抗样本更加分散（远离均匀分布）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405225543593.png" alt="image-20220405225543593"></p>
+<p>测量均匀分布和样本softmax分布之间的<strong>KL散度</strong>来完成，然后根据预先设定的阈值，小于这个阈值则认为样本是对抗样本，反之认为是正常样本</p>
+<h5 id="基softmax分布与输入重构的检测"><a href="#基softmax分布与输入重构的检测" class="headerlink" title="基softmax分布与输入重构的检测"></a>基softmax分布与输入重构的检测</h5><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182045635.png" alt="image-20220407182045635" style="zoom:50%;"></p>
+<p>对抗样本与正常样本在原始分类网络<strong>中间层的输出进行重构后的图像</strong>有着明显的差距，对抗样本的重构图片相较于正常图片的重构图片更加不规则且更加模糊</p>
+<p>通过对抗样本与正常样本输入重构的差异可以进行对抗样本的检测</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182609004.png" alt="image-20220407182609004"></p>
+<h5 id="基于中间输出的对抗样本检测"><a href="#基于中间输出的对抗样本检测" class="headerlink" title="基于中间输出的对抗样本检测"></a><strong>基于中间输出的对抗样本检测</strong></h5><p>正常的样本与对抗样本的输入在深度神经网络中得到的<strong>中间输出</strong>状态有较大的差距</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407183138224.png" alt="image-20220407183138224"></p>
+<p>AD模块作为检测器, 是训练好的二分类网络，输出该样本为对抗样本的概率<br><strong>训练该二分类网络</strong>：</p>
+<p>得到训练集：</p>
+<ol>
+<li>得到对抗样本</li>
+<li>将正常样本与对抗样本 分别输入 原始分类网络中，得到原始分类网络的中间输出：正常样本数据（x1，0)与对抗样本数据（x2，1），这两种不同标签的数据 作为 这一接口处的 对抗检测网络的训练数据集</li>
+</ol>
+<p>损失函数<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407184245116.png" alt="image-20220407184245116" style="zoom:50%;"></p>
+<p>训练方法：</p>
+<ol>
+<li><p>通过监督学习的方法，每次将一个训练数据（x,y）输入对抗检测网络进行训练</p>
+</li>
+<li><p>在数据通过对抗检测网络后，得到预测结果y ̂，计算出这一轮损失函数L的值，使用随机梯度下降（SGD）的方法反向传播更新对抗检测网络的参数</p>
+</li>
+</ol>
+<h4 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h4><h5 id="基于经验的防御方法"><a href="#基于经验的防御方法" class="headerlink" title="基于经验的防御方法"></a>基于经验的防御方法</h5><ul>
+<li><p>对抗训练</p>
+<p>主动生成对抗样本，纳入训练阶段对神经网络进行训练</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220408142905576.png" alt="image-20220408142905576"></p>
+</li>
+<li><p>特征去噪</p>
+</li>
+<li><p>防御蒸馏</p>
+</li>
+</ul>
+<h5 id="基于理论的防御方法"><a href="#基于理论的防御方法" class="headerlink" title="基于理论的防御方法"></a>基于理论的防御方法</h5><ul>
+<li>可证明式防御</li>
+</ul>
+<h1 id="QUADTREE-ATTENTION-FOR-VISION-TRANSFORMERS"><a href="#QUADTREE-ATTENTION-FOR-VISION-TRANSFORMERS" class="headerlink" title="QUADTREE ATTENTION FOR VISION TRANSFORMERS"></a>QUADTREE ATTENTION FOR VISION TRANSFORMERS</h1><h2 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h2><p>attention is all you need</p>
+<p>Word embedding —— 语义相关</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325165933022.png" alt="image-20220325165933022" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172139313.png" alt="image-20220325172139313" style="zoom:25%;"></p>
+<p>如何考虑整个sequence的信息？-&gt; self-attention</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172209009.png" alt="image-20220325172209009" style="zoom: 25%;"></p>
+<p>Fully connection 专注于处理某一位置的资讯，self-attention考虑全部</p>
+<ul>
+<li><p>Self-attention 流程</p>
+<p>计算每个输入的相关度alfa，将alfa进行softmax得到alfa’——attention score</p>
+<p>再根据attention score抽取信息，用每个alfa乘以v 再相加</p>
+<p>（Wk，Wq，Wv是通过train找出来的）</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325173135986.png" alt="image-20220325173135986" style="zoom: 25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325174317429.png" alt="image-20220325174317429" style="zoom:25%;"></p>
+<ul>
+<li><p>如何计算相关度</p>
+<p>dot-product 将输入乘以某一矩阵进行转换，自身得到query向量，其他输入得到key向量，query和key进行item wise相乘求和得到alfa</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172832441.png" alt="image-20220325172832441" style="zoom:25%;"></p>
+<ul>
+<li><p>Multi-head self-attention</p>
+<p>多少head——多少种相关性</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180409994.png" alt="image-20220325180409994" style="zoom:25%;"></p>
+</li>
+</ul>
+<p>  <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180450238.png" alt="image-20220325180450238" style="zoom:25%;">再将两个b向量连接起来，乘以一个矩阵得到bi</p>
+<ul>
+<li><p>有一个问题：自注意力机制没有区分位置关系，即没有位置信息</p>
+<p>原始的位置编码：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180802152.png" alt="image-20220325180802152" style="zoom:25%;"></p>
+</li>
+</ul>
+<p>self-attention相对于cnn更flexible（卷积核内的attention score非0，其他的element对应的attention score为0）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181530172.png" alt="image-20220325181530172" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181802663.png" alt="image-20220325181802663" style="zoom:25%;"></p>
+<h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><p>神经网络架构 最先用于机器翻译 类似变压器</p>
+<p>是一个全注意力模型</p>
+<p>seq2seq模型（自回归）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214181008651.png" alt="image-20220214181008651"></p>
+<p>变长</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214182844626.png" alt="image-20220214182844626"></p>
+<p>long-term dependent </p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214183016721.png" alt="image-20220214183016721" style="zoom:50%;"></p>
+<ul>
+<li>不灵活 wij学习后固定</li>
+</ul>
+<h3 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h3><p>翻译</p>
+<p>Text to speech</p>
+<p>chatbot聊天机器人</p>
+<p>语音识别</p>
+<p>文法剖析</p>
+<p>Multi-class classification  从数个class中选择一个class出来</p>
+<p>Multi-label classification 一个东西可以属于多个class</p>
+<p>object detection</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325150012855.png" alt="image-20220325150012855" style="zoom: 25%;"></p>
+<p>seq2seq model的起源为14年</p>
+<p>transformer 属于 seq2seq model，有encoder、decoder架构</p>
+<h4 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h4><p>输入一排向量，输出一排向量（self attention、RNN、CNN都可以做到）</p>
+<p>transformer的encoder用的是self attention</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152659257.png" alt="image-20220325152659257" style="zoom: 25%;"></p>
+<p>一个block可以展开为：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152602544.png" alt="image-20220325152602544" style="zoom: 25%;"></p>
+<p>将输入和self-attention的输出加起来——residual connection</p>
+<p>再进行layer norm （batch norm是指将一整个batch的每个相同feature 为一组，进行norm，layer norm是指不同维度进行normalization）</p>
+<p>再将norm的结果送入fully connection，再residual connection，再layer norm 得到一个block的输出</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152142429.png" alt="image-20220325152142429" style="zoom: 25%;"></p>
+<h4 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h4><ul>
+<li>autoregressive的decoder</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153530655.png" alt="image-20220325153530655" style="zoom:25%;"></p>
+<p>差不多只多出来了中间一块 和 最下面一块改成了<strong>masked</strong> multi-head attention</p>
+<p>Self attention 和 masked Self attention的区别：是否使用后面输入的资讯</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153803720.png" alt="image-20220325153803720" style="zoom:17%;"><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153915269.png" alt="image-20220325153915269" style="zoom:17%;"></p>
+<p>具体一点：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154058816.png" alt="image-20220325154058816" style="zoom:17%;">             <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154123956.png" alt="image-20220325154123956" style="zoom:17%;"></p>
+<p>decoder还要自己决定输出的长度   </p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154431237.png" alt="image-20220325154431237" style="zoom:20%;"></p>
+<ul>
+<li>Non-autoregressive （NAT）</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155057521.png" alt="image-20220325155057521" style="zoom:25%;"></p>
+<h4 id="连接encoder-decoder"><a href="#连接encoder-decoder" class="headerlink" title="连接encoder decoder"></a>连接encoder decoder</h4><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155215148.png" alt="image-20220325155215148" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155434974.png" alt="image-20220325155434974" style="zoom:33%;"></p>
+<p>k、v、q都是向量乘以一个transformer的矩阵得到</p>
+<p>原始论文里都是使用encoder最后一层的输出</p>
+<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325160333339.png" alt="image-20220325160333339" style="zoom:25%;"></p>
+<h2 id="Self-Supervised-Learning"><a href="#Self-Supervised-Learning" class="headerlink" title="Self-Supervised Learning"></a>Self-Supervised Learning</h2><p>没有label的资料，把输入x分为两部分，其中一部分当作label</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325224244028.png" alt="image-20220325224244028" style="zoom:25%;"></p>
+<p>以bert模型为例</p>
+<h3 id="Bert"><a href="#Bert" class="headerlink" title="Bert"></a>Bert</h3><h1 id="Deep-Learning-for-3D-Point-Clouds-A-Survey"><a href="#Deep-Learning-for-3D-Point-Clouds-A-Survey" class="headerlink" title="Deep Learning for 3D Point Clouds: A Survey"></a>Deep Learning for 3D Point Clouds: A Survey</h1><ul>
+<li><strong>3d数据表达方式</strong>：depth images, point clouds, meshes,  volumetric grids</li>
+<li><p><strong>点云相关问题</strong>：3D shape classification, 3D object detection and tracking, 3D point cloud segmentation, 3D point cloud registration, 6-DOF pose estimation, 3D reconstruction</p>
+</li>
+<li><p><strong>3d点云深度学习方法</strong></p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314133212254.png" alt="image-20220314133212254"></p>
+<ul>
+<li><p><strong>数据集</strong></p>
+<ul>
+<li><p>3D shape classification</p>
+<p>synthetic datasets <strong>&amp;</strong> real-world datasets</p>
+</li>
+<li><p>3D object detection and tracking</p>
+<p>indoor scenes <strong>&amp;</strong> outdoor urban scenes</p>
+</li>
+<li><p>3D point cloud segmentation</p>
+<p>不同感知器获取</p>
+<p>Mobile Laser Scanners (MLS) <strong>&amp;</strong> Aerial Laser Scanners (ALS) <strong>&amp;</strong> RGB- D cameras…</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143137287.png" alt="image-20220314143137287"></p>
+</li>
+<li><p><strong>评估指标</strong></p>
+<ul>
+<li><p>3D shape classification</p>
+<p><em>Overall Accuracy</em> (OA) —— the mean accuracy for all test instances</p>
+<p>mean class accuracy* (mAcc) —— the mean accuracy for all shape classes</p>
+</li>
+<li><p>3D object detection</p>
+<p><em>Average Precision</em> (AP) —— the area under the precision-recall curve</p>
+</li>
+<li><p>3D multi-object tracking</p>
+<p><em>Average Multi-Object Tracking Accuracy</em> (AMOTA) </p>
+<p><em>Average Multi-Object Tracking Precision</em> (AMOTP) </p>
+</li>
+<li><p>3D point cloud segmentation</p>
+<p>OA, <em>mean Intersection over Union</em> (mIoU) and <em>mean class Accuracy</em> (mAcc)</p>
+</li>
+<li><p>instance segmentation of 3D point clouds</p>
+<p><em>mean Average Precision</em> (mAP) </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3D-SHAPE-CLASSIFICATION"><a href="#3D-SHAPE-CLASSIFICATION" class="headerlink" title="3D SHAPE CLASSIFICATION"></a><strong>3D S</strong>HAPE <strong>CLASSIFICATION</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">step1(embedding of each point)--an aggregation method--&gt;step2(global shape embedding)--feed into--&gt;step3(fully connected layers)--&gt;classification;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143224615.png" alt="image-20220314143224615"></p>
+<p><strong>Methods</strong>: multi-view based, volumetric-based and point-based methods</p>
+<p><strong>multi-view based methods</strong></p>
+<p>将点云投影至2d图像</p>
+<p>将一个三维图形投影到多个视图中，然后提取各个视图的特征，然后融合这些特征进行精确的形状分类</p>
+<p>Multi-view Convolutional Neural Networks for 3D Shape Recognition（MVCNN）</p>
+<p><strong>volumetric-based methods</strong></p>
+<p>将点云转换为三维体积表示</p>
+<p>将三维卷积神经网络（CNN）应用于体表示进行形状分类</p>
+<p>VoxNet: A 3D convolutional neural network for real-time object recognition（VoxNet）网络、基于卷积深度的三维形状网，虽然已经取得了令人鼓舞的性能，但由于计算量和内存占用随着分辨率的增加而呈立方体增长，因此这些方法无法很好地适应密集的三维数据。</p>
+<p><strong>Pointwise MLP Methods</strong></p>
+<p>pointwise MLP, convolution-based, graph-based, hierarchical data structure-based methods and other typical methods</p>
+<ul>
+<li><p><strong>Pointwise MLP Methods</strong></p>
+<p>使用多个共享多层感知器（MLP）独立地对每个点建模，然后使用对称聚合函数聚合全局特征</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314183337152.png" alt="image-20220314183337152"></p>
+<p>PointNet: Deep <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=learning&amp;spm=1001.2101.3001.7020">learning</a> on point sets for 3D classification and segmentation（PointNet） 直接以点云作为输入并实现对称函数的置换不变性。PointNet使用几个MLP层独立地学习点态特征，并使用最大池化层提取全局特征。由于PointNet中每个点的特征都是独立学习的，因此<strong>无法获取点之间的局部结构信息</strong>。因此，提出了一种层次网络pointnet++来从每个点的<strong>邻域</strong>中捕捉精细的几何结构。作为PointNet++层次结构的核心，其<strong>集合抽象层</strong>由三层组成:采样层、分组层和基于PointNet的学习层。通过叠加多个集合抽象层次，pointnet++从局部几何结构中学习特征，并逐层抽象局部特征。</p>
+</li>
+<li><p><strong>Convolution-based Methods</strong></p>
+<p>根据卷积核种类，将3d 卷积方法分为continuous and discrete两种（连续卷积法和离散卷积法）</p>
+<p><strong>3D Continuous Convolution Methods</strong></p>
+<p>定义了连续空间上的卷积核，其中相邻点的权重与相对于中心点的<strong>空间分布</strong>有关。</p>
+<p><strong>·</strong> PointConv（CVPR’19）</p>
+<p><strong>·</strong> ConvPoint（Computers &amp; Graphics）</p>
+<p><strong>3D Discrete Convolution Methods</strong></p>
+<p>在规则网格上定义卷积核，其中相邻点的权重与相对于中心点的<strong>偏移量</strong>有关。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185232090.png" alt="image-20220314185232090"></p>
+</li>
+<li><p><strong>Graph-based Methods</strong> </p>
+<p>将点云中的每个点看作图的顶点，并根据每个点的邻域生成有向边。然后在空间或光谱域中进行特征学习。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185421460.png" alt="image-20220314185421460" style="zoom:50%;"></p>
+<p><strong>Graph-based Methods in Spatial Domain</strong></p>
+</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">step1(convolution over spatial neighbors)--pooling to aggregate information from each point&#x27;s neighbors--&gt;step2(coarsened graph)--feed into--&gt;step3(fully connected layers)--&gt;classification;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  Features at each vertex —— assigned with <strong>coordinates, laser intensities or colors</strong></p>
+<p>  Features at each edge —— <strong>geometric attributes</strong> between two connected points</p>
+<ul>
+<li><p><strong>Hierarchical Data Structure-based Methods</strong></p>
+<p>基于层次数据结构的方法（八叉树 kd-tree）点对应的特征从叶节点学到根节点</p>
+</li>
+</ul>
+<p>Pointwise MLP networks are usually served as the basic building block for other types of networks to learn pointwise features.</p>
+<h2 id="3D-OBJECT-DETECTION-AND-TRACKING"><a href="#3D-OBJECT-DETECTION-AND-TRACKING" class="headerlink" title="3D OBJECT DETECTION AND TRACKING"></a><strong>3D OBJECT</strong> <strong>DETECTION AND</strong> <strong>T</strong>RACKING</h2><h3 id="3D-Object-Detection"><a href="#3D-Object-Detection" class="headerlink" title="3D Object Detection"></a><strong>3D Object Detection</strong></h3><p>典型的3D对象检测器以场景的点云为输入，在每个检测到的对象周围生成一个定向的3D边界框，如图5所示。与图像中的目标检测相似，三维目标检测方法可分为两类：<strong>基于区域建议的方法和单次拍摄方法</strong>。region proposal-based and single shot methods</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315113752153.png" alt="image-20220315113752153"></p>
+<p><strong>Public Datasets</strong></p>
+<ul>
+<li>KITTI (CVPR’12) <ul>
+<li>3D objecct detection</li>
+<li>BEV</li>
+</ul>
+</li>
+<li>ApolloScape (TPAMI’19) </li>
+<li>Argoverse (CVPR’19) </li>
+<li>A*3D (arXiv’19)</li>
+<li>Waymo (arXiv’19)</li>
+</ul>
+<h4 id="Region-Proposal-based-Methods"><a href="#Region-Proposal-based-Methods" class="headerlink" title="Region Proposal-based Methods"></a><strong>Region Proposal-based Methods</strong></h4><p>propose several possible <strong>regions</strong> containing objects -&gt; extract region- wise <strong>features</strong> -&gt; determine the <strong>category</strong> label of each proposal</p>
+<ul>
+<li><p><strong>Multi-view based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315114721048.png" alt="image-20220315114721048" style="zoom:50%;"></p>
+<p>fuse proposal-wise features from different view maps -&gt; 3D rotated boxes</p>
+<p>计算复杂度高</p>
+<p>从两个方面加速：efficiently fuse the information of different modalities <strong>&amp;</strong> extract robust representations of the input data</p>
+</li>
+<li><p><strong>Segmentation-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125027825.png" alt="image-20220315125027825" style="zoom:50%;"></p>
+<p>use semantic segmentation techniques to <strong>remove most background points</strong> -&gt; generate a large amount of <strong>high-quality proposals</strong> on foreground points ——— save computation</p>
+</li>
+<li><p><strong>Frustum-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125731380.png" alt="image-20220315125731380" style="zoom:50%;"></p>
+<p>use existing 2D object detectors to generate <strong>2D candidate regions</strong> of objects -&gt; extract a <strong>3D frustum proposal</strong> for each 2D candidate region</p>
+<p>step-by-step pipeline</p>
+</li>
+</ul>
+<h4 id="Single-Shot-Methods"><a href="#Single-Shot-Methods" class="headerlink" title="Single Shot Methods"></a><strong>Single Shot Methods</strong></h4><p>快速</p>
+<p><strong>predict class probabilities</strong> and <strong>regress 3D bounding boxes</strong> of objects using <strong>a single-stage network</strong></p>
+<ul>
+<li><p><strong>BEV-based Methods</strong></p>
+<p>基于鸟瞰视角的方法</p>
+</li>
+<li><p><strong>Discretization-based Methods</strong></p>
+<p>基于离散化的方法</p>
+<p>将点云转换为规律离散的表达形式 使用cnn预测分类、3d box</p>
+</li>
+<li><p><strong>Point-based Methods</strong></p>
+<p>直接将点云当作输入</p>
+</li>
+</ul>
+<h3 id="3D-Object-Tracking"><a href="#3D-Object-Tracking" class="headerlink" title="3D Object Tracking"></a><strong>3D Object Tracking</strong></h3><p>任务：给出第一帧中物体的位置，评估剩下帧中物体的状态</p>
+<p>挑战：occlusion, illumination and scale variation</p>
+<h3 id="3D-Scene-Flow-Estimation"><a href="#3D-Scene-Flow-Estimation" class="headerlink" title="3D Scene Flow Estimation"></a><strong>3D Scene Flow Estimation</strong></h3><p>给两个点云X，Y，3D scene flow D = {di}^N^ 描述了X中的每个点x~i~对应到Y中相应点x~i~’的移动 x′i = xi + di</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>KITTI数据集很常用</p>
+<ul>
+<li>Region proposal-based methods 在物体检测中最常用，并且效果较 Single Shot 好</li>
+<li>物体检测有两大限制：长距离检测的能力 &amp; 如何完全发掘图片中的纹理信息</li>
+<li>多任务学习是三维目标检测的未来发展方向。</li>
+<li>三维目标跟踪和场景流估计是新兴的研究课题</li>
+</ul>
+<h2 id="3D-POINT-CLOUD-SEGMENTATION"><a href="#3D-POINT-CLOUD-SEGMENTATION" class="headerlink" title="3D POINT CLOUD SEGMENTATION"></a><strong>3D POINT</strong> <strong>CLOUD</strong> <strong>SEGMENTATION</strong></h2><p>需要理解全局的几何结构 &amp; 每个点的细节信息</p>
+<h3 id="semantic-segmentation"><a href="#semantic-segmentation" class="headerlink" title="semantic segmentation"></a>semantic segmentation</h3><p>scene level</p>
+<p>根据语义信息分割</p>
+<p>projection and discretization- based methods 先将点云转换为中间的规律的表示，再将中间的分段结果映射回原来的点云上。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315160337255.png" alt="image-20220315160337255" style="zoom:50%;"></p>
+<h5 id="Projection-based-Methods基于投影的方法"><a href="#Projection-based-Methods基于投影的方法" class="headerlink" title="Projection-based Methods基于投影的方法"></a>Projection-based Methods基于投影的方法</h5><p>将点云投影成2d图像，比如multi-view and spherical images</p>
+<p>Multi-view Representation：projected a 3D point cloud onto 2D planes from multiple virtual camera views. Then, a multi-stream FCN is used to predict pixel-wise scores on synthetic images. The final semantic label of each point is obtained by fusing the reprojected scores over different views.</p>
+<h5 id="Discretization-based-Methods基于离散化的方法"><a href="#Discretization-based-Methods基于离散化的方法" class="headerlink" title="Discretization-based Methods基于离散化的方法"></a><strong>Discretization-based Methods基于离散化的方法</strong></h5><p>将点云转换为稠密/稀疏的离散表示，比如volumetric and sparse permutohedral lattices</p>
+<ul>
+<li><p><strong>Dense Discretization Representation</strong></p>
+<p>先体素化点云为稠密的栅格，再执行标准的卷积</p>
+</li>
+<li><p><strong>Sparse Discretization Representation</strong></p>
+<p>Volumetric representation is naturally sparse, as the number of non-zero values only accounts for a small percentage.</p>
+</li>
+</ul>
+<h5 id="Hybrid-Methods混合方法"><a href="#Hybrid-Methods混合方法" class="headerlink" title="Hybrid Methods混合方法"></a><strong>Hybrid Methods</strong>混合方法</h5><h5 id="Point-based-Methods"><a href="#Point-based-Methods" class="headerlink" title="Point-based Methods"></a><strong>Point-based Methods</strong></h5><p>直接作用于点云</p>
+<ul>
+<li><p><strong>Pointwise MLP Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172125711.png" alt="image-20220315172125711" style="zoom:50%;"></p>
+<p>共用MLP作为基础单元，但无法捕捉到点之间的关系</p>
+<p>学习local structure的方法：</p>
+<ul>
+<li><p><em>Neighboring feature pooling</em></p>
+<p>聚集临近点的信息</p>
+</li>
+<li><p><em>Attention-based aggregation</em></p>
+<p>注意力机制</p>
+</li>
+<li><p><em>Local-global concatenation</em></p>
+<p>incorporate local structures and global context</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Point Convolution Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172434027.png" alt="image-20220315172434027" style="zoom:50%;"></p>
+</li>
+<li><p><strong>RNN-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185004922.png" alt="image-20220315185004922" style="zoom:50%;"></p>
+<p>Recurrent Neural Networks -&gt; capture inherent context features</p>
+</li>
+<li><p><strong>Graph-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185016531.png" alt="image-20220315185016531" style="zoom:50%;"></p>
+<p>capture the underlying shapes and geometric structures of 3D point clouds</p>
+<p>将点云表示为相互连接的简单形状和超级点，用有向图去捕捉结构和上下文信息。点云分割问题就被改变为：几何分割，超级点嵌入，上下文分割</p>
+</li>
+</ul>
+<h3 id="instance-segmentation"><a href="#instance-segmentation" class="headerlink" title="instance segmentation"></a>instance segmentation</h3><p>object level</p>
+<p>需要分割语义，也需要在同一语义中分割出不同实例</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315211441028.png" alt="image-20220315211441028" style="zoom:50%;"></p>
+<h4 id="proposal-based-methods"><a href="#proposal-based-methods" class="headerlink" title="proposal-based methods"></a>proposal-based methods</h4><p> 3D object detection + instance mask prediction</p>
+<h4 id="proposal-free-methods"><a href="#proposal-free-methods" class="headerlink" title="proposal-free methods"></a>proposal-free methods</h4><p>semantic segmentation, subsequently 聚集属于某一实例的点(同一实例的点往往有相似特征  -&gt;  特征学习，点集分组)</p>
+<p>特征匹配方式：</p>
+<p>similarity matrix 但是占用大量内存</p>
+<p>使用子流形稀疏卷积 预测每个体素的得分以及和相邻体素之间的相似性</p>
+<h3 id="part-segmentation"><a href="#part-segmentation" class="headerlink" title="part segmentation"></a>part segmentation</h3><p>part level</p>
+<p>三维形状的零件分割有两个难点。首先，具有相同语义标签的形状零件具有较大的几何变化和歧义性。第二，语义相同的对象中的零件数目可能不同。</p>
+<p>总结：</p>
+<ul>
+<li>由于规则的数据表示，基于投影的方法和基于离散化的方法都可以利用二维图像中成熟的网络结构。然而，<strong>基于投影</strong>的方法的主要局限性在于3D-2D投影造成的<strong>信息丢失</strong>，而<strong>离散化方法</strong>的主要瓶颈是分辨率的提高导致的<strong>计算和存储开销</strong>的立方增长。为此，建立在<strong>索引结构</strong>上的<strong>稀疏卷积</strong>是一个可行的解决方案，值得进一步探索。</li>
+<li>基于点的网络是最常被研究的方法。然而，点表示自然<strong>没有明确的邻域信息</strong>，现有的基于点的方法大多采用代价昂贵的<strong>邻域搜索机制</strong>（如KNN或ball query）。这就限制了这些方法的效率，最近提出的<strong>点体素联合</strong>表示将是进一步研究的一个有趣的方向。</li>
+<li>从<strong>不平衡数据</strong>中学习仍然是点云分割中一个具有挑战性的问题。虽然有几种方法取得了不错的整体效果，但它们在数量较少的类别中的表现仍然有限。</li>
+<li>现有的大多数方法都是针对<strong>小规模点云</strong>（例如，1m×1m，4096个点）。但在实际应用中，由深度传感器获取的点云通常是巨大的、大规模的。因此，有必要进一步研究大规模点云的有效分割问题。</li>
+<li>少数工作已经开始从<strong>动态点云</strong>中学习时空信息，并且期望这些时空信息有助于提高后续任务的性能，如三维物体识别、分割等。</li>
+</ul>
+<h1 id="Vote3Deep-Fast-Object-Detection-in-3D-Point-Clouds-Using-Efficient-Convolutional-Neural-Networks"><a href="#Vote3Deep-Fast-Object-Detection-in-3D-Point-Clouds-Using-Efficient-Convolutional-Neural-Networks" class="headerlink" title="Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks"></a>Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks</h1><p>任务：用cnn直接检测3d点云中的物体（不会先投影到2d) 基于投票机制的稀疏点云上的目标检测算法</p>
+<p>测试阶段只用花费 常数时间 计算</p>
+<p>提出了基于投票机制和L1正则化的稀疏卷积层，主要贡献如下：<br>1） 基于利用输入数据的稀疏性的投票机制构建了稀疏卷积层，作为处理点云数据的一层。<br>2） 利用ReLU激活和L1正则化来鼓励数据在网络中间表达的稀疏性，以探索CNN中的稀疏卷积层的作用。</p>
+<p>A 基于投票的稀疏卷积</p>
+<p>当在一个稀疏点云数据上应用密集3D卷积，由于大多数网格都是0，就浪费了很多时间。另外第三个空间维度（深度）也使得这个过程计算量更大。Vote3D的投票算法的过程就是每个非零网格会进行会在滤波器中进行投票（滤波器中心和非零网格对齐），在输出层的对应位置产生同滤波器同样大小的网格，每个网格的值=原始非零网格的值*滤波器中对应输出层这个网格的值。最终的卷积结果，即输出层的每个网格的值是通过累加输出层中每个网格中的所有的投票值得到。这个过程简化如下所示：<br><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220322130359521.png" alt="image-20220322130359521" style="zoom:50%;"></p>
+<p>其中偏差b是负数，因为正数会导致几乎输出的每个网格都是一个非零向量，就失去了稀疏性</p>
+<h1 id="On-the-Segmentation-of-3D-LIDAR-Point-Clouds"><a href="#On-the-Segmentation-of-3D-LIDAR-Point-Clouds" class="headerlink" title="On the Segmentation of 3D LIDAR Point Clouds"></a>On the Segmentation of 3D LIDAR Point Clouds</h1><p>调研了分割问题的3个方面：</p>
+<ul>
+<li><p>多种3d data，包括稠密和稀疏</p>
+</li>
+<li><p>3种ground model模型：grid based，Gaussian Process based，mesh base</p>
+</li>
+<li><p>多种聚集技术clustering technique被测试</p>
+<p>最后得到的算法是ground model 和 聚集技术 组合而成，并且比较了算法在哪种数据类型上有更好的分割效果</p>
+</li>
+</ul>
+<h2 id="Segmentation-for-Dense-Data"><a href="#Segmentation-for-Dense-Data" class="headerlink" title="Segmentation for Dense Data"></a><em>Segmentation for Dense Data</em></h2><p>有4个变体，其中3个有2 stages，另一个仅一个stage，多出来的stage是 <em>Segmentation for Dense Data</em>，共同的stage是  <em>3D clustering process</em></p>
+<p><em>1) Ground Segmentation</em></p>
+<p>地面分割：聚集相邻体素 基于垂直均值和方差 如果均值的差小于某一阈值，且方差的差也小于某一阈值，则体素会被分为一组。最大的分割区域被选为地面</p>
+<p><em>2) Cluster-All Method</em></p>
+<p>先进行地面分割，剩下的非地面点被邻近的体素分割。邻近点的数量是唯一的参数，地面被当为分割符（seperator）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326154336757.png" alt="image-20220326154336757" style="zoom:25%;"></p>
+<p><em>3) Base-Of Method</em></p>
+<p>根据垂直方差将体素分为flat/non-flat flat体素被分在一组，no-flat体素被分为一组，仅当non-flat的体素是在flat体素的下方时，两者才会被分为一组。（因为物体因为重力总是存在于另一物体之上，即“base of”relationship），只有加上了base of标准，才能使汽车不会被分为车顶（flat）和剩下部分（non-flat），而被连成一个整体。</p>
+<p><em>4) Base-Of With Ground Method</em></p>
+<p>先进行地面分割，剩下的体素使用base-of方法</p>
+<h2 id="Segmentation-for-Sparse-Data"><a href="#Segmentation-for-Sparse-Data" class="headerlink" title="Segmentation for Sparse Data"></a><em>Segmentation for Sparse Data</em></h2><p>Gaussian Process Incremental Sample Con- sensus (GP-INSAC) 和 Mesh Based Segmentation互补</p>
+<p><em>1) Gaussian Process Incremental Sample Consensus (GP- INSAC)</em></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiaoxu123/p/11926745.html">https://www.cnblogs.com/qiaoxu123/p/11926745.html</a></p>
+<p>评价指标：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326191318269.png" alt="image-20220326191318269"></p>
+<p>B 为manual segmentation</p>
+<p>A为测试结果</p>
+<p>找出最多的相同id（红色）算百分比</p>
+<h1 id="Fully-Automatic-Registration-of-3D-Point-Clouds"><a href="#Fully-Automatic-Registration-of-3D-Point-Clouds" class="headerlink" title="Fully Automatic Registration of 3D Point Clouds"></a><strong>Fully Automatic Registration of 3D Point Clouds</strong></h1><p>3d点云配准</p>
+<p>本篇论文重点：crude alignment</p>
+<p>Iterative Closest Point algorithm (ICP) ：assume a rough alignment of the two point sets/ run the algorithm multiple times by sam- pling the space of initial conditions. initial alignment is achieved manually / by the use of characteristic markers in the scene. rely on a significant percentage of overlap between the two point sets</p>
+<p>全局的，不需特征检测，估计两个extended Gaussian images(<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4062094e0100c1fy.html)的方向，遍历所有的旋转，找到使两个egi最匹配的旋转，用到spherical">http://blog.sina.com.cn/s/blog_4062094e0100c1fy.html)的方向，遍历所有的旋转，找到使两个egi最匹配的旋转，用到spherical</a> harmonics of the Extended Gaussian Image 和 rotational Fourier transform来完成计算</p>
+<p>constellation image：一种egi的表达 用来结合低重合的点云</p>
+<p><strong>Orientation histograms</strong> 方向矩阵图</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220327164846288.png" alt="image-20220327164846288" style="zoom:25%;"></p>
+<p><strong>Rotational alignment</strong> </p>
+<h1 id="A-new-approach-for-semi-automatic-rock-mass-joints-recognition-from-3D-point-clouds"><a href="#A-new-approach-for-semi-automatic-rock-mass-joints-recognition-from-3D-point-clouds" class="headerlink" title="A new approach for semi-automatic rock mass joints recognition from 3D point clouds"></a>A new approach for semi-automatic rock mass joints recognition from 3D point clouds</h1><p>目标：提取石头倾斜面的特征</p>
+<p>贡献点：</p>
+<ul>
+<li>用户监督的通过共面性测试的噪声点去除</li>
+<li>使用Kernel Density Estimation (KDE) Analysis 半自动检测不连续</li>
+<li>通过基于密度的聚集算法自动提取单不连续性</li>
+<li>完整的参数感知分析</li>
+</ul>
+<p>整体流程：局部曲度计算-&gt;平面统计分析-&gt;聚集分析</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329201055254.png" alt="image-20220329201055254" style="zoom:50%;"></p>
+<h3 id="2-2-Part-A-–-local-curvature-calculation"><a href="#2-2-Part-A-–-local-curvature-calculation" class="headerlink" title="2.2. Part A – local curvature calculation"></a>2.2. Part A – local curvature calculation</h3><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329211148778.png" alt="image-20220329211148778" style="zoom:33%;"></p>
+<h4 id="2-2-1-Nearest-neighbour-searching"><a href="#2-2-1-Nearest-neighbour-searching" class="headerlink" title="2.2.1. Nearest neighbour searching"></a>2.2.1. Nearest neighbour searching</h4><p>找出k个最近邻点（Qi）</p>
+<p>fixed distance / fixed number of neighbours</p>
+<p>fixed distance—点的不均匀性</p>
+<p>fixed number of neighbours √</p>
+<h4 id="2-2-2-Coplanarity-test"><a href="#2-2-2-Coplanarity-test" class="headerlink" title="2.2.2. Coplanarity test"></a>2.2.2. Coplanarity test</h4><p>检测k+1个点是否同平面  If the subset of points Qi is coplanar, the rest of the process will continue; otherwise the sub-set Qi will be rejected.</p>
+<p>Principal Component Analysis (PCA).</p>
+<p>给定一组点，the princomp MATLAB function 计算每个点的特征值和特征向量 eigenvalues (λ1,λ2,λ3) and eigenvectors (V1,V2,V3)</p>
+<p>前 k 个分量 Hk 占方差的比例由以下等式确定</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213747829.png" alt="image-20220329213747829" style="zoom:50%;"></p>
+<p>偏差参数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213853459.png" alt="image-20220329213853459" style="zoom:50%;"></p>
+<p>n大于某一数值时（ep 20%） 此Qi点集被拒绝</p>
+<h4 id="2-2-3-Plane-adjustment-and-calculation-of-the-normal-vector"><a href="#2-2-3-Plane-adjustment-and-calculation-of-the-normal-vector" class="headerlink" title="2.2.3. Plane adjustment and calculation of the normal vector"></a>2.2.3. Plane adjustment and calculation of the normal vector</h4><p>计算最合适的平面</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220330083301585.png" alt="image-20220330083301585" style="zoom:50%;"></p>
+<p>A, B, and C are the three components of the unit normal vector（法线向量）</p>
+<p>D gives the perpendicular distance from the origin(原点) to the plane</p>
+<h1 id="LoFTR-Detector-Free-Local-Feature-Matching-with-Transformers"><a href="#LoFTR-Detector-Free-Local-Feature-Matching-with-Transformers" class="headerlink" title="LoFTR: Detector-Free Local Feature Matching with Transformers"></a>LoFTR: Detector-Free Local Feature Matching with Transformers</h1><p>任务：图像特征匹配</p>
+<p>传统：检测 描述 匹配  使用<em>cost volume</em>去寻找匹配-&gt;特征检测很难在低纹理地区得到可重复的兴趣点</p>
+<p>此方法：先建立较稀疏的像素级稠密匹配，再refine  使用<em>self and cross attention layers in Transformer</em>获取特征描述符-&gt;因为有全局感受野，所以在低纹理的地方也可以获取稠密匹配</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325105942982.png" alt="image-20220325105942982"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/23/commands/" class="post-title-link" itemprop="url">commands</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-23 12:44:08" itemprop="dateCreated datePublished" datetime="2022-01-23T12:44:08+08:00">2022-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-30 15:58:25" itemprop="dateModified" datetime="2022-01-30T15:58:25+08:00">2022-01-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录各种命令</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/23/commands/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/04/Java%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/04/Java%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">Java整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-04 14:36:46" itemprop="dateCreated datePublished" datetime="2021-11-04T14:36:46+08:00">2021-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-10 16:05:37" itemprop="dateModified" datetime="2022-04-10T16:05:37+08:00">2022-04-10</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Java整理</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/04/Java%E6%95%B4%E7%90%86/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/11/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/11/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">PyTorch学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-11 23:01:52" itemprop="dateCreated datePublished" datetime="2021-10-11T23:01:52+08:00">2021-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-18 18:02:44" itemprop="dateModified" datetime="2021-10-18T18:02:44+08:00">2021-10-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>可视化数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> torchvision.transforms <span class="keyword">import</span> ToTensor</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">training_data = datasets.FashionMNIST(</span><br><span class="line">    root=<span class="string">&quot;data&quot;</span>,</span><br><span class="line">    train=<span class="literal">True</span>,</span><br><span class="line">    download=<span class="literal">True</span>,</span><br><span class="line">    transform=ToTensor()</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">test_data = datasets.FashionMNIST(</span><br><span class="line">    root=<span class="string">&quot;data&quot;</span>,</span><br><span class="line">    train=<span class="literal">False</span>,</span><br><span class="line">    download=<span class="literal">True</span>,</span><br><span class="line">    transform=ToTensor()</span><br><span class="line">)</span><br><span class="line">labels_map = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">&quot;T-Shirt&quot;</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">&quot;Trouser&quot;</span>,</span><br><span class="line">    <span class="number">2</span>: <span class="string">&quot;Pullover&quot;</span>,</span><br><span class="line">    <span class="number">3</span>: <span class="string">&quot;Dress&quot;</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="string">&quot;Coat&quot;</span>,</span><br><span class="line">    <span class="number">5</span>: <span class="string">&quot;Sandal&quot;</span>,</span><br><span class="line">    <span class="number">6</span>: <span class="string">&quot;Shirt&quot;</span>,</span><br><span class="line">    <span class="number">7</span>: <span class="string">&quot;Sneaker&quot;</span>,</span><br><span class="line">    <span class="number">8</span>: <span class="string">&quot;Bag&quot;</span>,</span><br><span class="line">    <span class="number">9</span>: <span class="string">&quot;Ankle Boot&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 创建大小为8*8的图像</span></span><br><span class="line">figure = plt.figure(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line">cols, rows = <span class="number">3</span>, <span class="number">3</span></span><br><span class="line"><span class="comment"># 数据格式：tuple ([ [28个数（灰度）],[]..28个..[] ],label)</span></span><br><span class="line"><span class="comment"># print(training_data[16])</span></span><br><span class="line"><span class="comment"># print(training_data[16][0].shape)</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, cols * rows + <span class="number">1</span>):</span><br><span class="line">    <span class="comment">#范围为0～len(training_data),大小为1.   item()--取值</span></span><br><span class="line">    sample_idx = torch.randint(<span class="built_in">len</span>(training_data), size=(<span class="number">1</span>,)).item()</span><br><span class="line">    img, label = training_data[sample_idx]</span><br><span class="line">    <span class="comment"># print(label)</span></span><br><span class="line">    <span class="comment">#增加子图 一共rows*cols个子图</span></span><br><span class="line">    figure.add_subplot(rows, cols, i)</span><br><span class="line">    plt.title(labels_map[label])</span><br><span class="line">    <span class="comment">#关闭轴线</span></span><br><span class="line">    plt.axis(<span class="string">&quot;off&quot;</span>)</span><br><span class="line">    <span class="comment"># print(img.squeeze().shape)</span></span><br><span class="line">    <span class="comment">#squeeze将img[1,28,28]改为[28,28】和img[0]等效</span></span><br><span class="line">    plt.imshow(img.squeeze(), cmap=<span class="string">&quot;gray&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集( Dataset ) – 从中加载数据的数据集。</span></span><br><span class="line"><span class="comment"># batch_size ( int , optional ) – 每批要加载多少样本（默认值：）1。</span></span><br><span class="line"><span class="comment"># shuffle ( bool , optional ) – 设置为True在每个时期重新洗牌数据（默认值：）False。</span></span><br><span class="line">train_dataloader = DataLoader(training_data, batch_size=<span class="number">64</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line">test_dataloader = DataLoader(test_data, batch_size=<span class="number">64</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Display image and label.</span></span><br><span class="line">train_features, train_labels = <span class="built_in">next</span>(<span class="built_in">iter</span>(train_dataloader))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Feature batch shape: <span class="subst">&#123;train_features.size()&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># Feature batch shape: torch.Size([64, 1, 28, 28]) 64个样本一组</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Labels batch shape: <span class="subst">&#123;train_labels.size()&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># Labels batch shape: torch.Size([64])</span></span><br><span class="line">img = train_features[<span class="number">0</span>].squeeze()</span><br><span class="line">label = train_labels[<span class="number">0</span>]</span><br><span class="line">plt.imshow(img, cmap=<span class="string">&quot;gray&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Label: <span class="subst">&#123;label&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>卷积模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets, transforms</span><br><span class="line">device = <span class="string">&#x27;cuda&#x27;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&#x27;cpu&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Using &#123;&#125; device&#x27;</span>.<span class="built_in">format</span>(device))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NeuralNetwork</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(NeuralNetwork, self).__init__()</span><br><span class="line">        self.flatten = nn.Flatten()</span><br><span class="line">        self.linear_relu_stack = nn.Sequential(</span><br><span class="line">            nn.Linear(<span class="number">28</span>*<span class="number">28</span>, <span class="number">512</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(<span class="number">512</span>, <span class="number">512</span>),</span><br><span class="line">            nn.ReLU(),</span><br><span class="line">            nn.Linear(<span class="number">512</span>, <span class="number">10</span>),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        x = self.flatten(x)</span><br><span class="line">        logits = self.linear_relu_stack(x)</span><br><span class="line">        <span class="keyword">return</span> logits</span><br><span class="line"></span><br><span class="line">model = NeuralNetwork().to(device)</span><br><span class="line"><span class="built_in">print</span>(model)</span><br><span class="line"><span class="comment"># 随机生成一张灰度图</span></span><br><span class="line">X = torch.rand(<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>, device=device)</span><br><span class="line">plt.imshow(X.squeeze(), cmap=<span class="string">&quot;gray&quot;</span>)</span><br><span class="line">plt.show()</span><br><span class="line">logits = model(X)</span><br><span class="line">pred_probab = nn.Softmax(dim=<span class="number">1</span>)(logits)</span><br><span class="line">y_pred = pred_probab.argmax(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Predicted class: <span class="subst">&#123;y_pred&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">input_image = torch.rand(<span class="number">3</span>,<span class="number">28</span>,<span class="number">28</span>)</span><br><span class="line"><span class="built_in">print</span>(input_image.size())</span><br><span class="line"></span><br><span class="line">flatten = nn.Flatten()</span><br><span class="line">flat_image = flatten(input_image)</span><br><span class="line"><span class="built_in">print</span>(flat_image.size())</span><br><span class="line"></span><br><span class="line">layer1 = nn.Linear(in_features=<span class="number">28</span>*<span class="number">28</span>, out_features=<span class="number">20</span>)</span><br><span class="line">hidden1 = layer1(flat_image)</span><br><span class="line"><span class="built_in">print</span>(hidden1.size())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;Before ReLU: <span class="subst">&#123;hidden1&#125;</span>\n\n&quot;</span>)</span><br><span class="line">hidden1 = nn.ReLU()(hidden1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;After ReLU: <span class="subst">&#123;hidden1&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">seq_modules = nn.Sequential(</span><br><span class="line">    flatten,</span><br><span class="line">    layer1,</span><br><span class="line">    nn.ReLU(),</span><br><span class="line">    nn.Linear(<span class="number">20</span>, <span class="number">10</span>)</span><br><span class="line">)</span><br><span class="line">input_image = torch.rand(<span class="number">3</span>,<span class="number">28</span>,<span class="number">28</span>)</span><br><span class="line">logits = seq_modules(input_image)</span><br><span class="line"></span><br><span class="line">softmax = nn.Softmax(dim=<span class="number">1</span>)</span><br><span class="line">pred_probab = softmax(logits)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Model structure: &quot;</span>, model, <span class="string">&quot;\n\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, param <span class="keyword">in</span> model.named_parameters():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Layer: <span class="subst">&#123;name&#125;</span> | Size: <span class="subst">&#123;param.size()&#125;</span> | Values : <span class="subst">&#123;param[:<span class="number">2</span>]&#125;</span> \n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><p>Dataset 访问数据+transform成tensor形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.transforms</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"></span><br><span class="line">dataset_transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])</span><br><span class="line"></span><br><span class="line">train_set = torchvision.datasets.CIFAR10(<span class="string">&quot;./data&quot;</span>,train=<span class="literal">True</span>,transform=dataset_transform,download=<span class="literal">True</span>)</span><br><span class="line">test_set = torchvision.datasets.CIFAR10(<span class="string">&quot;./data&quot;</span>,train=<span class="literal">False</span>,transform=dataset_transform,download=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(test_set[<span class="number">0</span>])</span><br><span class="line">writer = SummaryWriter(<span class="string">&quot;show&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    img, i_class = train_set[i]</span><br><span class="line">    writer.add_image(<span class="string">&quot;img&quot;</span>, img, i)</span><br></pre></td></tr></table></figure>
+<p>Dataloader 从dataset中取数据，将数据传递到神经网络</p>
+<p><img src="/2021/10/11/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211012211409397.png" alt="image-20211012211409397"></p>
+<p><img src="/2021/10/11/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211012211452479.png" alt="image-20211012211452479"></p>
+<h2 id="tensorboard"><a href="#tensorboard" class="headerlink" title="tensorboard"></a>tensorboard</h2><p>将tensorflow程序输出的日志文件的信息可视化</p>
+<p>Terminal</p>
+<blockquote>
+<p>pip install tensorboard</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line">writer = SummaryWriter(<span class="string">&quot;logs&quot;</span>) //log文件夹</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    writer.add_scalar(<span class="string">&quot;y=2x&quot;</span>, <span class="number">2</span>*i, i)</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+<p>生成日志文件</p>
+<p>Terminal</p>
+<blockquote>
+<p> tensorboard —logdir=logs（事件文件所在文件夹名） —port=6007</p>
+</blockquote>
+<h2 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h2><p>将图片/array/numpy 转换为 Tensor张量（有用于构建神经网络</p>
+<p><img src="/2021/10/11/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20211015114249281.png" alt="image-20211015114249281" style="zoom:50%;"></p>
+<h2 id="一个模版"><a href="#一个模版" class="headerlink" title="一个模版"></a>一个模版</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> Sequential, Conv2d, MaxPool2d, Flatten, Linear</span><br><span class="line"><span class="keyword">from</span> torch.optim <span class="keyword">import</span> SGD</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"></span><br><span class="line">dataset_transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])</span><br><span class="line"></span><br><span class="line">train_set = torchvision.datasets.CIFAR10(<span class="string">&quot;./data&quot;</span>,train=<span class="literal">True</span>,transform=dataset_transform,download=<span class="literal">True</span>)</span><br><span class="line">test_set = torchvision.datasets.CIFAR10(<span class="string">&quot;./data&quot;</span>,train=<span class="literal">False</span>,transform=dataset_transform,download=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">train_data_size = <span class="built_in">len</span>(train_set)</span><br><span class="line">test_data_size = <span class="built_in">len</span>(test_set)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mynet</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(mynet, self).__init__()</span><br><span class="line">        self.model1 = Sequential(</span><br><span class="line">            Conv2d(<span class="number">3</span>,<span class="number">32</span>,<span class="number">5</span>,padding = <span class="number">2</span>),</span><br><span class="line">            MaxPool2d(<span class="number">2</span>),</span><br><span class="line">            Conv2d(<span class="number">32</span>,<span class="number">32</span>,<span class="number">5</span>,padding=<span class="number">2</span>),</span><br><span class="line">            MaxPool2d(<span class="number">2</span>),</span><br><span class="line">            Conv2d(<span class="number">32</span>,<span class="number">64</span>,<span class="number">5</span>,padding=<span class="number">2</span>),</span><br><span class="line">            MaxPool2d(<span class="number">2</span>),</span><br><span class="line">            Flatten(),</span><br><span class="line">            Linear(<span class="number">1024</span>,<span class="number">64</span>),</span><br><span class="line">            Linear(<span class="number">64</span>,<span class="number">10</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self,x</span>):</span></span><br><span class="line">        x = self.model1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">writer = SummaryWriter(<span class="string">&quot;logs&quot;</span>)</span><br><span class="line"></span><br><span class="line">net = mynet()</span><br><span class="line">dataLaoder = DataLoader(train_set, <span class="number">64</span>)</span><br><span class="line">test_dataloader = DataLoader(test_set, <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 损失函数</span></span><br><span class="line">loss_fn = nn.CrossEntropyLoss()</span><br><span class="line"><span class="comment"># 优化器</span></span><br><span class="line">optimizer = SGD(net.parameters(), lr = <span class="number">0.01</span>)</span><br><span class="line"></span><br><span class="line">total_train_step = <span class="number">0</span></span><br><span class="line"><span class="comment"># 轮数</span></span><br><span class="line">epoch = <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(epoch):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--------第&#123;&#125;轮训练--------&quot;</span>.<span class="built_in">format</span>(i))</span><br><span class="line">    net.train()</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> dataLaoder:</span><br><span class="line">        imgs , target = data</span><br><span class="line">        outputs = net(imgs)</span><br><span class="line">        loss = loss_fn(outputs, target)</span><br><span class="line"></span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line">        loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line"></span><br><span class="line">        total_train_step = total_train_step+<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> total_train_step%<span class="number">100</span>==<span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;训练次数: &#123;&#125;, Loss: &#123;&#125;&quot;</span>.<span class="built_in">format</span>( total_train_step, loss))</span><br><span class="line">            writer.add_scalar(<span class="string">&quot;train_loss&quot;</span>, loss, total_train_step)</span><br><span class="line"></span><br><span class="line">    net.<span class="built_in">eval</span>()</span><br><span class="line">    total_test_loss = <span class="number">0</span></span><br><span class="line">    total_accuracy = <span class="number">0</span></span><br><span class="line">    loss = <span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> test_dataloader:</span><br><span class="line">            imgs , targets = data</span><br><span class="line">            outputs = net(imgs)</span><br><span class="line">            loss = loss_fn(outputs, targets)</span><br><span class="line">            total_test_loss += loss</span><br><span class="line">            accuracy = (outputs.argmax(<span class="number">1</span>) == targets).<span class="built_in">sum</span>()</span><br><span class="line">            total_accuracy += accuracy</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第&#123;&#125;轮中测试集上整体loss: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(i, total_test_loss))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;正确率: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(total_accuracy/ test_data_size))</span><br><span class="line">    writer.add_scalar(<span class="string">&quot;test_loss&quot;</span>, total_test_loss, i)</span><br><span class="line">    writer.add_scalar(<span class="string">&quot;test_accuracy&quot;</span>, total_accuracy, total_train_step)</span><br><span class="line">    torch.save(net, <span class="string">&quot;net&#123;&#125;.pth&quot;</span>.<span class="built_in">format</span>(i))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;模型已保存&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">计算机图形学笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-24 09:39:13 / 修改时间：12:08:18" itemprop="dateCreated datePublished" datetime="2021-09-24T09:39:13+08:00">2021-09-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>课程笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -179,10 +1233,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-22 15:57:00 / 修改时间：17:28:59" itemprop="dateCreated datePublished" datetime="2021-09-22T15:57:00+08:00">2021-09-22</time>
+              <time title="创建时间：2021-09-22 15:57:00" itemprop="dateCreated datePublished" datetime="2021-09-22T15:57:00+08:00">2021-09-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-10 16:05:17" itemprop="dateModified" datetime="2022-04-10T16:05:17+08:00">2022-04-10</time>
+              </span>
 
           
 
@@ -195,57 +1255,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y = 9.97</span><br><span class="line">int x = (int)y;</span><br><span class="line">--&gt;x = 9</span><br><span class="line">int x = (int)Math.round(y);</span><br><span class="line">--&gt;x = 10</span><br></pre></td></tr></table></figure>
-<ul>
-<li>java需要给强制的类型转换（否则会报错）</li>
-<li>浮点数运算不精准 1.0-0.9 不会得到0.1. 所以不要用来做条件判断</li>
-<li>boolean类型true/false 不能用来和0/1做比较</li>
-<li>switch 可以int char string byte short 不能boolean long</li>
-</ul>
-<h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><p>Exponent Methods</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163749894.png" alt="image-20210922163749894" style="zoom:33%;"></p>
-<p>Trigonometric Methods</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163732442.png" alt="image-20210922163732442" style="zoom:30%;"></p>
-<p>Rounding Methods</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163845488.png" alt="image-20210922163845488" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922162752198.png" alt="image-20210922162752198" style="zoom:50%;"></p>
-<p>min, max, and abs</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922163946922.png" alt="image-20210922163946922" style="zoom:33%;"></p>
-<p>Math.random()  [0.1)</p>
-<p>Math.random()*100 [0,100)</p>
-<ul>
-<li>注释中不能加\u，意思是开新的一行</li>
-</ul>
-<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><p>Unicode 编码方式</p>
-<p>16bits（2 bytes）前缀为\u</p>
-<p>‘\u0000’ to ‘\uFFFF’.</p>
-<p>需要注意注释中的“\u”，例如: // \u000A is a newline</p>
-<p>// Look inside c:\users 会出现语法错误，因为\u后并不是4个十六进制数</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922165047801.png" alt="image-20210922165047801" style="zoom:30%;"></p>
-<p>ASCII Character Set is a subset of the Unicode from \u0000 to \u007f</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922165555715.png" alt="image-20210922165555715" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922165709920.png" alt="image-20210922165709920" style="zoom:33%;"></p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>字符串是Java中的对象。上表中的方法只能从特定字符串实例调用<br>因此,。这些方法称为<strong>实例方法</strong><br>非实例方法称为<strong>静态方法</strong>。可以在不使用对象的情况下调用静态方法。<strong>Math类中定义的所有方法都是静态方法</strong>。它们不绑定到特定的对象实例。调用实例方法的语法是</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922165740837.png" alt="image-20210922165740837" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922170855957.png" alt="image-20210922170855957" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922170926976.png" alt="image-20210922170926976" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922171003414.png" alt="image-20210922171003414" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922171051161.png" alt="image-20210922171051161" style="zoom:33%;"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String s3 = s1.concat(s2); or String s3 = s1 + s2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Three strings are concatenated</span></span><br><span class="line">String message = <span class="string">&quot;Welcome &quot;</span> + <span class="string">&quot;to &quot;</span> + <span class="string">&quot;Java&quot;</span>;</span><br><span class="line"><span class="comment">// String Chapter is concatenated with number 2</span></span><br><span class="line">String s = <span class="string">&quot;Chapter&quot;</span> + <span class="number">2</span>; <span class="comment">// s becomes Chapter2</span></span><br><span class="line"><span class="comment">// String Supplement is concatenated with character B</span></span><br><span class="line">String s1 = <span class="string">&quot;Supplement&quot;</span> + <span class="string">&#x27;B&#x27;</span>; <span class="comment">// s1 becomes SupplementB</span></span><br></pre></td></tr></table></figure>
-<p>控制台字符串的输入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">System.out.print(<span class="string">&quot;Enter three words separated by spaces: &quot;</span>);</span><br><span class="line">String s1 = input.next();</span><br><span class="line">String s2 = input.next();</span><br><span class="line">String s3 = input.next();</span><br><span class="line">System.out.println(<span class="string">&quot;s1 is &quot;</span> + s1);</span><br><span class="line">System.out.println(<span class="string">&quot;s2 is &quot;</span> + s2);</span><br><span class="line">System.out.println(<span class="string">&quot;s3 is &quot;</span> + s3)</span><br></pre></td></tr></table></figure>
-<p>控制台字符输入</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">System.out.print(<span class="string">&quot;Enter a character: &quot;</span>);</span><br><span class="line">String s = input.nextLine();</span><br><span class="line"><span class="keyword">char</span> ch = s.charAt(<span class="number">0</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;The character entered is &quot;</span> + ch);</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922170345313.png" alt="image-20210922170345313" style="zoom:33%;"></p>
-<p>特殊情况</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922170650725.png" alt="image-20210922170650725" style="zoom: 25%;"></p>
-<p>解决方法next()</p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922170748859.png" alt="image-20210922170748859" style="zoom:33%;"></p>
-<h3 id="字符串和数字之间的转换"><a href="#字符串和数字之间的转换" class="headerlink" title="字符串和数字之间的转换"></a>字符串和数字之间的转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> intValue = Integer.parseInt(intString);</span><br><span class="line"><span class="keyword">double</span> doubleValue = Double.parseDouble(doubleString);</span><br><span class="line"></span><br><span class="line">String s = number + <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="格式输出"><a href="#格式输出" class="headerlink" title="格式输出"></a>格式输出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(format, items);</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922171933613.png" alt="image-20210922171933613" style="zoom:33%;"></p>
-<p><img src="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/image-20210922172844815.png" alt="image-20210922172844815" style="zoom:50%;"></p>
-
+          <p>Java课程笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -287,10 +1305,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-19 14:52:16 / 修改时间：14:58:14" itemprop="dateCreated datePublished" datetime="2021-09-19T14:52:16+08:00">2021-09-19</time>
+              <time title="创建时间：2021-09-19 14:52:16" itemprop="dateCreated datePublished" datetime="2021-09-19T14:52:16+08:00">2021-09-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 16:10:36" itemprop="dateModified" datetime="2021-11-25T16:10:36+08:00">2021-11-25</time>
+              </span>
 
           
 
@@ -304,7 +1328,465 @@
 
       
           <p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20210919145717778.png" alt="image-20210919145717778"></p>
+<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="Uses-of-Computer-Networks"><a href="#Uses-of-Computer-Networks" class="headerlink" title="Uses of Computer Networks"></a>Uses of Computer Networks</h2><p>client-server model</p>
+<ul>
+<li>the client process sending a message over the network to the server process. The client process then waits for a reply message</li>
+</ul>
+<p>peer-to-peer model</p>
+<ul>
+<li>there are no fixed clients and servers.</li>
+</ul>
+<h2 id="Types-of-Computer-Networks"><a href="#Types-of-Computer-Networks" class="headerlink" title="Types of Computer Networks"></a><strong>Types of Computer Networks</strong></h2><ul>
+<li><p>Mobile and broadband access networks</p>
+<p>访问互联网。 </p>
+<p><strong>Broadband access networks</strong> </p>
+<ul>
+<li>Delivered to homes using copper, coaxial cable, or optical fiber</li>
+<li>Metcalfe’s law ：一个网络的价值等于该网络内的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/节点">节点</a>数的平方，而且该网络的价值与联网的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/用户">用户</a>数的平方成正比。</li>
+</ul>
+<p><strong>Mobile and Wireless Access Networks</strong></p>
+<p>移动网络 &amp; 无线网络</p>
+<p>相关 但不同</p>
+</li>
+</ul>
+<ul>
+<li><p>Data-center networks</p>
+<p>储存数据</p>
+<p>– Internet services are served from ‘‘the cloud’’<br> – Serves the increasingly growing demands of cloud computing<br> – Moves large amounts of data between servers in the data center</p>
+<p> – Moves data between the data center and the rest of the Internet</p>
+<p>挑战：– Network throughput and energy usage scaling – ‘‘Cross-section bandwidth”</p>
+</li>
+<li><p>Transit networks</p>
+<p>连接网络和数据中心</p>
+<ul>
+<li><p>Carry traffic between the <strong>content provider</strong> and the <strong>ISP</strong> (Internet Service</p>
+<p>Provider) when they are not directly connected</p>
+</li>
+</ul>
+</li>
+<li><p>Enterprise networks</p>
+<p>学校、公司使用的网络</p>
+</li>
+</ul>
+<h2 id="NetworkTechnology"><a href="#NetworkTechnology" class="headerlink" title="NetworkTechnology"></a><strong>NetworkTechnology</strong></h2><h3 id="Network-Hardware"><a href="#Network-Hardware" class="headerlink" title="Network Hardware"></a>Network Hardware</h3><p>两个重要分类标准：transmission technology &amp; scale</p>
+<ul>
+<li><p>有线/无线</p>
+</li>
+<li><p>static/dynamic——取决于信道是如何分配的 </p>
+<ul>
+<li>Static：TDM &amp; FDM </li>
+<li>Dynamic ： centralized/decentralized<ul>
+<li>In the centralized channel allocation method, there is <strong>a single entit</strong>y, for example, the base station in cellular network, which determines who goes next.</li>
+<li>In the decentralized channel allocation method, there is <strong>no central entity</strong>; each machine must decide for itself whether to transmit or not.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>不同的技术用于不同规模的网络</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007152318968.png" alt="image-20211007152318968" style="zoom:50%;"></p>
+<h4 id="PAN"><a href="#PAN" class="headerlink" title="PAN"></a>PAN</h4><p>Personal Area Network </p>
+<p>ep:连接一个电脑和它的外设 的网络</p>
+<p>蓝牙网络 使用 master-slave paradigm</p>
+<p>电脑——master</p>
+<p>鼠标、键盘——slave</p>
+<p>The master tells the slaves what addresses to use, when they can broadcast, how long they can transmit, what frequencies they can use, and so on.</p>
+<h4 id="LAN"><a href="#LAN" class="headerlink" title="LAN"></a>LAN</h4><p>Local Area Network</p>
+<p>Home network LAN<br> – Broad, diverse range of Internet-connected devices<br> – Characteristics: manageable, dependable, and secure</p>
+<h4 id="MAN"><a href="#MAN" class="headerlink" title="MAN"></a>MAN</h4><p>Metropolitan Area Network</p>
+<p>covers a city.</p>
+<p>Wired example: <strong>cable television</strong></p>
+<p>Wireless example: IEEE 802.16 (WiMax)</p>
+<h4 id="WAN"><a href="#WAN" class="headerlink" title="WAN"></a>WAN</h4><p>ep：蜂窝数据网络</p>
+<ul>
+<li><p>the subnet consists of two distinct components: <strong>transmission lines</strong> and <strong>switching elements</strong>.</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007175800751.png" alt="image-20211007175800751" style="zoom:33%;"></p>
+<p>一般由多个网络构成</p>
+<p>两种WAN：</p>
+<ul>
+<li><p>VPN (Virtual Private Network)</p>
+<p>• Advantage: reuse of resource<br> • Disadvantage: a lack of control over the underlying resources</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007180936474.png" alt="image-20211007180936474" style="zoom:33%;"></p>
+</li>
+<li><p>ISP (Internet Service Provider)</p>
+<ul>
+<li><strong>The routing algorithm</strong>  how the network makes the decision as to which path to use 用哪条路</li>
+<li><strong>The forwarding algorithm</strong>  how each router makes the decision as to where to send a packet next. 包发去哪</li>
+</ul>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007181000022.png" alt="image-20211007181000022" style="zoom:33%;"></p>
+<h4 id="Internetworks"><a href="#Internetworks" class="headerlink" title="Internetworks"></a>Internetworks</h4><p>包括subnets和hosts</p>
+<p>subnets：ISP</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>两种传播技术：</p>
+<p>– <strong>Broadcastlinks</strong>(Multicasting多播)</p>
+<ul>
+<li><p>The communication channel is shared by all the machines on the network.</p>
+</li>
+<li><p>An address field within each packet specifies the intended recipient接收者.</p>
+</li>
+<li><p>A wireless network is a common example of a broadcast link</p>
+</li>
+<li><p>Allow the possibility of addressing a packet to all destinations by using a special code in the address field.</p>
+</li>
+</ul>
+<p>– <strong>Point-to-pointlinks</strong>(Unicasting单播)</p>
+<ul>
+<li>Point-to-point links connect individual pairs of machines.</li>
+<li>To go from the source to the destination on a network made up of point-to-point links, short messages, called <strong>packets</strong> in certain contexts may have to first visit one or more <strong>intermediate machines</strong>.</li>
+<li>Often multiple routes, of different lengths, are possible, so finding good ones is important in point-to-point networks.</li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>The OSI reference model</p>
+<p>7层</p>
+<p>• The physical layer<br>• The datalink layer<br>• The network layer</p>
+<p>• The transport layer<br>• The session layer<br>• The presentation layer </p>
+<p>• The application %layer</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007184816326.png" alt="image-20211007184816326"></p>
+<h3 id="Physical-Layer"><a href="#Physical-Layer" class="headerlink" title="Physical Layer"></a><strong>Physical Layer</strong></h3><p>最底层</p>
+<h3 id="Data-Link-Layer"><a href="#Data-Link-Layer" class="headerlink" title="Data Link Layer"></a>Data Link Layer</h3><p>3个主要作用：</p>
+<p>– Framing: the sender breaks up the input data into data <strong>frames</strong> (typically a few hundred or a few thousand bytes) and transmit the frames sequentially.</p>
+<p>– Error control: error detection and how handle with errors?<br>– Flow control: how to keep a faster transmitter from drowning a slow receiver in data.</p>
+<h3 id="Network-Layer"><a href="#Network-Layer" class="headerlink" title="Network Layer"></a>Network Layer</h3><p>getting packet from source to destination</p>
+<p>is the lowest layer that deals with end-to-end transmission</p>
+<h3 id="Transportation-Layer"><a href="#Transportation-Layer" class="headerlink" title="Transportation Layer"></a><strong>Transportation Layer</strong></h3><p>The transport layer is a true end-to-end layer</p>
+<ul>
+<li>In the lower layers, each protocols is between a machine and its immediate neighbors, and not between the ultimate source and destination machines.</li>
+<li>The difference between layers 1 through 3, which are chained, and layers 4 through 7 which are end-to-end.</li>
+</ul>
+<p>– Connectionless Transport Protocol: <strong>UDP
+</strong>– Connection-Oriented Transport Protocol: <strong>TCP</strong></p>
+<h3 id="The-session-layer"><a href="#The-session-layer" class="headerlink" title="The session layer *"></a>The session layer *</h3><p>– Thesessionlayeroffersvariousservices,includingdialogcontrol(keepingtrack of whose turn it is to transmit), token management (preventing two parties from attempting the same critical operation simultaneously), and synchronization (checkpointing long transmissions to allow them to pick up from where they left off in the event of a crash and subsequent recovery)</p>
+<h3 id="The-presentation-layer"><a href="#The-presentation-layer" class="headerlink" title="The presentation layer *"></a>The presentation layer *</h3><p>检查语法和语义 转换数据结构</p>
+<ul>
+<li>–  The presentation layer is concerned with the <strong>syntax</strong> and <strong>semantics</strong> of the information transmitted.</li>
+<li>–  To make it possible for computers with different internal data representations to communicate, the data structures to be exchanged can be defined in an abstract way.</li>
+</ul>
+<h3 id="Application-Layer"><a href="#Application-Layer" class="headerlink" title="Application Layer"></a><strong>Application Layer</strong></h3><p>包括很多协议</p>
+<p>– HTTP (Hyper Text Transfer Protocol) is basis of the World Wide Web.</p>
+<p>– Email (SMTP)<br> – File transfer (FTP)</p>
+<p><strong>The TCP/IP Reference Model</strong></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007191518615.png" alt="image-20211007191518615" style="zoom:53%;"></p>
+<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><ul>
+<li>–  The performance of different kinds of physical channels: <strong>throughput</strong>, <strong>latency (delay)</strong> and <strong>error rate</strong>.</li>
+</ul>
+<h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><h3 id="Fourier-Series"><a href="#Fourier-Series" class="headerlink" title="Fourier Series"></a>Fourier Series</h3><p>周期信号：</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007193525387.png" alt="image-20211007193525387"></p>
+<h3 id="带宽限制的信号"><a href="#带宽限制的信号" class="headerlink" title="带宽限制的信号"></a>带宽限制的信号</h3><p>如果所有傅立叶信号的组成频率都等量衰弱，则信号不会<strong>失真</strong>，但大部分信道对于不同频率成分的<strong>影响不同</strong>。</p>
+<p><strong>截止频率</strong>fc(Hz)：一根缆线 传输 0-fc 的信号 <strong>振幅</strong>amplitude几乎不会衰减。</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102240936.png" alt="image-20211116102240936" style="zoom:33%;"></p>
+<p><strong>带宽</strong>：不会严重衰减的 <strong>频率范围</strong>的宽度 —— 由线缆或光纤的物理性质影响（结构、粗细、长度等）</p>
+<p>电子工程师：Hz（模拟analogue)</p>
+<p>计网-&gt;计算机科学家：bit/sec 信道最大传输速率（数字digital）表示信道传输数据的能力</p>
+<p><strong>基带信号</strong>：信号未经过调制，中心频率在0频处</p>
+<p><strong>频带信号</strong>：信号经过调制后，频谱中心搬移到载波了（和一个周期信号相乘，则频率范围增加）</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102848603.png" alt="image-20211116102848603" style="zoom:33%;"></p>
+<p><strong>信道容量</strong>channel capacity：信道在某一条件下传输的最大速率</p>
+<p><strong>数据速率</strong>data rate bps：1s内传输的二进制数的数量。如果二进制输入和二进制输出通道都是没有噪声的，则数据速率为1bps</p>
+<p><strong>错误率</strong>Error rate：错误出现的速率</p>
+<p><strong>码元</strong>：一次脉冲</p>
+<p><strong>波特</strong>baud：一个码元可以表示的二进制位数</p>
+<p><strong>波特率</strong>：每秒电平跃变次数</p>
+<p>ep：4电平传输</p>
+<p>波特：2 —— 即一个电平可以被理解为“00”/“01”/“10”/“11”</p>
+<h3 id="奈惠斯特带宽"><a href="#奈惠斯特带宽" class="headerlink" title="奈惠斯特带宽"></a>奈惠斯特带宽</h3><p>Nyquist Bandwidth</p>
+<p>计算最大传输率 带宽+离散等级/带宽+一波特可以表示多少比特</p>
+<p>最佳脉冲形状：<img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116113503059.png" alt="image-20211116113503059" style="zoom:25%;"></p>
+<p>奈氏准则：在理想低通（没有噪声、带宽有线）的信道中，为了避免码间串扰，码元传输率有上限。</p>
+<p><strong>极限码元传输率 = 2W log~2~V b/s</strong> ——-W：带宽Hz —— V：码元的离散电平数目（有多少种码元/有多少不同电平）</p>
+<p><strong>=2<em>带宽\</em>一个信号表示多少个比特</strong></p>
+<p>=2<em>W\</em>Baud(波特，一个码元所带信息量)</p>
+<p><code>码元：如果有16种不同码元，则需要4位二进制位表示，数据传输率是码元传输率的4倍</code>（即一个码元带了4bit信息量）</p>
+<p>噪声等损害会限制V的值</p>
+<ol>
+<li>在任何信道中，<strong>码元传输的速率是有上限</strong>的。若传输速率超过此上限。就会出现严重的码间串扰问题（是指在接收端收到的信号的波形失去了码元之间的清晰界限），使接收端对码元的完全正确识别成为不可能。</li>
+<li>信道的<strong>频带越宽</strong>（即能通过的信号高频分量越多），就可以用<strong>更高</strong>的<strong>速率</strong>进行码元的有效传输。</li>
+<li>奈氏准则给出了码元传输速率的限制，但并没有对信息传输速率给出限制，也就是说<strong>没有</strong>对<strong>一个码元</strong>可以对应<strong>多少个二进制位</strong>作出<strong>限制</strong>。</li>
+<li>由于码元的传输速率受奈氏准则的制约，所以要<strong>提高数据的传输速率</strong>，就必须设法<strong>使每个码元能携带更多个比特的信息量</strong>，这就是需要采用多元制的调制方法。</li>
+</ol>
+<h3 id="Shannon-Capicity"><a href="#Shannon-Capicity" class="headerlink" title="Shannon Capicity"></a>Shannon Capicity</h3><p>计算信道的最大容量（极限传输速率） =  带宽 * log~2~(1+信噪比)</p>
+<p><strong>Cmax = B*log~2~(1+S/N)</strong></p>
+<p>S/N（SNR）: 信噪比 信号功率S 噪声功率N    单位：无</p>
+<p>如果单位为dB 则 </p>
+<p>SNR~dB~ = 10log~10~ (signal power / noise power) = 10log~10~(SNR)</p>
+<h2 id="传输媒介"><a href="#传输媒介" class="headerlink" title="传输媒介"></a>传输媒介</h2><h3 id="Guided-Transmission-Media"><a href="#Guided-Transmission-Media" class="headerlink" title="Guided Transmission Media"></a>Guided Transmission Media</h3><p>导向传输媒介（从一个电脑到另一个电脑）</p>
+<ul>
+<li><p>Persistent storage </p>
+<p>磁性/固态材料</p>
+<p>延迟非常大（小时～天）</p>
+</li>
+<li><p>Twisted pairs </p>
+<p>双绞线</p>
+<p>最老、最普遍</p>
+<p>信号为 两根线之间的电压差</p>
+<p>可以传输 模拟信号/数字信号</p>
+<p>带宽取决于 线缆的粗细、长度</p>
+<p>几千米 可以达到 多少Mbit/s</p>
+</li>
+</ul>
+<p>  有不同类别 catelogory</p>
+<p>  100 Mbps 以太网——使用两对 每一对负责一个方向 <strong>半双工</strong>Half duplex：每一对都只负责一个方向</p>
+<p>  1 Gbps 以太网 四对全用 <strong>全双工</strong>full duplex：4对都是双向传输的</p>
+<p>  Simplex <strong>单工</strong> ：单向</p>
+<hr>
+<p>  UTP——Unshielded Twisted Pair</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117164950995.png" alt="image-20211117164950995" style="zoom:33%;"></p>
+<p>  catelogory7 在每根双绞对外部有shielding</p>
+<ul>
+<li><p>Coaxial cable </p>
+<p>同轴线缆</p>
+<p>有线电视、城域网（MAN）</p>
+<p>带宽可以达到 GHz</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117170031131.png" alt="image-20211117170031131" style="zoom: 25%;"></p>
+</li>
+<li><p>Power lines </p>
+<p>电力线</p>
+<p>数据信号被叠加在低频电力信号</p>
+<p>难点：分离电力信号</p>
+<p>每个家庭不一样+开关时会产生噪声</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117171631479.png" alt="image-20211117171631479" style="zoom:23%;"></p>
+</li>
+<li><p>Fiber optics</p>
+<p>允许无限大的带宽</p>
+<p>开销大</p>
+<p>速度快</p>
+<p>关键组成：光源（LED、Semiconductor lasers半导体激光器）、传输媒介、探测器detecter</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117172013773.png" alt="image-20211117172013773" style="zoom: 25%;"></p>
+<p>光损耗 Attenuation of light through glass：取决于光的波长。定义为进入、输出信号的比率</p>
+<p>类似于同轴线缆，只是没有braid那一层</p>
+</li>
+</ul>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100016486.png" alt="image-20211123100016486" style="zoom: 25%;"></p>
+<p>  一般使用三种频带的光。红外光的损耗使用dB/km作为单位。0.85-micron(微米) 频带因损耗较高，被用于段距离传输。</p>
+<p>  结构：</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100617921.png" alt="image-20211123100617921" style="zoom:25%;"></p>
+<p>  core的折射率比cladding要大，因此可以让所有光都保存在core里</p>
+<p>  多模光纤 multimode fiber：直径小于50微米 很多不同光线会反射不同角度</p>
+<p>  单模光纤 single-mode fiber：直径小于10微米。光只能直线传播</p>
+<p>  光是单向传播的，因此要双向通信需要 两个光纤 或者 两个频带在一个光纤上</p>
+<p>  LED和Semiconductor laser半导体雷达比较</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123101512187.png" alt="image-20211123101512187" style="zoom:25%;"></p>
+<p>  优点：</p>
+<ul>
+<li>可以处理更高带宽</li>
+<li>不被 电力猛增 电磁干涉 断电 腐蚀性化学物质 影响</li>
+<li>轻量</li>
+<li>不会漏光</li>
+<li><p>difficult to tab</p>
+<p>缺点：</p>
+</li>
+<li><p>需要技术</p>
+</li>
+<li>弯曲会损坏</li>
+</ul>
+<h3 id="Wireless"><a href="#Wireless" class="headerlink" title="Wireless"></a>Wireless</h3><p>电磁频谱</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123102346095.png" alt="image-20211123102346095" style="zoom:25%;"></p>
+<ul>
+<li><p>Radio transmission</p>
+<p>无线电</p>
+<ul>
+<li>简单生成</li>
+<li>长距离</li>
+<li>穿透建筑</li>
+<li>全方向传播</li>
+<li>无线电波的性质依赖于频率<ul>
+<li>低频——很容易穿过障碍，但会产生损耗（成为路径损耗 path loss）</li>
+<li>高频——遇到障碍物会反弹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>microwave transmission</p>
+<p>微波传输</p>
+<p>微波直线传输，因此长距离传输时，会被地球弧度影响，因此需要多个repeaters</p>
+<p>多路衰减multipath fading：延迟的波 out of phase到达，使信号衰减</p>
+</li>
+<li><p>Inftated Transmission</p>
+<p>红外传播</p>
+<p>短距离传输（电视）</p>
+<p>不能穿过固体介质</p>
+<p>不需要政府许可证</p>
+</li>
+<li><p>Light Transmission</p>
+<p>不需要政府许可证</p>
+<p>受天气影响</p>
+</li>
+</ul>
+<h3 id="Satellites"><a href="#Satellites" class="headerlink" title="Satellites"></a>Satellites</h3><p>卫星</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123115106066.png" alt="image-20211123115106066" style="zoom:25%;"></p>
+<p>MEO用于军事系统</p>
+<p>LEO</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120729710.png" alt="image-20211123120729710" style="zoom:25%;"></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120759234.png" alt="image-20211123120759234" style="zoom:25%;"></p>
+<p>相对于光纤的优势</p>
+<ul>
+<li>快速部署</li>
+<li>陆地的基础设施缺乏时可以使用</li>
+<li>广播重要时使用</li>
+</ul>
+<h2 id="数字调试和多路复用技术"><a href="#数字调试和多路复用技术" class="headerlink" title="数字调试和多路复用技术"></a>数字调试和多路复用技术</h2><h3 id="数字调试"><a href="#数字调试" class="headerlink" title="数字调试"></a>数字调试</h3><p>Digital Modulation</p>
+<p>信息的比特和信号之间的转换</p>
+<p>两种方式：</p>
+<ul>
+<li><p>Baseband transmission</p>
+<p>基带传输</p>
+<p>对于有线信道</p>
+<p>经信源<strong>直接编码</strong>所得到的信号</p>
+<p>频谱基本上是从0开始一直扩展到很宽。这种信号<strong>不</strong>经过<strong>频谱搬移</strong>，只经过简单的<strong>频谱变换</strong>进行传输</p>
+</li>
+<li><p>Passband transmission</p>
+<p>通频带传输</p>
+<p>将数字基带信号经过<strong>调制器</strong>进行<strong>调制</strong>，使其成为<strong>数字频带信号</strong>再进行传输，接收端通过相应<strong>解调器</strong>进行<strong>解调</strong></p>
+</li>
+</ul>
+<h4 id="基带传输"><a href="#基带传输" class="headerlink" title="基带传输"></a>基带传输</h4><ul>
+<li><p>带宽有限，如何使传输的信息更多？ 用多于两级的信号级别（码元离散电平数）</p>
+</li>
+<li><p>波特率和比特率 只有在二进制传输时 相等</p>
+</li>
+</ul>
+<p>4种方式</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123233150852.png" alt="image-20211123233150852" style="zoom:33%;"></p>
+<ul>
+<li><p>NRZ</p>
+<p>正电压——1</p>
+<p>负电压——0</p>
+<p>信号会有损失，因此接收到的信号会有失真</p>
+<p>接收端会将 每个时钟间隙 采样到的信号映射到形状最近的波形</p>
+<p>当比特速率是 B bits/s时，因为是最多两个时钟周期，信号从高转为低，因此带宽至少 B/2 Hz——Nyquist Sampling rate</p>
+</li>
+<li><p>Manchester</p>
+<p>receiver和sender需要同步-&gt;需要时钟信号</p>
+<p>法一：传输一个单独的时钟信号</p>
+<p>法二：将时钟信号和数字信号做XOR √</p>
+<p>编码方式：以NRZ为原型——1-高电平到低电平 0-低电平到高电平</p>
+<p>需要NRZ带宽的两倍（传输两倍信息）</p>
+<p>很多以太网技术使用曼彻斯特编码技术</p>
+</li>
+<li><p>NRZI</p>
+<p>USB（Universal Serial Bus）标准 使用 NRZI</p>
+</li>
+<li><p>Scrambling</p>
+<p>将信号与另一段伪随机的信号做异或——防止主频成分（重复的数据）辐射出电磁干扰</p>
+</li>
+<li><p>Balanced signals</p>
+<p>example：bipolar encoding</p>
+<p>即使在短时间内，正电压和负电压一样多，即平均值为0（无直流分量 no DC component）</p>
+<p>无直流的优势：一些传输介质会使直流分量明显衰弱</p>
+</li>
+</ul>
+<h4 id="频带传输"><a href="#频带传输" class="headerlink" title="频带传输"></a>频带传输</h4><p>加一个载波信号 carrier signal，将0-B Hz的基带信号 转为 S-S+B Hz的频带信号，在接收端再转换回来</p>
+<ul>
+<li><p>为什么使用频带传输？</p>
+<p>无线通道 无法传输非常低频的信号，天线的大小和信号波长正比</p>
+<p>可以让多个信号在不同频带上同时传输在一个通道内（FDMA频分）</p>
+</li>
+<li><p>三种调制技术来<strong>调制载波信号</strong></p>
+<p><strong>根据 数字数据 来调制  载波信号</strong></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160814068.png" alt="image-20211125160814068" style="zoom:25%;"></p>
+<p>移幅键控 ASK(Amplitude Shift Keying)</p>
+<p>数字数据 1 载波振幅 1</p>
+<p>数字数据 0 载波振幅 0</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125155858137.png" alt="image-20211125155858137" style="zoom:25%;"></p>
+<p>频移键控FSK(Frequency Shift Keying)</p>
+<p>数字数据 0 载波频率 F1</p>
+<p>数字数据 1 载波频率 F2</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160109453.png" alt="image-20211125160109453" style="zoom:25%;"></p>
+<p>相移键控 PSK(Phase Shift Keying)</p>
+<p>数字数据 1 相移180</p>
+<p>数字数据 0 相移0</p>
+<ul>
+<li>BPSK (Binary PSK) 0 180</li>
+<li>QPSK (Quadrature PSK) 45,135,225,315</li>
+</ul>
+<p>=</p>
+</li>
+</ul>
+<h3 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h3><p>Multiplexing</p>
+<p>一个线 carry 多种信号</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">操作系统笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-18 10:02:11" itemprop="dateCreated datePublished" datetime="2021-09-18T10:02:11+08:00">2021-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-29 11:33:24" itemprop="dateModified" datetime="2021-09-29T11:33:24+08:00">2021-09-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>操作系统课程笔记</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -391,473 +1873,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/24/eigen%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/24/eigen%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">slam代码学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-24 13:25:31" itemprop="dateCreated datePublished" datetime="2021-08-24T13:25:31+08:00">2021-08-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-31 09:38:35" itemprop="dateModified" datetime="2021-08-31T09:38:35+08:00">2021-08-31</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Eigen学习笔记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/24/eigen%E5%AD%A6%E4%B9%A0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">计算机系统概论笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-14 23:40:58" itemprop="dateCreated datePublished" datetime="2021-07-14T23:40:58+08:00">2021-07-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-24 14:28:52" itemprop="dateModified" datetime="2021-07-24T14:28:52+08:00">2021-07-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>patt计算机系统概论笔记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA%E7%AC%94%E8%AE%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/13/pycharm-web%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/13/pycharm-web%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">pycharm web使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-07-13 16:40:14 / 修改时间：16:41:49" itemprop="dateCreated datePublished" datetime="2021-07-13T16:40:14+08:00">2021-07-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97/" itemprop="url" rel="index"><span itemprop="name">搭建日志</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>web搭建遇到的问题</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/13/pycharm-web%E4%BD%BF%E7%94%A8/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/13/c-%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/13/c-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">c++笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-07-13 16:37:00 / 修改时间：16:38:31" itemprop="dateCreated datePublished" datetime="2021-07-13T16:37:00+08:00">2021-07-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>oop笔记 细节</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/13/c-%E7%AC%94%E8%AE%B0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/13/hexo%E6%97%A5%E5%BF%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/13/hexo%E6%97%A5%E5%BF%97/" class="post-title-link" itemprop="url">hexo日志</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-13 13:05:21" itemprop="dateCreated datePublished" datetime="2021-07-13T13:05:21+08:00">2021-07-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-02 22:14:27" itemprop="dateModified" datetime="2021-09-02T22:14:27+08:00">2021-09-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97/" itemprop="url" rel="index"><span itemprop="name">搭建日志</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>hexo环境搭建过程中遇到的问题</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/13/hexo%E6%97%A5%E5%BF%97/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/13/%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%AB%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/mypic.JPG">
-      <meta itemprop="name" content="EsteeX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="krrrr's blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/13/%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%AB%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">视觉识别卷积神经网络</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-13 09:26:56" itemprop="dateCreated datePublished" datetime="2021-07-13T09:26:56+08:00">2021-07-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-05 08:56:23" itemprop="dateModified" datetime="2021-08-05T08:56:23+08:00">2021-08-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">图像识别卷积神经网络</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>CS231n笔记</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/13/%E8%A7%86%E8%A7%89%E8%AF%86%E5%88%AB%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -924,7 +1944,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -937,7 +1957,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -964,7 +1984,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1023,59 +2043,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

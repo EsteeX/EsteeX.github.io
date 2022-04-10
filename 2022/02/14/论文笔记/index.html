@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="subject to 在某个条件下 人工智能  机器学习  按照反馈信息的不同，机器学习经典划分为三大类•监督学习：处理包含有模型正确输出值的数据，即有标记数据。例如图像识别数据中，每一张图像都有相应分类标记。•强化学习：处理的数据仅包含有模型打分值，而不知道模型到底应该输出什么，因此只能靠算法去不断的探索，寻找打分值最高的模型输出。例如围棋游戏，缺乏每一步走棋的最佳指导，只能通过最终的输赢作为打">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文笔记">
+<meta property="og:url" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="krrrr&#39;s blogs">
+<meta property="og:description" content="subject to 在某个条件下 人工智能  机器学习  按照反馈信息的不同，机器学习经典划分为三大类•监督学习：处理包含有模型正确输出值的数据，即有标记数据。例如图像识别数据中，每一张图像都有相应分类标记。•强化学习：处理的数据仅包含有模型打分值，而不知道模型到底应该输出什么，因此只能靠算法去不断的探索，寻找打分值最高的模型输出。例如围棋游戏，缺乏每一步走棋的最佳指导，只能通过最终的输赢作为打">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103824454.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103645568.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103616933.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401121642701.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153433405.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153052314.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401152707966.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161333810.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161807551.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161619376.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161946343.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401162001891.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170639257.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170714864.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170730393.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401171842094.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401172944398.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402190812727.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401173511475.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191103654.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402193821945.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191028780.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401122550531.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132658814.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132725507.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132927310.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132938090.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403160724606.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403161432808.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113416256.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113452501.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113633335.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113939131.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114102011.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114652771.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404115922742.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405122208674.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405125304577.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135734533.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135929130.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405142225053.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405170732010.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222155651.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222204408.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405225543593.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182045635.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182609004.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407183138224.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407184245116.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220408142905576.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325165933022.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172139313.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172209009.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325173135986.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325174317429.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172832441.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180409994.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180450238.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180802152.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181530172.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181802663.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214181008651.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214182844626.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214183016721.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325150012855.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152659257.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152602544.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152142429.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153530655.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153803720.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153915269.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154058816.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154123956.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154431237.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155057521.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155215148.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155434974.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325160333339.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325224244028.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314133212254.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143137287.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143224615.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314183337152.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185232090.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185421460.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315113752153.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315114721048.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125027825.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125731380.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315160337255.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172125711.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172434027.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185004922.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185016531.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315211441028.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220322130359521.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326154336757.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326191318269.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220327164846288.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329201055254.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329211148778.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213747829.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213853459.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220330083301585.png">
+<meta property="og:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325105942982.png">
+<meta property="article:published_time" content="2022-02-14T06:29:42.000Z">
+<meta property="article:modified_time" content="2022-04-08T06:32:05.539Z">
+<meta property="article:author" content="EsteeX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103824454.png">
+
+<link rel="canonical" href="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>论文笔记 | krrrr's blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">krrrr's blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我是小鱼游游游</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-14 14:29:42" itemprop="dateCreated datePublished" datetime="2022-02-14T14:29:42+08:00">2022-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-08 14:32:05" itemprop="dateModified" datetime="2022-04-08T14:32:05+08:00">2022-04-08</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>subject to 在某个条件下</p>
+<h1 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h1><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103824454.png" alt="image-20220401103824454" style="zoom: 25%;"></p>
+<ul>
+<li><strong>机器学习</strong></li>
+</ul>
+<p>按照反馈信息的不同，机器学习经典划分为三大类<br>•监督学习：处理包含有模型正确输出值的数据，即有标记数据。例如图像识别数据中，每一张图像都有相应分类标记。<br>•强化学习：处理的数据仅包含有<strong>模型打分值</strong>，而不知道模型到底应该输出什么，因此只能靠算法去不断的探索，寻找打分值最高的模型输出。例如围棋游戏，缺乏每一步走棋的最佳指导，只能通过最终的输赢作为打分，自主探索寻找最佳模型。<br>•无监督学习：数据中完全没有关于模型输出好坏的客观评估。这时通常会人为的设置某种学习目标，以开展学习，例如把256维人脸照片压缩到4维，此时并没有任何关于这4维应该如何的信息，一种做法是使得这4维能够还原出256维的人脸，这就是一种人为设定的目标。这种还原自身信息的做法也叫自监督学习，虽然名称中有“监督”，其实是一类借用监督技术的无监督学习。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103645568.png" alt="image-20220401103645568" style="zoom: 25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401103616933.png" alt="image-20220401103616933"></p>
+<ul>
+<li><strong>表示学习</strong></li>
+</ul>
+<p>模型自动从数据中抽取特征或者表示</p>
+<p>原始数据 -编码器函数-&gt; 不同表示 -解码器函数-&gt; 原来形式</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401121642701.png" alt="image-20220401121642701" style="zoom: 33%;"></p>
+<ul>
+<li><strong>深度学习</strong></li>
+</ul>
+<p>运用了神经网络的机器学习。（为了区分原来简单的机器学习模型）</p>
+<p>用简单的概念构建复杂的概念（像素-&gt;角和轮廓-&gt;人脸)</p>
+<p>典型例子：MLP 多层感知机/前馈深度网络  为输入提供新的表示</p>
+<p><strong>神经元+激活函数</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153433405.png" alt="image-20220401153433405" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401153052314.png" alt="image-20220401153052314" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401152707966.png" alt="image-20220401152707966" style="zoom:33%;"></p>
+<p><strong>激活函数</strong></p>
+<ul>
+<li><p>符号函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161333810.png" alt="image-20220401161333810"></p>
+</li>
+<li><p>sigmoid函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161807551.png" alt="image-20220401161807551" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161619376.png" alt="image-20220401161619376" style="zoom:50%;"></p>
+</li>
+<li><p>双曲正切函数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401161946343.png" alt="image-20220401161946343" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401162001891.png" alt="image-20220401162001891" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170639257.png" alt="image-20220401170639257" style="zoom:50%;"></p>
+</li>
+<li><p>线性整流函数 ReLU</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170714864.png" alt="image-20220401170714864" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401170730393.png" alt="image-20220401170730393" style="zoom:50%;"></p>
+</li>
+<li><p>Softmax</p>
+<p>o~k~性质：0-1之间，和为1</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401171842094.png" alt="image-20220401171842094" style="zoom:33%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401172944398.png" alt="image-20220401172944398" style="zoom:50%;"></p>
+</li>
+</ul>
+<p><strong>全连接网络</strong></p>
+<p>符号说明</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402190812727.png" alt="image-20220402190812727" style="zoom:50%;"></p>
+<p>n全连接网络，前馈网络，多层感知机，全连接层，稠密层</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401173511475.png" alt="image-20220401173511475"></p>
+<p>神经网络训练方法——损失函数最小化问题</p>
+<ul>
+<li><p>梯度下降</p>
+<p>针对E(w) 直接对于每个w进行提督下降</p>
+</li>
+<li><p>反向传播 <strong>BP:Back</strong> <strong>Propagation</strong></p>
+<p>从后往前更新w</p>
+</li>
+</ul>
+<p>交叉熵损失函数</p>
+<ul>
+<li>误差平方和损失函数</li>
+</ul>
+<p>用于输出是具体数值的问题</p>
+<ul>
+<li>交叉熵损失函数</li>
+</ul>
+<p>用于分类问题</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191103654.png" alt="image-20220402191103654" style="zoom:50%;"></p>
+<p>d对应第几个样本  k对应一个样本里第几个输出</p>
+<p>对于分类问题，只有一个t</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402193821945.png" alt="image-20220402193821945" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220402191028780.png" alt="image-20220402191028780" style="zoom:50%;"></p>
+<h2 id="AI安全问题分类"><a href="#AI安全问题分类" class="headerlink" title="AI安全问题分类"></a>AI安全问题分类</h2><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220401122550531.png" alt="image-20220401122550531" style="zoom:30%;"></p>
+<h3 id="对抗样本"><a href="#对抗样本" class="headerlink" title="对抗样本"></a><strong>对抗样本</strong></h3><p>输入向量x 产生细微干扰 得到另一个特征向量x’ 使得x’在人眼看来的分类与机器的分类不同。</p>
+<ul>
+<li>无目标攻击——将样本预测错误 最大化预测的错误率</li>
+<li>有目标攻击——将某一类别错误分类成指定类别</li>
+</ul>
+<p>目标函数</p>
+<ul>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132658814.png" alt="image-20220403132658814" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132725507.png" alt="image-20220403132725507" style="zoom:50%;"></p>
+<p>最小化扰动，使某一错误分类的预测大于正确分类/指定错误分类大于所有其他类别</p>
+</li>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132927310.png" alt="image-20220403132927310" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403132938090.png" alt="image-20220403132938090" style="zoom:50%;"></p>
+<p>需要代价函数的值小于ε，并在该条件下使 正确类别的得分最小/目标分类的得分最大</p>
+</li>
+<li><p>无目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403160724606.png" alt="image-20220403160724606" style="zoom:50%;"></p>
+<p>有目标<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220403161432808.png" alt="image-20220403161432808" style="zoom:50%;"></p>
+<p>最小化扰动和 正确分类得分和其他最大得分的差（若小于0则取0）最小值/目标错误分类得分和其他最大得分的差 的最大值 的加权和</p>
+</li>
+</ul>
+<h4 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h4><p>鲁棒性定义：对于给定的分类器k ̂在全体数据分布上的最小对抗扰动r的期望即为分类器k ̂的鲁棒性</p>
+<p>比较性能：扰动大小（越小越难防守） &amp; 运行时间</p>
+<ul>
+<li><p>快速梯度符号法 FGSM</p>
+<p>“Fast Gradient-Sign Method”</p>
+<p>无目标</p>
+<p>扰动（代价函数）在ε内，使正确标签与模型预测结果的损失（损失函数）最大 <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113416256.png" alt="image-20220404113416256" style="zoom:50%;">。</p>
+<p>特点：将损失函数线性近似</p>
+<p>目标函数<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113452501.png" alt="image-20220404113452501" style="zoom:50%;"></p>
+<p>g代表预测分值的函数</p>
+<p>在x每个分量上独立添加最大化扰动，得到<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113633335.png" alt="image-20220404113633335" style="zoom:50%;"></p>
+</li>
+<li><p>投影梯度下降法 PGD</p>
+<p>Project Gradient Descent</p>
+<p>无目标</p>
+<p>FGSM是仅仅做一次迭代，而PGD是做多次迭代，每次走一小步，每次迭代都会将扰动调整到规定范围内 </p>
+<p>目标函数 <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404113939131.png" alt="image-20220404113939131" style="zoom:50%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114102011.png" alt="image-20220404114102011"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404114652771.png" alt="image-20220404114652771"></p>
+</li>
+<li><p>DeepFool</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220404115922742.png" alt="image-20220404115922742"></p>
+</li>
+<li><p>基于雅可比矩阵的显著图攻击 JSMA</p>
+<p>Jacobian-based Saliency Map Attacks</p>
+<p>有目标</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405122208674.png" alt="image-20220405122208674" style="zoom:50%;"></p>
+<p>找到最小扰动，使样本输出标签变为攻击者指定的标签</p>
+<p>需要寻找正向扰动</p>
+<p>对抗性显著图（Adversarial Saliency Maps）：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405125304577.png" alt="image-20220405125304577" style="zoom:50%;"></p>
+<p>当目标类别的前向导数小于0 / 其他类别前向导数总和大于0 时 ，显著图赋值为0，否则将<strong>对应类别的前向导数的值</strong>与<strong>其他类别的前向导数总和的绝对值</strong>的<strong>乘积</strong>作为这一项的值</p>
+</li>
+<li><p>单像素攻击 (One Pixel Attack)</p>
+<p>使用差分进化的方法来修改单个像素点并以此来改变分类器的输出</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135734533.png" alt="image-20220405135734533" style="zoom:50%;"></p>
+<p>有目标攻击</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405135929130.png" alt="image-20220405135929130"></p>
+<ul>
+<li><p>差分进化（DIfferential Evolution）</p>
+<p>在每次迭代中，根据当前解(父亲解)生成另一组候选解(孩子解)</p>
+<p>然后将孩子解与他们相应的父亲解进行比较，如果孩子解比他们的父亲解更适合，他们就会被保留下来，否则他们被淘汰</p>
+</li>
+<li><p>DE在One Pixel Attack中的使用</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405142225053.png" alt="image-20220405142225053"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><p>检测目的为 判断样本是对抗样本还是正常样本。检测的是 <strong>对抗样本</strong>与<strong>原始样本</strong>的特征或数字特征之间的区别</p>
+<p>通过<strong>神经网络中间状态的输出</strong>作为检测器的输入，从而检测出对抗样本</p>
+<h5 id="基于特征学习的对抗样本检测"><a href="#基于特征学习的对抗样本检测" class="headerlink" title="基于特征学习的对抗样本检测"></a>基于特征学习的对抗样本检测</h5><p>利用对抗样本与原始样本的<strong>不同特征</strong>来进行对抗样本检测</p>
+<p>在高维的数据下往往难以得到较好的特征学习结果来检测对抗样本，可以通过降维将高维的复杂数据转化为低维数据，降低特征学习的难度——特征压缩</p>
+<ul>
+<li><p>色深压缩</p>
+<p>色深为像素点可以取值颜色的大小，一般用位表示色深大小，色深为i位表示像素点取值的颜色有2i种</p>
+<p>ep：CIFAR-10和ImageNet为24位的彩色图，即每个像素含有R，G，B三个通道的图片，每个通道的值取值在0~28-1，故一个像素点所有的颜色取值范围在2^24^-1</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405170732010.png" alt="image-20220405170732010"></p>
+</li>
+<li><p>空间平滑</p>
+<p>减少图像噪声</p>
+<ul>
+<li><p>局部平滑</p>
+<p>利用邻近像素对每个像素进行平滑</p>
+<p>中值平滑</p>
+<p>•取一个方形窗口对于整张图片上下移动，每次移动时，取出小窗内所有像素点的中位数，使用这个中位数代替中间像素点的值</p>
+</li>
+<li><p>非局部平滑</p>
+<p>在图像的大面积区域内发现多个相似的像素块，并用这些相似像素块的平均值代替中心像素块</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222155651.png" alt="image-20220405222155651"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405222204408.png" alt="image-20220405222204408"></p>
+<p>在一定范围内，压缩的程度越大，对抗样本的检测成功率越高</p>
+<h5 id="基于分布统计的对抗样本检测"><a href="#基于分布统计的对抗样本检测" class="headerlink" title="基于分布统计的对抗样本检测"></a>基于分布统计的对抗样本检测</h5><p>利用对抗样本与原始样本的不同数字特征（即样本通过网络后得到的概率分布的形状）通过检测输入是否符合正常样本的分布，从而判断输入是否具有对抗性</p>
+<p>正常样本的softmax输出向量会比对抗样本更加分散（远离均匀分布）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220405225543593.png" alt="image-20220405225543593"></p>
+<p>测量均匀分布和样本softmax分布之间的<strong>KL散度</strong>来完成，然后根据预先设定的阈值，小于这个阈值则认为样本是对抗样本，反之认为是正常样本</p>
+<h5 id="基softmax分布与输入重构的检测"><a href="#基softmax分布与输入重构的检测" class="headerlink" title="基softmax分布与输入重构的检测"></a>基softmax分布与输入重构的检测</h5><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182045635.png" alt="image-20220407182045635" style="zoom:50%;"></p>
+<p>对抗样本与正常样本在原始分类网络<strong>中间层的输出进行重构后的图像</strong>有着明显的差距，对抗样本的重构图片相较于正常图片的重构图片更加不规则且更加模糊</p>
+<p>通过对抗样本与正常样本输入重构的差异可以进行对抗样本的检测</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407182609004.png" alt="image-20220407182609004"></p>
+<h5 id="基于中间输出的对抗样本检测"><a href="#基于中间输出的对抗样本检测" class="headerlink" title="基于中间输出的对抗样本检测"></a><strong>基于中间输出的对抗样本检测</strong></h5><p>正常的样本与对抗样本的输入在深度神经网络中得到的<strong>中间输出</strong>状态有较大的差距</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407183138224.png" alt="image-20220407183138224"></p>
+<p>AD模块作为检测器, 是训练好的二分类网络，输出该样本为对抗样本的概率<br><strong>训练该二分类网络</strong>：</p>
+<p>得到训练集：</p>
+<ol>
+<li>得到对抗样本</li>
+<li>将正常样本与对抗样本 分别输入 原始分类网络中，得到原始分类网络的中间输出：正常样本数据（x1，0)与对抗样本数据（x2，1），这两种不同标签的数据 作为 这一接口处的 对抗检测网络的训练数据集</li>
+</ol>
+<p>损失函数<img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220407184245116.png" alt="image-20220407184245116" style="zoom:50%;"></p>
+<p>训练方法：</p>
+<ol>
+<li><p>通过监督学习的方法，每次将一个训练数据（x,y）输入对抗检测网络进行训练</p>
+</li>
+<li><p>在数据通过对抗检测网络后，得到预测结果y ̂，计算出这一轮损失函数L的值，使用随机梯度下降（SGD）的方法反向传播更新对抗检测网络的参数</p>
+</li>
+</ol>
+<h4 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h4><h5 id="基于经验的防御方法"><a href="#基于经验的防御方法" class="headerlink" title="基于经验的防御方法"></a>基于经验的防御方法</h5><ul>
+<li><p>对抗训练</p>
+<p>主动生成对抗样本，纳入训练阶段对神经网络进行训练</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220408142905576.png" alt="image-20220408142905576"></p>
+</li>
+<li><p>特征去噪</p>
+</li>
+<li><p>防御蒸馏</p>
+</li>
+</ul>
+<h5 id="基于理论的防御方法"><a href="#基于理论的防御方法" class="headerlink" title="基于理论的防御方法"></a>基于理论的防御方法</h5><ul>
+<li>可证明式防御</li>
+</ul>
+<h1 id="QUADTREE-ATTENTION-FOR-VISION-TRANSFORMERS"><a href="#QUADTREE-ATTENTION-FOR-VISION-TRANSFORMERS" class="headerlink" title="QUADTREE ATTENTION FOR VISION TRANSFORMERS"></a>QUADTREE ATTENTION FOR VISION TRANSFORMERS</h1><h2 id="Self-attention"><a href="#Self-attention" class="headerlink" title="Self-attention"></a>Self-attention</h2><p>attention is all you need</p>
+<p>Word embedding —— 语义相关</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325165933022.png" alt="image-20220325165933022" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172139313.png" alt="image-20220325172139313" style="zoom:25%;"></p>
+<p>如何考虑整个sequence的信息？-&gt; self-attention</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172209009.png" alt="image-20220325172209009" style="zoom: 25%;"></p>
+<p>Fully connection 专注于处理某一位置的资讯，self-attention考虑全部</p>
+<ul>
+<li><p>Self-attention 流程</p>
+<p>计算每个输入的相关度alfa，将alfa进行softmax得到alfa’——attention score</p>
+<p>再根据attention score抽取信息，用每个alfa乘以v 再相加</p>
+<p>（Wk，Wq，Wv是通过train找出来的）</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325173135986.png" alt="image-20220325173135986" style="zoom: 25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325174317429.png" alt="image-20220325174317429" style="zoom:25%;"></p>
+<ul>
+<li><p>如何计算相关度</p>
+<p>dot-product 将输入乘以某一矩阵进行转换，自身得到query向量，其他输入得到key向量，query和key进行item wise相乘求和得到alfa</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325172832441.png" alt="image-20220325172832441" style="zoom:25%;"></p>
+<ul>
+<li><p>Multi-head self-attention</p>
+<p>多少head——多少种相关性</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180409994.png" alt="image-20220325180409994" style="zoom:25%;"></p>
+</li>
+</ul>
+<p>  <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180450238.png" alt="image-20220325180450238" style="zoom:25%;">再将两个b向量连接起来，乘以一个矩阵得到bi</p>
+<ul>
+<li><p>有一个问题：自注意力机制没有区分位置关系，即没有位置信息</p>
+<p>原始的位置编码：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325180802152.png" alt="image-20220325180802152" style="zoom:25%;"></p>
+</li>
+</ul>
+<p>self-attention相对于cnn更flexible（卷积核内的attention score非0，其他的element对应的attention score为0）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181530172.png" alt="image-20220325181530172" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325181802663.png" alt="image-20220325181802663" style="zoom:25%;"></p>
+<h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2><p>神经网络架构 最先用于机器翻译 类似变压器</p>
+<p>是一个全注意力模型</p>
+<p>seq2seq模型（自回归）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214181008651.png" alt="image-20220214181008651"></p>
+<p>变长</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214182844626.png" alt="image-20220214182844626"></p>
+<p>long-term dependent </p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220214183016721.png" alt="image-20220214183016721" style="zoom:50%;"></p>
+<ul>
+<li>不灵活 wij学习后固定</li>
+</ul>
+<h3 id="Seq2Seq"><a href="#Seq2Seq" class="headerlink" title="Seq2Seq"></a>Seq2Seq</h3><p>翻译</p>
+<p>Text to speech</p>
+<p>chatbot聊天机器人</p>
+<p>语音识别</p>
+<p>文法剖析</p>
+<p>Multi-class classification  从数个class中选择一个class出来</p>
+<p>Multi-label classification 一个东西可以属于多个class</p>
+<p>object detection</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325150012855.png" alt="image-20220325150012855" style="zoom: 25%;"></p>
+<p>seq2seq model的起源为14年</p>
+<p>transformer 属于 seq2seq model，有encoder、decoder架构</p>
+<h4 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h4><p>输入一排向量，输出一排向量（self attention、RNN、CNN都可以做到）</p>
+<p>transformer的encoder用的是self attention</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152659257.png" alt="image-20220325152659257" style="zoom: 25%;"></p>
+<p>一个block可以展开为：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152602544.png" alt="image-20220325152602544" style="zoom: 25%;"></p>
+<p>将输入和self-attention的输出加起来——residual connection</p>
+<p>再进行layer norm （batch norm是指将一整个batch的每个相同feature 为一组，进行norm，layer norm是指不同维度进行normalization）</p>
+<p>再将norm的结果送入fully connection，再residual connection，再layer norm 得到一个block的输出</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325152142429.png" alt="image-20220325152142429" style="zoom: 25%;"></p>
+<h4 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h4><ul>
+<li>autoregressive的decoder</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153530655.png" alt="image-20220325153530655" style="zoom:25%;"></p>
+<p>差不多只多出来了中间一块 和 最下面一块改成了<strong>masked</strong> multi-head attention</p>
+<p>Self attention 和 masked Self attention的区别：是否使用后面输入的资讯</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153803720.png" alt="image-20220325153803720" style="zoom:17%;"><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325153915269.png" alt="image-20220325153915269" style="zoom:17%;"></p>
+<p>具体一点：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154058816.png" alt="image-20220325154058816" style="zoom:17%;">             <img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154123956.png" alt="image-20220325154123956" style="zoom:17%;"></p>
+<p>decoder还要自己决定输出的长度   </p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325154431237.png" alt="image-20220325154431237" style="zoom:20%;"></p>
+<ul>
+<li>Non-autoregressive （NAT）</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155057521.png" alt="image-20220325155057521" style="zoom:25%;"></p>
+<h4 id="连接encoder-decoder"><a href="#连接encoder-decoder" class="headerlink" title="连接encoder decoder"></a>连接encoder decoder</h4><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155215148.png" alt="image-20220325155215148" style="zoom:25%;"></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325155434974.png" alt="image-20220325155434974" style="zoom:33%;"></p>
+<p>k、v、q都是向量乘以一个transformer的矩阵得到</p>
+<p>原始论文里都是使用encoder最后一层的输出</p>
+<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325160333339.png" alt="image-20220325160333339" style="zoom:25%;"></p>
+<h2 id="Self-Supervised-Learning"><a href="#Self-Supervised-Learning" class="headerlink" title="Self-Supervised Learning"></a>Self-Supervised Learning</h2><p>没有label的资料，把输入x分为两部分，其中一部分当作label</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325224244028.png" alt="image-20220325224244028" style="zoom:25%;"></p>
+<p>以bert模型为例</p>
+<h3 id="Bert"><a href="#Bert" class="headerlink" title="Bert"></a>Bert</h3><h1 id="Deep-Learning-for-3D-Point-Clouds-A-Survey"><a href="#Deep-Learning-for-3D-Point-Clouds-A-Survey" class="headerlink" title="Deep Learning for 3D Point Clouds: A Survey"></a>Deep Learning for 3D Point Clouds: A Survey</h1><ul>
+<li><strong>3d数据表达方式</strong>：depth images, point clouds, meshes,  volumetric grids</li>
+<li><p><strong>点云相关问题</strong>：3D shape classification, 3D object detection and tracking, 3D point cloud segmentation, 3D point cloud registration, 6-DOF pose estimation, 3D reconstruction</p>
+</li>
+<li><p><strong>3d点云深度学习方法</strong></p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314133212254.png" alt="image-20220314133212254"></p>
+<ul>
+<li><p><strong>数据集</strong></p>
+<ul>
+<li><p>3D shape classification</p>
+<p>synthetic datasets <strong>&amp;</strong> real-world datasets</p>
+</li>
+<li><p>3D object detection and tracking</p>
+<p>indoor scenes <strong>&amp;</strong> outdoor urban scenes</p>
+</li>
+<li><p>3D point cloud segmentation</p>
+<p>不同感知器获取</p>
+<p>Mobile Laser Scanners (MLS) <strong>&amp;</strong> Aerial Laser Scanners (ALS) <strong>&amp;</strong> RGB- D cameras…</p>
+</li>
+</ul>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143137287.png" alt="image-20220314143137287"></p>
+</li>
+<li><p><strong>评估指标</strong></p>
+<ul>
+<li><p>3D shape classification</p>
+<p><em>Overall Accuracy</em> (OA) —— the mean accuracy for all test instances</p>
+<p>mean class accuracy* (mAcc) —— the mean accuracy for all shape classes</p>
+</li>
+<li><p>3D object detection</p>
+<p><em>Average Precision</em> (AP) —— the area under the precision-recall curve</p>
+</li>
+<li><p>3D multi-object tracking</p>
+<p><em>Average Multi-Object Tracking Accuracy</em> (AMOTA) </p>
+<p><em>Average Multi-Object Tracking Precision</em> (AMOTP) </p>
+</li>
+<li><p>3D point cloud segmentation</p>
+<p>OA, <em>mean Intersection over Union</em> (mIoU) and <em>mean class Accuracy</em> (mAcc)</p>
+</li>
+<li><p>instance segmentation of 3D point clouds</p>
+<p><em>mean Average Precision</em> (mAP) </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3D-SHAPE-CLASSIFICATION"><a href="#3D-SHAPE-CLASSIFICATION" class="headerlink" title="3D SHAPE CLASSIFICATION"></a><strong>3D S</strong>HAPE <strong>CLASSIFICATION</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">step1(embedding of each point)--an aggregation method--&gt;step2(global shape embedding)--feed into--&gt;step3(fully connected layers)--&gt;classification;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314143224615.png" alt="image-20220314143224615"></p>
+<p><strong>Methods</strong>: multi-view based, volumetric-based and point-based methods</p>
+<p><strong>multi-view based methods</strong></p>
+<p>将点云投影至2d图像</p>
+<p>将一个三维图形投影到多个视图中，然后提取各个视图的特征，然后融合这些特征进行精确的形状分类</p>
+<p>Multi-view Convolutional Neural Networks for 3D Shape Recognition（MVCNN）</p>
+<p><strong>volumetric-based methods</strong></p>
+<p>将点云转换为三维体积表示</p>
+<p>将三维卷积神经网络（CNN）应用于体表示进行形状分类</p>
+<p>VoxNet: A 3D convolutional neural network for real-time object recognition（VoxNet）网络、基于卷积深度的三维形状网，虽然已经取得了令人鼓舞的性能，但由于计算量和内存占用随着分辨率的增加而呈立方体增长，因此这些方法无法很好地适应密集的三维数据。</p>
+<p><strong>Pointwise MLP Methods</strong></p>
+<p>pointwise MLP, convolution-based, graph-based, hierarchical data structure-based methods and other typical methods</p>
+<ul>
+<li><p><strong>Pointwise MLP Methods</strong></p>
+<p>使用多个共享多层感知器（MLP）独立地对每个点建模，然后使用对称聚合函数聚合全局特征</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314183337152.png" alt="image-20220314183337152"></p>
+<p>PointNet: Deep <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=learning&amp;spm=1001.2101.3001.7020">learning</a> on point sets for 3D classification and segmentation（PointNet） 直接以点云作为输入并实现对称函数的置换不变性。PointNet使用几个MLP层独立地学习点态特征，并使用最大池化层提取全局特征。由于PointNet中每个点的特征都是独立学习的，因此<strong>无法获取点之间的局部结构信息</strong>。因此，提出了一种层次网络pointnet++来从每个点的<strong>邻域</strong>中捕捉精细的几何结构。作为PointNet++层次结构的核心，其<strong>集合抽象层</strong>由三层组成:采样层、分组层和基于PointNet的学习层。通过叠加多个集合抽象层次，pointnet++从局部几何结构中学习特征，并逐层抽象局部特征。</p>
+</li>
+<li><p><strong>Convolution-based Methods</strong></p>
+<p>根据卷积核种类，将3d 卷积方法分为continuous and discrete两种（连续卷积法和离散卷积法）</p>
+<p><strong>3D Continuous Convolution Methods</strong></p>
+<p>定义了连续空间上的卷积核，其中相邻点的权重与相对于中心点的<strong>空间分布</strong>有关。</p>
+<p><strong>·</strong> PointConv（CVPR’19）</p>
+<p><strong>·</strong> ConvPoint（Computers &amp; Graphics）</p>
+<p><strong>3D Discrete Convolution Methods</strong></p>
+<p>在规则网格上定义卷积核，其中相邻点的权重与相对于中心点的<strong>偏移量</strong>有关。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185232090.png" alt="image-20220314185232090"></p>
+</li>
+<li><p><strong>Graph-based Methods</strong> </p>
+<p>将点云中的每个点看作图的顶点，并根据每个点的邻域生成有向边。然后在空间或光谱域中进行特征学习。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220314185421460.png" alt="image-20220314185421460" style="zoom:50%;"></p>
+<p><strong>Graph-based Methods in Spatial Domain</strong></p>
+</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">step1(convolution over spatial neighbors)--pooling to aggregate information from each point&#x27;s neighbors--&gt;step2(coarsened graph)--feed into--&gt;step3(fully connected layers)--&gt;classification;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  Features at each vertex —— assigned with <strong>coordinates, laser intensities or colors</strong></p>
+<p>  Features at each edge —— <strong>geometric attributes</strong> between two connected points</p>
+<ul>
+<li><p><strong>Hierarchical Data Structure-based Methods</strong></p>
+<p>基于层次数据结构的方法（八叉树 kd-tree）点对应的特征从叶节点学到根节点</p>
+</li>
+</ul>
+<p>Pointwise MLP networks are usually served as the basic building block for other types of networks to learn pointwise features.</p>
+<h2 id="3D-OBJECT-DETECTION-AND-TRACKING"><a href="#3D-OBJECT-DETECTION-AND-TRACKING" class="headerlink" title="3D OBJECT DETECTION AND TRACKING"></a><strong>3D OBJECT</strong> <strong>DETECTION AND</strong> <strong>T</strong>RACKING</h2><h3 id="3D-Object-Detection"><a href="#3D-Object-Detection" class="headerlink" title="3D Object Detection"></a><strong>3D Object Detection</strong></h3><p>典型的3D对象检测器以场景的点云为输入，在每个检测到的对象周围生成一个定向的3D边界框，如图5所示。与图像中的目标检测相似，三维目标检测方法可分为两类：<strong>基于区域建议的方法和单次拍摄方法</strong>。region proposal-based and single shot methods</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315113752153.png" alt="image-20220315113752153"></p>
+<p><strong>Public Datasets</strong></p>
+<ul>
+<li>KITTI (CVPR’12) <ul>
+<li>3D objecct detection</li>
+<li>BEV</li>
+</ul>
+</li>
+<li>ApolloScape (TPAMI’19) </li>
+<li>Argoverse (CVPR’19) </li>
+<li>A*3D (arXiv’19)</li>
+<li>Waymo (arXiv’19)</li>
+</ul>
+<h4 id="Region-Proposal-based-Methods"><a href="#Region-Proposal-based-Methods" class="headerlink" title="Region Proposal-based Methods"></a><strong>Region Proposal-based Methods</strong></h4><p>propose several possible <strong>regions</strong> containing objects -&gt; extract region- wise <strong>features</strong> -&gt; determine the <strong>category</strong> label of each proposal</p>
+<ul>
+<li><p><strong>Multi-view based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315114721048.png" alt="image-20220315114721048" style="zoom:50%;"></p>
+<p>fuse proposal-wise features from different view maps -&gt; 3D rotated boxes</p>
+<p>计算复杂度高</p>
+<p>从两个方面加速：efficiently fuse the information of different modalities <strong>&amp;</strong> extract robust representations of the input data</p>
+</li>
+<li><p><strong>Segmentation-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125027825.png" alt="image-20220315125027825" style="zoom:50%;"></p>
+<p>use semantic segmentation techniques to <strong>remove most background points</strong> -&gt; generate a large amount of <strong>high-quality proposals</strong> on foreground points ——— save computation</p>
+</li>
+<li><p><strong>Frustum-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315125731380.png" alt="image-20220315125731380" style="zoom:50%;"></p>
+<p>use existing 2D object detectors to generate <strong>2D candidate regions</strong> of objects -&gt; extract a <strong>3D frustum proposal</strong> for each 2D candidate region</p>
+<p>step-by-step pipeline</p>
+</li>
+</ul>
+<h4 id="Single-Shot-Methods"><a href="#Single-Shot-Methods" class="headerlink" title="Single Shot Methods"></a><strong>Single Shot Methods</strong></h4><p>快速</p>
+<p><strong>predict class probabilities</strong> and <strong>regress 3D bounding boxes</strong> of objects using <strong>a single-stage network</strong></p>
+<ul>
+<li><p><strong>BEV-based Methods</strong></p>
+<p>基于鸟瞰视角的方法</p>
+</li>
+<li><p><strong>Discretization-based Methods</strong></p>
+<p>基于离散化的方法</p>
+<p>将点云转换为规律离散的表达形式 使用cnn预测分类、3d box</p>
+</li>
+<li><p><strong>Point-based Methods</strong></p>
+<p>直接将点云当作输入</p>
+</li>
+</ul>
+<h3 id="3D-Object-Tracking"><a href="#3D-Object-Tracking" class="headerlink" title="3D Object Tracking"></a><strong>3D Object Tracking</strong></h3><p>任务：给出第一帧中物体的位置，评估剩下帧中物体的状态</p>
+<p>挑战：occlusion, illumination and scale variation</p>
+<h3 id="3D-Scene-Flow-Estimation"><a href="#3D-Scene-Flow-Estimation" class="headerlink" title="3D Scene Flow Estimation"></a><strong>3D Scene Flow Estimation</strong></h3><p>给两个点云X，Y，3D scene flow D = {di}^N^ 描述了X中的每个点x~i~对应到Y中相应点x~i~’的移动 x′i = xi + di</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>KITTI数据集很常用</p>
+<ul>
+<li>Region proposal-based methods 在物体检测中最常用，并且效果较 Single Shot 好</li>
+<li>物体检测有两大限制：长距离检测的能力 &amp; 如何完全发掘图片中的纹理信息</li>
+<li>多任务学习是三维目标检测的未来发展方向。</li>
+<li>三维目标跟踪和场景流估计是新兴的研究课题</li>
+</ul>
+<h2 id="3D-POINT-CLOUD-SEGMENTATION"><a href="#3D-POINT-CLOUD-SEGMENTATION" class="headerlink" title="3D POINT CLOUD SEGMENTATION"></a><strong>3D POINT</strong> <strong>CLOUD</strong> <strong>SEGMENTATION</strong></h2><p>需要理解全局的几何结构 &amp; 每个点的细节信息</p>
+<h3 id="semantic-segmentation"><a href="#semantic-segmentation" class="headerlink" title="semantic segmentation"></a>semantic segmentation</h3><p>scene level</p>
+<p>根据语义信息分割</p>
+<p>projection and discretization- based methods 先将点云转换为中间的规律的表示，再将中间的分段结果映射回原来的点云上。</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315160337255.png" alt="image-20220315160337255" style="zoom:50%;"></p>
+<h5 id="Projection-based-Methods基于投影的方法"><a href="#Projection-based-Methods基于投影的方法" class="headerlink" title="Projection-based Methods基于投影的方法"></a>Projection-based Methods基于投影的方法</h5><p>将点云投影成2d图像，比如multi-view and spherical images</p>
+<p>Multi-view Representation：projected a 3D point cloud onto 2D planes from multiple virtual camera views. Then, a multi-stream FCN is used to predict pixel-wise scores on synthetic images. The final semantic label of each point is obtained by fusing the reprojected scores over different views.</p>
+<h5 id="Discretization-based-Methods基于离散化的方法"><a href="#Discretization-based-Methods基于离散化的方法" class="headerlink" title="Discretization-based Methods基于离散化的方法"></a><strong>Discretization-based Methods基于离散化的方法</strong></h5><p>将点云转换为稠密/稀疏的离散表示，比如volumetric and sparse permutohedral lattices</p>
+<ul>
+<li><p><strong>Dense Discretization Representation</strong></p>
+<p>先体素化点云为稠密的栅格，再执行标准的卷积</p>
+</li>
+<li><p><strong>Sparse Discretization Representation</strong></p>
+<p>Volumetric representation is naturally sparse, as the number of non-zero values only accounts for a small percentage.</p>
+</li>
+</ul>
+<h5 id="Hybrid-Methods混合方法"><a href="#Hybrid-Methods混合方法" class="headerlink" title="Hybrid Methods混合方法"></a><strong>Hybrid Methods</strong>混合方法</h5><h5 id="Point-based-Methods"><a href="#Point-based-Methods" class="headerlink" title="Point-based Methods"></a><strong>Point-based Methods</strong></h5><p>直接作用于点云</p>
+<ul>
+<li><p><strong>Pointwise MLP Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172125711.png" alt="image-20220315172125711" style="zoom:50%;"></p>
+<p>共用MLP作为基础单元，但无法捕捉到点之间的关系</p>
+<p>学习local structure的方法：</p>
+<ul>
+<li><p><em>Neighboring feature pooling</em></p>
+<p>聚集临近点的信息</p>
+</li>
+<li><p><em>Attention-based aggregation</em></p>
+<p>注意力机制</p>
+</li>
+<li><p><em>Local-global concatenation</em></p>
+<p>incorporate local structures and global context</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Point Convolution Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315172434027.png" alt="image-20220315172434027" style="zoom:50%;"></p>
+</li>
+<li><p><strong>RNN-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185004922.png" alt="image-20220315185004922" style="zoom:50%;"></p>
+<p>Recurrent Neural Networks -&gt; capture inherent context features</p>
+</li>
+<li><p><strong>Graph-based Methods</strong></p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315185016531.png" alt="image-20220315185016531" style="zoom:50%;"></p>
+<p>capture the underlying shapes and geometric structures of 3D point clouds</p>
+<p>将点云表示为相互连接的简单形状和超级点，用有向图去捕捉结构和上下文信息。点云分割问题就被改变为：几何分割，超级点嵌入，上下文分割</p>
+</li>
+</ul>
+<h3 id="instance-segmentation"><a href="#instance-segmentation" class="headerlink" title="instance segmentation"></a>instance segmentation</h3><p>object level</p>
+<p>需要分割语义，也需要在同一语义中分割出不同实例</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220315211441028.png" alt="image-20220315211441028" style="zoom:50%;"></p>
+<h4 id="proposal-based-methods"><a href="#proposal-based-methods" class="headerlink" title="proposal-based methods"></a>proposal-based methods</h4><p> 3D object detection + instance mask prediction</p>
+<h4 id="proposal-free-methods"><a href="#proposal-free-methods" class="headerlink" title="proposal-free methods"></a>proposal-free methods</h4><p>semantic segmentation, subsequently 聚集属于某一实例的点(同一实例的点往往有相似特征  -&gt;  特征学习，点集分组)</p>
+<p>特征匹配方式：</p>
+<p>similarity matrix 但是占用大量内存</p>
+<p>使用子流形稀疏卷积 预测每个体素的得分以及和相邻体素之间的相似性</p>
+<h3 id="part-segmentation"><a href="#part-segmentation" class="headerlink" title="part segmentation"></a>part segmentation</h3><p>part level</p>
+<p>三维形状的零件分割有两个难点。首先，具有相同语义标签的形状零件具有较大的几何变化和歧义性。第二，语义相同的对象中的零件数目可能不同。</p>
+<p>总结：</p>
+<ul>
+<li>由于规则的数据表示，基于投影的方法和基于离散化的方法都可以利用二维图像中成熟的网络结构。然而，<strong>基于投影</strong>的方法的主要局限性在于3D-2D投影造成的<strong>信息丢失</strong>，而<strong>离散化方法</strong>的主要瓶颈是分辨率的提高导致的<strong>计算和存储开销</strong>的立方增长。为此，建立在<strong>索引结构</strong>上的<strong>稀疏卷积</strong>是一个可行的解决方案，值得进一步探索。</li>
+<li>基于点的网络是最常被研究的方法。然而，点表示自然<strong>没有明确的邻域信息</strong>，现有的基于点的方法大多采用代价昂贵的<strong>邻域搜索机制</strong>（如KNN或ball query）。这就限制了这些方法的效率，最近提出的<strong>点体素联合</strong>表示将是进一步研究的一个有趣的方向。</li>
+<li>从<strong>不平衡数据</strong>中学习仍然是点云分割中一个具有挑战性的问题。虽然有几种方法取得了不错的整体效果，但它们在数量较少的类别中的表现仍然有限。</li>
+<li>现有的大多数方法都是针对<strong>小规模点云</strong>（例如，1m×1m，4096个点）。但在实际应用中，由深度传感器获取的点云通常是巨大的、大规模的。因此，有必要进一步研究大规模点云的有效分割问题。</li>
+<li>少数工作已经开始从<strong>动态点云</strong>中学习时空信息，并且期望这些时空信息有助于提高后续任务的性能，如三维物体识别、分割等。</li>
+</ul>
+<h1 id="Vote3Deep-Fast-Object-Detection-in-3D-Point-Clouds-Using-Efficient-Convolutional-Neural-Networks"><a href="#Vote3Deep-Fast-Object-Detection-in-3D-Point-Clouds-Using-Efficient-Convolutional-Neural-Networks" class="headerlink" title="Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks"></a>Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks</h1><p>任务：用cnn直接检测3d点云中的物体（不会先投影到2d) 基于投票机制的稀疏点云上的目标检测算法</p>
+<p>测试阶段只用花费 常数时间 计算</p>
+<p>提出了基于投票机制和L1正则化的稀疏卷积层，主要贡献如下：<br>1） 基于利用输入数据的稀疏性的投票机制构建了稀疏卷积层，作为处理点云数据的一层。<br>2） 利用ReLU激活和L1正则化来鼓励数据在网络中间表达的稀疏性，以探索CNN中的稀疏卷积层的作用。</p>
+<p>A 基于投票的稀疏卷积</p>
+<p>当在一个稀疏点云数据上应用密集3D卷积，由于大多数网格都是0，就浪费了很多时间。另外第三个空间维度（深度）也使得这个过程计算量更大。Vote3D的投票算法的过程就是每个非零网格会进行会在滤波器中进行投票（滤波器中心和非零网格对齐），在输出层的对应位置产生同滤波器同样大小的网格，每个网格的值=原始非零网格的值*滤波器中对应输出层这个网格的值。最终的卷积结果，即输出层的每个网格的值是通过累加输出层中每个网格中的所有的投票值得到。这个过程简化如下所示：<br><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220322130359521.png" alt="image-20220322130359521" style="zoom:50%;"></p>
+<p>其中偏差b是负数，因为正数会导致几乎输出的每个网格都是一个非零向量，就失去了稀疏性</p>
+<h1 id="On-the-Segmentation-of-3D-LIDAR-Point-Clouds"><a href="#On-the-Segmentation-of-3D-LIDAR-Point-Clouds" class="headerlink" title="On the Segmentation of 3D LIDAR Point Clouds"></a>On the Segmentation of 3D LIDAR Point Clouds</h1><p>调研了分割问题的3个方面：</p>
+<ul>
+<li><p>多种3d data，包括稠密和稀疏</p>
+</li>
+<li><p>3种ground model模型：grid based，Gaussian Process based，mesh base</p>
+</li>
+<li><p>多种聚集技术clustering technique被测试</p>
+<p>最后得到的算法是ground model 和 聚集技术 组合而成，并且比较了算法在哪种数据类型上有更好的分割效果</p>
+</li>
+</ul>
+<h2 id="Segmentation-for-Dense-Data"><a href="#Segmentation-for-Dense-Data" class="headerlink" title="Segmentation for Dense Data"></a><em>Segmentation for Dense Data</em></h2><p>有4个变体，其中3个有2 stages，另一个仅一个stage，多出来的stage是 <em>Segmentation for Dense Data</em>，共同的stage是  <em>3D clustering process</em></p>
+<p><em>1) Ground Segmentation</em></p>
+<p>地面分割：聚集相邻体素 基于垂直均值和方差 如果均值的差小于某一阈值，且方差的差也小于某一阈值，则体素会被分为一组。最大的分割区域被选为地面</p>
+<p><em>2) Cluster-All Method</em></p>
+<p>先进行地面分割，剩下的非地面点被邻近的体素分割。邻近点的数量是唯一的参数，地面被当为分割符（seperator）</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326154336757.png" alt="image-20220326154336757" style="zoom:25%;"></p>
+<p><em>3) Base-Of Method</em></p>
+<p>根据垂直方差将体素分为flat/non-flat flat体素被分在一组，no-flat体素被分为一组，仅当non-flat的体素是在flat体素的下方时，两者才会被分为一组。（因为物体因为重力总是存在于另一物体之上，即“base of”relationship），只有加上了base of标准，才能使汽车不会被分为车顶（flat）和剩下部分（non-flat），而被连成一个整体。</p>
+<p><em>4) Base-Of With Ground Method</em></p>
+<p>先进行地面分割，剩下的体素使用base-of方法</p>
+<h2 id="Segmentation-for-Sparse-Data"><a href="#Segmentation-for-Sparse-Data" class="headerlink" title="Segmentation for Sparse Data"></a><em>Segmentation for Sparse Data</em></h2><p>Gaussian Process Incremental Sample Con- sensus (GP-INSAC) 和 Mesh Based Segmentation互补</p>
+<p><em>1) Gaussian Process Incremental Sample Consensus (GP- INSAC)</em></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qiaoxu123/p/11926745.html">https://www.cnblogs.com/qiaoxu123/p/11926745.html</a></p>
+<p>评价指标：</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220326191318269.png" alt="image-20220326191318269"></p>
+<p>B 为manual segmentation</p>
+<p>A为测试结果</p>
+<p>找出最多的相同id（红色）算百分比</p>
+<h1 id="Fully-Automatic-Registration-of-3D-Point-Clouds"><a href="#Fully-Automatic-Registration-of-3D-Point-Clouds" class="headerlink" title="Fully Automatic Registration of 3D Point Clouds"></a><strong>Fully Automatic Registration of 3D Point Clouds</strong></h1><p>3d点云配准</p>
+<p>本篇论文重点：crude alignment</p>
+<p>Iterative Closest Point algorithm (ICP) ：assume a rough alignment of the two point sets/ run the algorithm multiple times by sam- pling the space of initial conditions. initial alignment is achieved manually / by the use of characteristic markers in the scene. rely on a significant percentage of overlap between the two point sets</p>
+<p>全局的，不需特征检测，估计两个extended Gaussian images(<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4062094e0100c1fy.html)的方向，遍历所有的旋转，找到使两个egi最匹配的旋转，用到spherical">http://blog.sina.com.cn/s/blog_4062094e0100c1fy.html)的方向，遍历所有的旋转，找到使两个egi最匹配的旋转，用到spherical</a> harmonics of the Extended Gaussian Image 和 rotational Fourier transform来完成计算</p>
+<p>constellation image：一种egi的表达 用来结合低重合的点云</p>
+<p><strong>Orientation histograms</strong> 方向矩阵图</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220327164846288.png" alt="image-20220327164846288" style="zoom:25%;"></p>
+<p><strong>Rotational alignment</strong> </p>
+<h1 id="A-new-approach-for-semi-automatic-rock-mass-joints-recognition-from-3D-point-clouds"><a href="#A-new-approach-for-semi-automatic-rock-mass-joints-recognition-from-3D-point-clouds" class="headerlink" title="A new approach for semi-automatic rock mass joints recognition from 3D point clouds"></a>A new approach for semi-automatic rock mass joints recognition from 3D point clouds</h1><p>目标：提取石头倾斜面的特征</p>
+<p>贡献点：</p>
+<ul>
+<li>用户监督的通过共面性测试的噪声点去除</li>
+<li>使用Kernel Density Estimation (KDE) Analysis 半自动检测不连续</li>
+<li>通过基于密度的聚集算法自动提取单不连续性</li>
+<li>完整的参数感知分析</li>
+</ul>
+<p>整体流程：局部曲度计算-&gt;平面统计分析-&gt;聚集分析</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329201055254.png" alt="image-20220329201055254" style="zoom:50%;"></p>
+<h3 id="2-2-Part-A-–-local-curvature-calculation"><a href="#2-2-Part-A-–-local-curvature-calculation" class="headerlink" title="2.2. Part A – local curvature calculation"></a>2.2. Part A – local curvature calculation</h3><p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329211148778.png" alt="image-20220329211148778" style="zoom:33%;"></p>
+<h4 id="2-2-1-Nearest-neighbour-searching"><a href="#2-2-1-Nearest-neighbour-searching" class="headerlink" title="2.2.1. Nearest neighbour searching"></a>2.2.1. Nearest neighbour searching</h4><p>找出k个最近邻点（Qi）</p>
+<p>fixed distance / fixed number of neighbours</p>
+<p>fixed distance—点的不均匀性</p>
+<p>fixed number of neighbours √</p>
+<h4 id="2-2-2-Coplanarity-test"><a href="#2-2-2-Coplanarity-test" class="headerlink" title="2.2.2. Coplanarity test"></a>2.2.2. Coplanarity test</h4><p>检测k+1个点是否同平面  If the subset of points Qi is coplanar, the rest of the process will continue; otherwise the sub-set Qi will be rejected.</p>
+<p>Principal Component Analysis (PCA).</p>
+<p>给定一组点，the princomp MATLAB function 计算每个点的特征值和特征向量 eigenvalues (λ1,λ2,λ3) and eigenvectors (V1,V2,V3)</p>
+<p>前 k 个分量 Hk 占方差的比例由以下等式确定</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213747829.png" alt="image-20220329213747829" style="zoom:50%;"></p>
+<p>偏差参数</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220329213853459.png" alt="image-20220329213853459" style="zoom:50%;"></p>
+<p>n大于某一数值时（ep 20%） 此Qi点集被拒绝</p>
+<h4 id="2-2-3-Plane-adjustment-and-calculation-of-the-normal-vector"><a href="#2-2-3-Plane-adjustment-and-calculation-of-the-normal-vector" class="headerlink" title="2.2.3. Plane adjustment and calculation of the normal vector"></a>2.2.3. Plane adjustment and calculation of the normal vector</h4><p>计算最合适的平面</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220330083301585.png" alt="image-20220330083301585" style="zoom:50%;"></p>
+<p>A, B, and C are the three components of the unit normal vector（法线向量）</p>
+<p>D gives the perpendicular distance from the origin(原点) to the plane</p>
+<h1 id="LoFTR-Detector-Free-Local-Feature-Matching-with-Transformers"><a href="#LoFTR-Detector-Free-Local-Feature-Matching-with-Transformers" class="headerlink" title="LoFTR: Detector-Free Local Feature Matching with Transformers"></a>LoFTR: Detector-Free Local Feature Matching with Transformers</h1><p>任务：图像特征匹配</p>
+<p>传统：检测 描述 匹配  使用<em>cost volume</em>去寻找匹配-&gt;特征检测很难在低纹理地区得到可重复的兴趣点</p>
+<p>此方法：先建立较稀疏的像素级稠密匹配，再refine  使用<em>self and cross attention layers in Transformer</em>获取特征描述符-&gt;因为有全局感受野，所以在低纹理的地方也可以获取稠密匹配</p>
+<p><img src="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/image-20220325105942982.png" alt="image-20220325105942982"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/23/commands/" rel="prev" title="commands">
+      <i class="fa fa-chevron-left"></i> commands
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="图形学基础知识">
+      图形学基础知识 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">人工智能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AI%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">AI安全问题分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC"><span class="nav-number">1.1.1.</span> <span class="nav-text">对抗样本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%BB%E5%87%BB"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%BE%81%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">基于特征学习的对抗样本检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%88%86%E5%B8%83%E7%BB%9F%E8%AE%A1%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.1.2.2.</span> <span class="nav-text">基于分布统计的对抗样本检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BAsoftmax%E5%88%86%E5%B8%83%E4%B8%8E%E8%BE%93%E5%85%A5%E9%87%8D%E6%9E%84%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.1.2.3.</span> <span class="nav-text">基softmax分布与输入重构的检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E4%B8%AD%E9%97%B4%E8%BE%93%E5%87%BA%E7%9A%84%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.1.2.4.</span> <span class="nav-text">基于中间输出的对抗样本检测</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B2%E5%BE%A1"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">防御</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%8F%E9%AA%8C%E7%9A%84%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.1.3.1.</span> <span class="nav-text">基于经验的防御方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%90%86%E8%AE%BA%E7%9A%84%E9%98%B2%E5%BE%A1%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.1.3.2.</span> <span class="nav-text">基于理论的防御方法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QUADTREE-ATTENTION-FOR-VISION-TRANSFORMERS"><span class="nav-number">2.</span> <span class="nav-text">QUADTREE ATTENTION FOR VISION TRANSFORMERS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-attention"><span class="nav-number">2.1.</span> <span class="nav-text">Self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transformer"><span class="nav-number">2.2.</span> <span class="nav-text">Transformer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Seq2Seq"><span class="nav-number">2.2.1.</span> <span class="nav-text">Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#encoder"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#decoder"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">decoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5encoder-decoder"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">连接encoder decoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#train"><span class="nav-number">2.2.1.4.</span> <span class="nav-text">train</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self-Supervised-Learning"><span class="nav-number">2.3.</span> <span class="nav-text">Self-Supervised Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bert"><span class="nav-number">2.3.1.</span> <span class="nav-text">Bert</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-Learning-for-3D-Point-Clouds-A-Survey"><span class="nav-number">3.</span> <span class="nav-text">Deep Learning for 3D Point Clouds: A Survey</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-SHAPE-CLASSIFICATION"><span class="nav-number">3.1.</span> <span class="nav-text">3D SHAPE CLASSIFICATION</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-OBJECT-DETECTION-AND-TRACKING"><span class="nav-number">3.2.</span> <span class="nav-text">3D OBJECT DETECTION AND TRACKING</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Object-Detection"><span class="nav-number">3.2.1.</span> <span class="nav-text">3D Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Region-Proposal-based-Methods"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Region Proposal-based Methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Single-Shot-Methods"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Single Shot Methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Object-Tracking"><span class="nav-number">3.2.2.</span> <span class="nav-text">3D Object Tracking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Scene-Flow-Estimation"><span class="nav-number">3.2.3.</span> <span class="nav-text">3D Scene Flow Estimation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-POINT-CLOUD-SEGMENTATION"><span class="nav-number">3.3.</span> <span class="nav-text">3D POINT CLOUD SEGMENTATION</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#semantic-segmentation"><span class="nav-number">3.3.1.</span> <span class="nav-text">semantic segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Projection-based-Methods%E5%9F%BA%E4%BA%8E%E6%8A%95%E5%BD%B1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.1.0.1.</span> <span class="nav-text">Projection-based Methods基于投影的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Discretization-based-Methods%E5%9F%BA%E4%BA%8E%E7%A6%BB%E6%95%A3%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.1.0.2.</span> <span class="nav-text">Discretization-based Methods基于离散化的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hybrid-Methods%E6%B7%B7%E5%90%88%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.1.0.3.</span> <span class="nav-text">Hybrid Methods混合方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Point-based-Methods"><span class="nav-number">3.3.1.0.4.</span> <span class="nav-text">Point-based Methods</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instance-segmentation"><span class="nav-number">3.3.2.</span> <span class="nav-text">instance segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#proposal-based-methods"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">proposal-based methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proposal-free-methods"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">proposal-free methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#part-segmentation"><span class="nav-number">3.3.3.</span> <span class="nav-text">part segmentation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vote3Deep-Fast-Object-Detection-in-3D-Point-Clouds-Using-Efficient-Convolutional-Neural-Networks"><span class="nav-number">4.</span> <span class="nav-text">Vote3Deep: Fast Object Detection in 3D Point Clouds Using Efficient Convolutional Neural Networks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#On-the-Segmentation-of-3D-LIDAR-Point-Clouds"><span class="nav-number">5.</span> <span class="nav-text">On the Segmentation of 3D LIDAR Point Clouds</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Segmentation-for-Dense-Data"><span class="nav-number">5.1.</span> <span class="nav-text">Segmentation for Dense Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Segmentation-for-Sparse-Data"><span class="nav-number">5.2.</span> <span class="nav-text">Segmentation for Sparse Data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fully-Automatic-Registration-of-3D-Point-Clouds"><span class="nav-number">6.</span> <span class="nav-text">Fully Automatic Registration of 3D Point Clouds</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-new-approach-for-semi-automatic-rock-mass-joints-recognition-from-3D-point-clouds"><span class="nav-number">7.</span> <span class="nav-text">A new approach for semi-automatic rock mass joints recognition from 3D point clouds</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Part-A-%E2%80%93-local-curvature-calculation"><span class="nav-number">7.0.1.</span> <span class="nav-text">2.2. Part A – local curvature calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Nearest-neighbour-searching"><span class="nav-number">7.0.1.1.</span> <span class="nav-text">2.2.1. Nearest neighbour searching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Coplanarity-test"><span class="nav-number">7.0.1.2.</span> <span class="nav-text">2.2.2. Coplanarity test</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-Plane-adjustment-and-calculation-of-the-normal-vector"><span class="nav-number">7.0.1.3.</span> <span class="nav-text">2.2.3. Plane adjustment and calculation of the normal vector</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LoFTR-Detector-Free-Local-Feature-Matching-with-Transformers"><span class="nav-number">8.</span> <span class="nav-text">LoFTR: Detector-Free Local Feature Matching with Transformers</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EsteeX"
+      src="/images/mypic.JPG">
+  <p class="site-author-name" itemprop="name">EsteeX</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EsteeX</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

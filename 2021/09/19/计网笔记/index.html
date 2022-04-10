@@ -20,14 +20,41 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="概论Uses of Computer Networksclient-server model  the client process sending a message over the network to the server process. The client process then waits for a reply message  peer-to-peer model  the">
+<meta property="og:type" content="article">
 <meta property="og:title" content="计网笔记">
 <meta property="og:url" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="krrrr&#39;s blogs">
+<meta property="og:description" content="概论Uses of Computer Networksclient-server model  the client process sending a message over the network to the server process. The client process then waits for a reply message  peer-to-peer model  the">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20210919145717778.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007152318968.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007175800751.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007180936474.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007181000022.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007184816326.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007191518615.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007193525387.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102240936.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102848603.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116113503059.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117164950995.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117170031131.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117171631479.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117172013773.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100016486.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100617921.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123101512187.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123102346095.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123115106066.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120729710.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120759234.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123233150852.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160814068.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125155858137.png">
+<meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160109453.png">
 <meta property="article:published_time" content="2021-09-19T06:52:16.000Z">
-<meta property="article:modified_time" content="2021-09-19T06:58:14.314Z">
+<meta property="article:modified_time" content="2021-11-25T08:10:36.703Z">
 <meta property="article:author" content="EsteeX">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20210919145717778.png">
@@ -120,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -130,7 +157,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
 
   </li>
   </ul>
@@ -183,10 +210,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-19 14:52:16 / 修改时间：14:58:14" itemprop="dateCreated datePublished" datetime="2021-09-19T14:52:16+08:00">2021-09-19</time>
+              <time title="创建时间：2021-09-19 14:52:16" itemprop="dateCreated datePublished" datetime="2021-09-19T14:52:16+08:00">2021-09-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-25 16:10:36" itemprop="dateModified" datetime="2021-11-25T16:10:36+08:00">2021-11-25</time>
+              </span>
 
           
 
@@ -200,6 +233,383 @@
 
       
         <p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20210919145717778.png" alt="image-20210919145717778"></p>
+<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="Uses-of-Computer-Networks"><a href="#Uses-of-Computer-Networks" class="headerlink" title="Uses of Computer Networks"></a>Uses of Computer Networks</h2><p>client-server model</p>
+<ul>
+<li>the client process sending a message over the network to the server process. The client process then waits for a reply message</li>
+</ul>
+<p>peer-to-peer model</p>
+<ul>
+<li>there are no fixed clients and servers.</li>
+</ul>
+<h2 id="Types-of-Computer-Networks"><a href="#Types-of-Computer-Networks" class="headerlink" title="Types of Computer Networks"></a><strong>Types of Computer Networks</strong></h2><ul>
+<li><p>Mobile and broadband access networks</p>
+<p>访问互联网。 </p>
+<p><strong>Broadband access networks</strong> </p>
+<ul>
+<li>Delivered to homes using copper, coaxial cable, or optical fiber</li>
+<li>Metcalfe’s law ：一个网络的价值等于该网络内的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/节点">节点</a>数的平方，而且该网络的价值与联网的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/用户">用户</a>数的平方成正比。</li>
+</ul>
+<p><strong>Mobile and Wireless Access Networks</strong></p>
+<p>移动网络 &amp; 无线网络</p>
+<p>相关 但不同</p>
+</li>
+</ul>
+<ul>
+<li><p>Data-center networks</p>
+<p>储存数据</p>
+<p>– Internet services are served from ‘‘the cloud’’<br> – Serves the increasingly growing demands of cloud computing<br> – Moves large amounts of data between servers in the data center</p>
+<p> – Moves data between the data center and the rest of the Internet</p>
+<p>挑战：– Network throughput and energy usage scaling – ‘‘Cross-section bandwidth”</p>
+</li>
+<li><p>Transit networks</p>
+<p>连接网络和数据中心</p>
+<ul>
+<li><p>Carry traffic between the <strong>content provider</strong> and the <strong>ISP</strong> (Internet Service</p>
+<p>Provider) when they are not directly connected</p>
+</li>
+</ul>
+</li>
+<li><p>Enterprise networks</p>
+<p>学校、公司使用的网络</p>
+</li>
+</ul>
+<h2 id="NetworkTechnology"><a href="#NetworkTechnology" class="headerlink" title="NetworkTechnology"></a><strong>NetworkTechnology</strong></h2><h3 id="Network-Hardware"><a href="#Network-Hardware" class="headerlink" title="Network Hardware"></a>Network Hardware</h3><p>两个重要分类标准：transmission technology &amp; scale</p>
+<ul>
+<li><p>有线/无线</p>
+</li>
+<li><p>static/dynamic——取决于信道是如何分配的 </p>
+<ul>
+<li>Static：TDM &amp; FDM </li>
+<li>Dynamic ： centralized/decentralized<ul>
+<li>In the centralized channel allocation method, there is <strong>a single entit</strong>y, for example, the base station in cellular network, which determines who goes next.</li>
+<li>In the decentralized channel allocation method, there is <strong>no central entity</strong>; each machine must decide for itself whether to transmit or not.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>不同的技术用于不同规模的网络</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007152318968.png" alt="image-20211007152318968" style="zoom:50%;"></p>
+<h4 id="PAN"><a href="#PAN" class="headerlink" title="PAN"></a>PAN</h4><p>Personal Area Network </p>
+<p>ep:连接一个电脑和它的外设 的网络</p>
+<p>蓝牙网络 使用 master-slave paradigm</p>
+<p>电脑——master</p>
+<p>鼠标、键盘——slave</p>
+<p>The master tells the slaves what addresses to use, when they can broadcast, how long they can transmit, what frequencies they can use, and so on.</p>
+<h4 id="LAN"><a href="#LAN" class="headerlink" title="LAN"></a>LAN</h4><p>Local Area Network</p>
+<p>Home network LAN<br> – Broad, diverse range of Internet-connected devices<br> – Characteristics: manageable, dependable, and secure</p>
+<h4 id="MAN"><a href="#MAN" class="headerlink" title="MAN"></a>MAN</h4><p>Metropolitan Area Network</p>
+<p>covers a city.</p>
+<p>Wired example: <strong>cable television</strong></p>
+<p>Wireless example: IEEE 802.16 (WiMax)</p>
+<h4 id="WAN"><a href="#WAN" class="headerlink" title="WAN"></a>WAN</h4><p>ep：蜂窝数据网络</p>
+<ul>
+<li><p>the subnet consists of two distinct components: <strong>transmission lines</strong> and <strong>switching elements</strong>.</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007175800751.png" alt="image-20211007175800751" style="zoom:33%;"></p>
+<p>一般由多个网络构成</p>
+<p>两种WAN：</p>
+<ul>
+<li><p>VPN (Virtual Private Network)</p>
+<p>• Advantage: reuse of resource<br> • Disadvantage: a lack of control over the underlying resources</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007180936474.png" alt="image-20211007180936474" style="zoom:33%;"></p>
+</li>
+<li><p>ISP (Internet Service Provider)</p>
+<ul>
+<li><strong>The routing algorithm</strong>  how the network makes the decision as to which path to use 用哪条路</li>
+<li><strong>The forwarding algorithm</strong>  how each router makes the decision as to where to send a packet next. 包发去哪</li>
+</ul>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007181000022.png" alt="image-20211007181000022" style="zoom:33%;"></p>
+<h4 id="Internetworks"><a href="#Internetworks" class="headerlink" title="Internetworks"></a>Internetworks</h4><p>包括subnets和hosts</p>
+<p>subnets：ISP</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>两种传播技术：</p>
+<p>– <strong>Broadcastlinks</strong>(Multicasting多播)</p>
+<ul>
+<li><p>The communication channel is shared by all the machines on the network.</p>
+</li>
+<li><p>An address field within each packet specifies the intended recipient接收者.</p>
+</li>
+<li><p>A wireless network is a common example of a broadcast link</p>
+</li>
+<li><p>Allow the possibility of addressing a packet to all destinations by using a special code in the address field.</p>
+</li>
+</ul>
+<p>– <strong>Point-to-pointlinks</strong>(Unicasting单播)</p>
+<ul>
+<li>Point-to-point links connect individual pairs of machines.</li>
+<li>To go from the source to the destination on a network made up of point-to-point links, short messages, called <strong>packets</strong> in certain contexts may have to first visit one or more <strong>intermediate machines</strong>.</li>
+<li>Often multiple routes, of different lengths, are possible, so finding good ones is important in point-to-point networks.</li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>The OSI reference model</p>
+<p>7层</p>
+<p>• The physical layer<br>• The datalink layer<br>• The network layer</p>
+<p>• The transport layer<br>• The session layer<br>• The presentation layer </p>
+<p>• The application %layer</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007184816326.png" alt="image-20211007184816326"></p>
+<h3 id="Physical-Layer"><a href="#Physical-Layer" class="headerlink" title="Physical Layer"></a><strong>Physical Layer</strong></h3><p>最底层</p>
+<h3 id="Data-Link-Layer"><a href="#Data-Link-Layer" class="headerlink" title="Data Link Layer"></a>Data Link Layer</h3><p>3个主要作用：</p>
+<p>– Framing: the sender breaks up the input data into data <strong>frames</strong> (typically a few hundred or a few thousand bytes) and transmit the frames sequentially.</p>
+<p>– Error control: error detection and how handle with errors?<br>– Flow control: how to keep a faster transmitter from drowning a slow receiver in data.</p>
+<h3 id="Network-Layer"><a href="#Network-Layer" class="headerlink" title="Network Layer"></a>Network Layer</h3><p>getting packet from source to destination</p>
+<p>is the lowest layer that deals with end-to-end transmission</p>
+<h3 id="Transportation-Layer"><a href="#Transportation-Layer" class="headerlink" title="Transportation Layer"></a><strong>Transportation Layer</strong></h3><p>The transport layer is a true end-to-end layer</p>
+<ul>
+<li>In the lower layers, each protocols is between a machine and its immediate neighbors, and not between the ultimate source and destination machines.</li>
+<li>The difference between layers 1 through 3, which are chained, and layers 4 through 7 which are end-to-end.</li>
+</ul>
+<p>– Connectionless Transport Protocol: <strong>UDP
+</strong>– Connection-Oriented Transport Protocol: <strong>TCP</strong></p>
+<h3 id="The-session-layer"><a href="#The-session-layer" class="headerlink" title="The session layer *"></a>The session layer *</h3><p>– Thesessionlayeroffersvariousservices,includingdialogcontrol(keepingtrack of whose turn it is to transmit), token management (preventing two parties from attempting the same critical operation simultaneously), and synchronization (checkpointing long transmissions to allow them to pick up from where they left off in the event of a crash and subsequent recovery)</p>
+<h3 id="The-presentation-layer"><a href="#The-presentation-layer" class="headerlink" title="The presentation layer *"></a>The presentation layer *</h3><p>检查语法和语义 转换数据结构</p>
+<ul>
+<li>–  The presentation layer is concerned with the <strong>syntax</strong> and <strong>semantics</strong> of the information transmitted.</li>
+<li>–  To make it possible for computers with different internal data representations to communicate, the data structures to be exchanged can be defined in an abstract way.</li>
+</ul>
+<h3 id="Application-Layer"><a href="#Application-Layer" class="headerlink" title="Application Layer"></a><strong>Application Layer</strong></h3><p>包括很多协议</p>
+<p>– HTTP (Hyper Text Transfer Protocol) is basis of the World Wide Web.</p>
+<p>– Email (SMTP)<br> – File transfer (FTP)</p>
+<p><strong>The TCP/IP Reference Model</strong></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007191518615.png" alt="image-20211007191518615" style="zoom:53%;"></p>
+<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><ul>
+<li>–  The performance of different kinds of physical channels: <strong>throughput</strong>, <strong>latency (delay)</strong> and <strong>error rate</strong>.</li>
+</ul>
+<h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><h3 id="Fourier-Series"><a href="#Fourier-Series" class="headerlink" title="Fourier Series"></a>Fourier Series</h3><p>周期信号：</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211007193525387.png" alt="image-20211007193525387"></p>
+<h3 id="带宽限制的信号"><a href="#带宽限制的信号" class="headerlink" title="带宽限制的信号"></a>带宽限制的信号</h3><p>如果所有傅立叶信号的组成频率都等量衰弱，则信号不会<strong>失真</strong>，但大部分信道对于不同频率成分的<strong>影响不同</strong>。</p>
+<p><strong>截止频率</strong>fc(Hz)：一根缆线 传输 0-fc 的信号 <strong>振幅</strong>amplitude几乎不会衰减。</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102240936.png" alt="image-20211116102240936" style="zoom:33%;"></p>
+<p><strong>带宽</strong>：不会严重衰减的 <strong>频率范围</strong>的宽度 —— 由线缆或光纤的物理性质影响（结构、粗细、长度等）</p>
+<p>电子工程师：Hz（模拟analogue)</p>
+<p>计网-&gt;计算机科学家：bit/sec 信道最大传输速率（数字digital）表示信道传输数据的能力</p>
+<p><strong>基带信号</strong>：信号未经过调制，中心频率在0频处</p>
+<p><strong>频带信号</strong>：信号经过调制后，频谱中心搬移到载波了（和一个周期信号相乘，则频率范围增加）</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116102848603.png" alt="image-20211116102848603" style="zoom:33%;"></p>
+<p><strong>信道容量</strong>channel capacity：信道在某一条件下传输的最大速率</p>
+<p><strong>数据速率</strong>data rate bps：1s内传输的二进制数的数量。如果二进制输入和二进制输出通道都是没有噪声的，则数据速率为1bps</p>
+<p><strong>错误率</strong>Error rate：错误出现的速率</p>
+<p><strong>码元</strong>：一次脉冲</p>
+<p><strong>波特</strong>baud：一个码元可以表示的二进制位数</p>
+<p><strong>波特率</strong>：每秒电平跃变次数</p>
+<p>ep：4电平传输</p>
+<p>波特：2 —— 即一个电平可以被理解为“00”/“01”/“10”/“11”</p>
+<h3 id="奈惠斯特带宽"><a href="#奈惠斯特带宽" class="headerlink" title="奈惠斯特带宽"></a>奈惠斯特带宽</h3><p>Nyquist Bandwidth</p>
+<p>计算最大传输率 带宽+离散等级/带宽+一波特可以表示多少比特</p>
+<p>最佳脉冲形状：<img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211116113503059.png" alt="image-20211116113503059" style="zoom:25%;"></p>
+<p>奈氏准则：在理想低通（没有噪声、带宽有线）的信道中，为了避免码间串扰，码元传输率有上限。</p>
+<p><strong>极限码元传输率 = 2W log~2~V b/s</strong> ——-W：带宽Hz —— V：码元的离散电平数目（有多少种码元/有多少不同电平）</p>
+<p><strong>=2<em>带宽\</em>一个信号表示多少个比特</strong></p>
+<p>=2<em>W\</em>Baud(波特，一个码元所带信息量)</p>
+<p><code>码元：如果有16种不同码元，则需要4位二进制位表示，数据传输率是码元传输率的4倍</code>（即一个码元带了4bit信息量）</p>
+<p>噪声等损害会限制V的值</p>
+<ol>
+<li>在任何信道中，<strong>码元传输的速率是有上限</strong>的。若传输速率超过此上限。就会出现严重的码间串扰问题（是指在接收端收到的信号的波形失去了码元之间的清晰界限），使接收端对码元的完全正确识别成为不可能。</li>
+<li>信道的<strong>频带越宽</strong>（即能通过的信号高频分量越多），就可以用<strong>更高</strong>的<strong>速率</strong>进行码元的有效传输。</li>
+<li>奈氏准则给出了码元传输速率的限制，但并没有对信息传输速率给出限制，也就是说<strong>没有</strong>对<strong>一个码元</strong>可以对应<strong>多少个二进制位</strong>作出<strong>限制</strong>。</li>
+<li>由于码元的传输速率受奈氏准则的制约，所以要<strong>提高数据的传输速率</strong>，就必须设法<strong>使每个码元能携带更多个比特的信息量</strong>，这就是需要采用多元制的调制方法。</li>
+</ol>
+<h3 id="Shannon-Capicity"><a href="#Shannon-Capicity" class="headerlink" title="Shannon Capicity"></a>Shannon Capicity</h3><p>计算信道的最大容量（极限传输速率） =  带宽 * log~2~(1+信噪比)</p>
+<p><strong>Cmax = B*log~2~(1+S/N)</strong></p>
+<p>S/N（SNR）: 信噪比 信号功率S 噪声功率N    单位：无</p>
+<p>如果单位为dB 则 </p>
+<p>SNR~dB~ = 10log~10~ (signal power / noise power) = 10log~10~(SNR)</p>
+<h2 id="传输媒介"><a href="#传输媒介" class="headerlink" title="传输媒介"></a>传输媒介</h2><h3 id="Guided-Transmission-Media"><a href="#Guided-Transmission-Media" class="headerlink" title="Guided Transmission Media"></a>Guided Transmission Media</h3><p>导向传输媒介（从一个电脑到另一个电脑）</p>
+<ul>
+<li><p>Persistent storage </p>
+<p>磁性/固态材料</p>
+<p>延迟非常大（小时～天）</p>
+</li>
+<li><p>Twisted pairs </p>
+<p>双绞线</p>
+<p>最老、最普遍</p>
+<p>信号为 两根线之间的电压差</p>
+<p>可以传输 模拟信号/数字信号</p>
+<p>带宽取决于 线缆的粗细、长度</p>
+<p>几千米 可以达到 多少Mbit/s</p>
+</li>
+</ul>
+<p>  有不同类别 catelogory</p>
+<p>  100 Mbps 以太网——使用两对 每一对负责一个方向 <strong>半双工</strong>Half duplex：每一对都只负责一个方向</p>
+<p>  1 Gbps 以太网 四对全用 <strong>全双工</strong>full duplex：4对都是双向传输的</p>
+<p>  Simplex <strong>单工</strong> ：单向</p>
+<hr>
+<p>  UTP——Unshielded Twisted Pair</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117164950995.png" alt="image-20211117164950995" style="zoom:33%;"></p>
+<p>  catelogory7 在每根双绞对外部有shielding</p>
+<ul>
+<li><p>Coaxial cable </p>
+<p>同轴线缆</p>
+<p>有线电视、城域网（MAN）</p>
+<p>带宽可以达到 GHz</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117170031131.png" alt="image-20211117170031131" style="zoom: 25%;"></p>
+</li>
+<li><p>Power lines </p>
+<p>电力线</p>
+<p>数据信号被叠加在低频电力信号</p>
+<p>难点：分离电力信号</p>
+<p>每个家庭不一样+开关时会产生噪声</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117171631479.png" alt="image-20211117171631479" style="zoom:23%;"></p>
+</li>
+<li><p>Fiber optics</p>
+<p>允许无限大的带宽</p>
+<p>开销大</p>
+<p>速度快</p>
+<p>关键组成：光源（LED、Semiconductor lasers半导体激光器）、传输媒介、探测器detecter</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211117172013773.png" alt="image-20211117172013773" style="zoom: 25%;"></p>
+<p>光损耗 Attenuation of light through glass：取决于光的波长。定义为进入、输出信号的比率</p>
+<p>类似于同轴线缆，只是没有braid那一层</p>
+</li>
+</ul>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100016486.png" alt="image-20211123100016486" style="zoom: 25%;"></p>
+<p>  一般使用三种频带的光。红外光的损耗使用dB/km作为单位。0.85-micron(微米) 频带因损耗较高，被用于段距离传输。</p>
+<p>  结构：</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123100617921.png" alt="image-20211123100617921" style="zoom:25%;"></p>
+<p>  core的折射率比cladding要大，因此可以让所有光都保存在core里</p>
+<p>  多模光纤 multimode fiber：直径小于50微米 很多不同光线会反射不同角度</p>
+<p>  单模光纤 single-mode fiber：直径小于10微米。光只能直线传播</p>
+<p>  光是单向传播的，因此要双向通信需要 两个光纤 或者 两个频带在一个光纤上</p>
+<p>  LED和Semiconductor laser半导体雷达比较</p>
+<p>  <img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123101512187.png" alt="image-20211123101512187" style="zoom:25%;"></p>
+<p>  优点：</p>
+<ul>
+<li>可以处理更高带宽</li>
+<li>不被 电力猛增 电磁干涉 断电 腐蚀性化学物质 影响</li>
+<li>轻量</li>
+<li>不会漏光</li>
+<li><p>difficult to tab</p>
+<p>缺点：</p>
+</li>
+<li><p>需要技术</p>
+</li>
+<li>弯曲会损坏</li>
+</ul>
+<h3 id="Wireless"><a href="#Wireless" class="headerlink" title="Wireless"></a>Wireless</h3><p>电磁频谱</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123102346095.png" alt="image-20211123102346095" style="zoom:25%;"></p>
+<ul>
+<li><p>Radio transmission</p>
+<p>无线电</p>
+<ul>
+<li>简单生成</li>
+<li>长距离</li>
+<li>穿透建筑</li>
+<li>全方向传播</li>
+<li>无线电波的性质依赖于频率<ul>
+<li>低频——很容易穿过障碍，但会产生损耗（成为路径损耗 path loss）</li>
+<li>高频——遇到障碍物会反弹</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>microwave transmission</p>
+<p>微波传输</p>
+<p>微波直线传输，因此长距离传输时，会被地球弧度影响，因此需要多个repeaters</p>
+<p>多路衰减multipath fading：延迟的波 out of phase到达，使信号衰减</p>
+</li>
+<li><p>Inftated Transmission</p>
+<p>红外传播</p>
+<p>短距离传输（电视）</p>
+<p>不能穿过固体介质</p>
+<p>不需要政府许可证</p>
+</li>
+<li><p>Light Transmission</p>
+<p>不需要政府许可证</p>
+<p>受天气影响</p>
+</li>
+</ul>
+<h3 id="Satellites"><a href="#Satellites" class="headerlink" title="Satellites"></a>Satellites</h3><p>卫星</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123115106066.png" alt="image-20211123115106066" style="zoom:25%;"></p>
+<p>MEO用于军事系统</p>
+<p>LEO</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120729710.png" alt="image-20211123120729710" style="zoom:25%;"></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123120759234.png" alt="image-20211123120759234" style="zoom:25%;"></p>
+<p>相对于光纤的优势</p>
+<ul>
+<li>快速部署</li>
+<li>陆地的基础设施缺乏时可以使用</li>
+<li>广播重要时使用</li>
+</ul>
+<h2 id="数字调试和多路复用技术"><a href="#数字调试和多路复用技术" class="headerlink" title="数字调试和多路复用技术"></a>数字调试和多路复用技术</h2><h3 id="数字调试"><a href="#数字调试" class="headerlink" title="数字调试"></a>数字调试</h3><p>Digital Modulation</p>
+<p>信息的比特和信号之间的转换</p>
+<p>两种方式：</p>
+<ul>
+<li><p>Baseband transmission</p>
+<p>基带传输</p>
+<p>对于有线信道</p>
+<p>经信源<strong>直接编码</strong>所得到的信号</p>
+<p>频谱基本上是从0开始一直扩展到很宽。这种信号<strong>不</strong>经过<strong>频谱搬移</strong>，只经过简单的<strong>频谱变换</strong>进行传输</p>
+</li>
+<li><p>Passband transmission</p>
+<p>通频带传输</p>
+<p>将数字基带信号经过<strong>调制器</strong>进行<strong>调制</strong>，使其成为<strong>数字频带信号</strong>再进行传输，接收端通过相应<strong>解调器</strong>进行<strong>解调</strong></p>
+</li>
+</ul>
+<h4 id="基带传输"><a href="#基带传输" class="headerlink" title="基带传输"></a>基带传输</h4><ul>
+<li><p>带宽有限，如何使传输的信息更多？ 用多于两级的信号级别（码元离散电平数）</p>
+</li>
+<li><p>波特率和比特率 只有在二进制传输时 相等</p>
+</li>
+</ul>
+<p>4种方式</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211123233150852.png" alt="image-20211123233150852" style="zoom:33%;"></p>
+<ul>
+<li><p>NRZ</p>
+<p>正电压——1</p>
+<p>负电压——0</p>
+<p>信号会有损失，因此接收到的信号会有失真</p>
+<p>接收端会将 每个时钟间隙 采样到的信号映射到形状最近的波形</p>
+<p>当比特速率是 B bits/s时，因为是最多两个时钟周期，信号从高转为低，因此带宽至少 B/2 Hz——Nyquist Sampling rate</p>
+</li>
+<li><p>Manchester</p>
+<p>receiver和sender需要同步-&gt;需要时钟信号</p>
+<p>法一：传输一个单独的时钟信号</p>
+<p>法二：将时钟信号和数字信号做XOR √</p>
+<p>编码方式：以NRZ为原型——1-高电平到低电平 0-低电平到高电平</p>
+<p>需要NRZ带宽的两倍（传输两倍信息）</p>
+<p>很多以太网技术使用曼彻斯特编码技术</p>
+</li>
+<li><p>NRZI</p>
+<p>USB（Universal Serial Bus）标准 使用 NRZI</p>
+</li>
+<li><p>Scrambling</p>
+<p>将信号与另一段伪随机的信号做异或——防止主频成分（重复的数据）辐射出电磁干扰</p>
+</li>
+<li><p>Balanced signals</p>
+<p>example：bipolar encoding</p>
+<p>即使在短时间内，正电压和负电压一样多，即平均值为0（无直流分量 no DC component）</p>
+<p>无直流的优势：一些传输介质会使直流分量明显衰弱</p>
+</li>
+</ul>
+<h4 id="频带传输"><a href="#频带传输" class="headerlink" title="频带传输"></a>频带传输</h4><p>加一个载波信号 carrier signal，将0-B Hz的基带信号 转为 S-S+B Hz的频带信号，在接收端再转换回来</p>
+<ul>
+<li><p>为什么使用频带传输？</p>
+<p>无线通道 无法传输非常低频的信号，天线的大小和信号波长正比</p>
+<p>可以让多个信号在不同频带上同时传输在一个通道内（FDMA频分）</p>
+</li>
+<li><p>三种调制技术来<strong>调制载波信号</strong></p>
+<p><strong>根据 数字数据 来调制  载波信号</strong></p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160814068.png" alt="image-20211125160814068" style="zoom:25%;"></p>
+<p>移幅键控 ASK(Amplitude Shift Keying)</p>
+<p>数字数据 1 载波振幅 1</p>
+<p>数字数据 0 载波振幅 0</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125155858137.png" alt="image-20211125155858137" style="zoom:25%;"></p>
+<p>频移键控FSK(Frequency Shift Keying)</p>
+<p>数字数据 0 载波频率 F1</p>
+<p>数字数据 1 载波频率 F2</p>
+<p><img src="/2021/09/19/%E8%AE%A1%E7%BD%91%E7%AC%94%E8%AE%B0/image-20211125160109453.png" alt="image-20211125160109453" style="zoom:25%;"></p>
+<p>相移键控 PSK(Phase Shift Keying)</p>
+<p>数字数据 1 相移180</p>
+<p>数字数据 0 相移0</p>
+<ul>
+<li>BPSK (Binary PSK) 0 180</li>
+<li>QPSK (Quadrature PSK) 45,135,225,315</li>
+</ul>
+<p>=</p>
+</li>
+</ul>
+<h3 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h3><p>Multiplexing</p>
+<p>一个线 carry 多种信号</p>
 
     </div>
 
@@ -215,8 +625,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/24/slam%E7%8E%AF%E5%A2%83/" rel="prev" title="slam环境">
-      <i class="fa fa-chevron-left"></i> slam环境
+    <a href="/2021/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/" rel="prev" title="操作系统笔记">
+      <i class="fa fa-chevron-left"></i> 操作系统笔记
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/09/22/JAVA%E7%AC%94%E8%AE%B0/" rel="next" title="JAVA笔记">
@@ -280,6 +690,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">概论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Uses-of-Computer-Networks"><span class="nav-number">1.1.</span> <span class="nav-text">Uses of Computer Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Types-of-Computer-Networks"><span class="nav-number">1.2.</span> <span class="nav-text">Types of Computer Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NetworkTechnology"><span class="nav-number">1.3.</span> <span class="nav-text">NetworkTechnology</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Hardware"><span class="nav-number">1.3.1.</span> <span class="nav-text">Network Hardware</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PAN"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">PAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LAN"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">LAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAN"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">MAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WAN"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">WAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Internetworks"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">Internetworks</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Physical-Layer"><span class="nav-number">1.4.1.</span> <span class="nav-text">Physical Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Link-Layer"><span class="nav-number">1.4.2.</span> <span class="nav-text">Data Link Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Layer"><span class="nav-number">1.4.3.</span> <span class="nav-text">Network Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transportation-Layer"><span class="nav-number">1.4.4.</span> <span class="nav-text">Transportation Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-session-layer"><span class="nav-number">1.4.5.</span> <span class="nav-text">The session layer *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-presentation-layer"><span class="nav-number">1.4.6.</span> <span class="nav-text">The presentation layer *</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Application-Layer"><span class="nav-number">1.4.7.</span> <span class="nav-text">Application Layer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">2.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-number">2.1.</span> <span class="nav-text">理论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Fourier-Series"><span class="nav-number">2.1.1.</span> <span class="nav-text">Fourier Series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD%E9%99%90%E5%88%B6%E7%9A%84%E4%BF%A1%E5%8F%B7"><span class="nav-number">2.1.2.</span> <span class="nav-text">带宽限制的信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%88%E6%83%A0%E6%96%AF%E7%89%B9%E5%B8%A6%E5%AE%BD"><span class="nav-number">2.1.3.</span> <span class="nav-text">奈惠斯特带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shannon-Capicity"><span class="nav-number">2.1.4.</span> <span class="nav-text">Shannon Capicity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BB%8B"><span class="nav-number">2.2.</span> <span class="nav-text">传输媒介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Guided-Transmission-Media"><span class="nav-number">2.2.1.</span> <span class="nav-text">Guided Transmission Media</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wireless"><span class="nav-number">2.2.2.</span> <span class="nav-text">Wireless</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Satellites"><span class="nav-number">2.2.3.</span> <span class="nav-text">Satellites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E8%AF%95%E5%92%8C%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="nav-number">2.3.</span> <span class="nav-text">数字调试和多路复用技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E8%AF%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">数字调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E5%B8%A6%E4%BC%A0%E8%BE%93"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">基带传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%91%E5%B8%A6%E4%BC%A0%E8%BE%93"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">频带传输</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text">多路复用</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -295,7 +706,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -308,7 +719,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -335,7 +746,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

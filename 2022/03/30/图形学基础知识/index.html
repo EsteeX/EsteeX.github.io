@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="矩阵：线性变换 对于矩阵A 若Ax&#x3D;λx 则x为特征向量，λ为特征值 余子式 &amp; 代数余子式 把一个n阶行列式中的元素a~ij~所在的第i行和第j列划去后，留下来的n-1阶行列式 M~ij~ 叫做元素aij的余子式。记A~ij~&#x3D;(-1)^i+j^M~ij~，叫做元素a~ij~的代数余子式 顺序主子式 方阵的第k阶行列式是由该方阵的前k行和k列元素组成。对于n阶方阵A，其共有n阶顺序主子式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图形学基础知识">
+<meta property="og:url" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="krrrr&#39;s blogs">
+<meta property="og:description" content="矩阵：线性变换 对于矩阵A 若Ax&#x3D;λx 则x为特征向量，λ为特征值 余子式 &amp; 代数余子式 把一个n阶行列式中的元素a~ij~所在的第i行和第j列划去后，留下来的n-1阶行列式 M~ij~ 叫做元素aij的余子式。记A~ij~&#x3D;(-1)^i+j^M~ij~，叫做元素a~ij~的代数余子式 顺序主子式 方阵的第k阶行列式是由该方阵的前k行和k列元素组成。对于n阶方阵A，其共有n阶顺序主子式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8182ba4de953584aa4e1924ebd4b8a3b.svg">
+<meta property="og:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330194723686.png">
+<meta property="og:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/format,f_auto.jpeg">
+<meta property="og:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20171101211053797.gif">
+<meta property="og:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330200605521.png">
+<meta property="article:published_time" content="2022-03-30T01:28:52.000Z">
+<meta property="article:modified_time" content="2022-03-31T02:20:00.960Z">
+<meta property="article:author" content="EsteeX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8182ba4de953584aa4e1924ebd4b8a3b.svg">
+
+<link rel="canonical" href="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>图形学基础知识 | krrrr's blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">krrrr's blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">我是小鱼游游游</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mypic.JPG">
+      <meta itemprop="name" content="EsteeX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="krrrr's blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图形学基础知识
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-30 09:28:52" itemprop="dateCreated datePublished" datetime="2022-03-30T09:28:52+08:00">2022-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-31 10:20:00" itemprop="dateModified" datetime="2022-03-31T10:20:00+08:00">2022-03-31</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>矩阵：线性变换</p>
+<p>对于矩阵A 若A<strong>x</strong>=λ<strong>x</strong> 则<strong>x</strong>为特征向量，λ为特征值</p>
+<p><strong>余子式 &amp; 代数余子式</strong></p>
+<p>把一个n阶行列式中的元素a~ij~所在的第i行和第j列划去后，留下来的n-1阶行列式 M~ij~ 叫做元素aij的<strong>余子式</strong>。记<strong>A</strong>~ij~=(-1)^i+j^<strong>M</strong>~ij~，叫做元素a~ij~的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/代数余子式/6266940"><strong>代数余子式</strong></a></p>
+<p><strong>顺序主子式</strong></p>
+<p>方阵的第k阶行列式是由该方阵的前k行和k列元素组成。对于n阶方阵A，其共有n阶顺序主子式。</p>
+<p><strong>行列式</strong></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8182ba4de953584aa4e1924ebd4b8a3b.svg" alt="img"></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330194723686.png" alt="image-20220330194723686" style="zoom: 25%;"></p>
+<p>设A为一n×n<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/三角形矩阵/18882193">三角形矩阵</a>。则A的行列式等于A的对角元素的乘积。</p>
+<p>(i) 若A有一行或一列包含的元素全为零，则det(A)=0。</p>
+<p>(ii) 若A有两行或两列相等，则det(A)=0。</p>
+<p><strong>矩阵的秩</strong></p>
+<p>一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/矩阵">矩阵</a><em>A</em>的<strong>列秩</strong>是<em>A</em>的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/线性独立/3209637">线性独立</a>的<strong>纵列/横行</strong>的极大数，通常表示为r(<em>A</em>)</p>
+<p><strong>求解特征值&amp;特征向量：</strong></p>
+<p>1 -&gt; 求解（λE-A）X=0</p>
+<p>X为未知向量，A已知，λ也不确定</p>
+<p>2 -&gt; 要求X有非零解，有非零解的充分必要条件是</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/pic/矩阵特征值/8309765/0/29381f30e924b89921a6c51a65061d950a7bf67e?fr=lemma&amp;ct=single"><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/format,f_auto.jpeg" alt="img"></a></p>
+<p>此为特征多项式，λ为未知量，特征根</p>
+<p>有n个复根λ1,λ2,…,λn，为A的n个特征根。</p>
+<p>3 -&gt; 当特征根λi(I=1,2,…,n)求出后，(λiE-A)X=0是齐次方程，λi均会使|λiE-A|=0，(λiE-A)X=0必存在非零解，且有无穷个解向量，(λiE-A)X=0的基础解系以及基础解系的线性组合都是A的特征向量</p>
+<p>特征值 eigenvalues：伸缩</p>
+<p>特征向量 eigenvector：方向</p>
+<p>正定矩阵</p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20171101211053797.gif" alt="img"></p>
+<p>对于n阶实对称矩阵A，下列条件是等价的：</p>
+<p>（1）A是正定矩阵；</p>
+<p>（2）A的一切<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/顺序主子式/3167642">顺序主子式</a>均为正；</p>
+<p>（3）A的一切主子式均为正；</p>
+<p>（4）A的特征值均为正；</p>
+<p>（5）存在实可逆矩阵C，使A=C′C；</p>
+<p>（6）存在秩为n的m×n实矩阵B，使A=B′B；</p>
+<p>（7）存在主对角线元素全为正的实三角矩阵R，使A=R′R [3] 。</p>
+<p><strong>矩阵对角化</strong></p>
+<p><strong>LU分解</strong></p>
+<p><img src="/2022/03/30/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/image-20220330200605521.png" alt="image-20220330200605521" style="zoom:33%;"></p>
+<p>如果方阵A可以分解成单位下三角矩阵L与非奇艺（满秩）上三角矩阵U的乘积，则式A=LU称为A的LU分解或三角分解。</p>
+<ul>
+<li><p>什么样的矩阵才有LU分解？</p>
+<p>当A的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/顺序主子式">顺序主子式</a>都不为0时，矩阵A可以分解为A=LU</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/14/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="prev" title="论文笔记">
+      <i class="fa fa-chevron-left"></i> 论文笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="EsteeX"
+      src="/images/mypic.JPG">
+  <p class="site-author-name" itemprop="name">EsteeX</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">EsteeX</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
